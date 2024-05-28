@@ -1,0 +1,23 @@
+version: "3"
+
+networks:
+  traefik-nw:
+    external: true
+
+services:
+  web:
+    image: nginx:1.26
+    container_name: nginx-soniiit-net
+    restart: unless-stopped
+    networks:
+      - traefik-nw
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./css:/usr/share/nginx/css
+      - ./images:/usr/share/nginx/images
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.rule=Host(`example.com`)"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.routers.nginx.tls.certresolver=cloudflare"

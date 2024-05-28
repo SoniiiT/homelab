@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  kestra:
+    image: kestra/kestra:v0.16.2-full
+    pull_policy: always
+    container_name: kestra
+    stdin_open: true
+    tty: true
+    ports:
+      - 1337:8080
+    user: root
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp:/tmp
+      - ./data/:/app/data
+    command: server local
+    networks:
+      - traefik-nw
+    restart: unless-stopped
+    environment:
+      - SECRET_SSH_KEY=${SECRET_SSH_KEY}
+      - SECRET_TF_PVE_API_TOKEN=${SECRET_TF_PVE_API_TOKEN}
+      - SECRET_TF_ID_TOKEN=${SECRET_TF_ID_TOKEN}
+      - SECRET_TSIG_KEY=${SECRET_TSIG_KEY}
+    labels:
+      - com.centurylinklabs.watchtower.monitor-only=true
+networks:
+  traefik-nw:
+    external: true

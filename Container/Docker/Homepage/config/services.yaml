@@ -1,0 +1,147 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Networking:
+  - FritzBox Main:
+      href: http://192.168.178.1
+      icon: avmfritzbox.png
+      description: Fritz!Box Main
+      siteMonitor: http://192.168.178.1
+      widget:
+        type: fritzbox
+        url: http://192.168.178.1
+  - FritzBox Tony:
+      href: http://192.168.178.2
+      icon: avmfritzbox.png
+      description: Fritz!Box Tony
+      siteMonitor: http://192.168.178.2
+  - Traefik-MGM:
+      href: https://traefik-mgm.home.soniiit.net/dashboard/
+      icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
+      description: Traefik-MGM on Docker-SRV-MGM
+      siteMonitor: http://192.168.178.11:9090
+      widget:
+        type: traefik
+        url: https://traefik-mgm.home.soniiit.net
+  - Traefik-01:
+      href: https://traefik-01.home.soniiit.net/dashboard/
+      icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
+      description: Traefik-01 on Docker-SRV-MGM
+      siteMonitor: http://192.168.178.20:9090
+      widget:
+        type: traefik
+        url: https://traefik-01.home.soniiit.net
+  - Traefik-02:
+      href: https://traefik-02.home.soniiit.net/dashboard/
+      icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
+      description: Traefik-02 on Docker-SRV-02
+      siteMonitor: http://192.168.178.21:9090
+      widget:
+        type: traefik
+        url: https://traefik-02.home.soniiit.net
+
+- Infrastructure and Data:
+  - Proxmox:
+      href: https://proxmox.home.soniiit.net:8006
+      icon: proxmox.png
+      description: PVE-SRV-01
+      siteMonitor: https://proxmox.home.soniiit.net:8006
+      widget:
+        type: proxmox
+        url: https://proxmox.home.soniiit.net:8006
+        username: homepage@pam!homepage
+        password: 31c06dcf-a653-451f-94d9-7ff51b137ca0
+        node: pve-srv-01
+  - Nextcloud:
+      href: https://nextcloud.soniiit.net
+      icon: https://cdn.icon-icons.com/icons2/2108/PNG/512/nextcloud_icon_130873.png
+      description: Nextcloud on Docker-SRV-02
+      siteMonitor: https://nextcloud.soniiit.net
+  - TrueNAS:
+      href: https://truenas.home.soniiit.net
+      icon: truenas-scale.png
+      description: TrueNAS-NAS-01 on PVE-SRV-01
+      siteMonitor: https://truenas.home.soniiit.net
+      widget:
+        type: truenas
+        url: https://truenas.home.soniiit.net
+        key: 1-vKycMTIXPdBeoS9JaXoFbk6jm1y4RW2FUzAPyh76rWkkrD4W0LPG0aoCUZ4QZjU2
+        enablePools: false
+
+- Management:
+  - Portainer-MGM:
+      href: https://portainer.home.soniiit.net/#!/2/docker/dashboard
+      icon: portainer.png
+      description: Portainer on Docker-SRV-MGM
+      siteMonitor: https://portainer.home.soniiit.net
+      widget:
+        type: portainer
+        url: https:portainer.home.soniiit.net
+        env: 2
+        key: ptr_vITOmjyCxDq6+dOWF79ch3xAki7XUWO7twzoZsmq2qc=
+  - Portainer-01:
+      href: https://portainer.home.soniiit.net/#!/5/docker/dashboard
+      icon: portainer.png
+      description: Portainer on Docker-SRV-MGM
+      siteMonitor: https://portainer.home.soniiit.net
+      widget:
+        type: portainer
+        url: https://portainer.home.soniiit.net
+        env: 5
+        key: ptr_vITOmjyCxDq6+dOWF79ch3xAki7XUWO7twzoZsmq2qc=
+  - Portainer-02:
+      href: https://portainer.home.soniiit.net/#!/6/docker/dashboard
+      icon: portainer.png
+      description: Portainer on Docker-SRV-MGM
+      siteMonitor: https://portainer.home.soniiit.net
+      widget:
+        type: portainer
+        url: https://portainer.home.soniiit.net
+        env: 6
+        key: ptr_vITOmjyCxDq6+dOWF79ch3xAki7XUWO7twzoZsmq2qc=
+
+- Monitoring:
+  - UptimeKuma:
+      href: https://uptime.home.soniiit.net
+      description: Uptimekuma on Docker-SRV-MGM
+      siteMonitor: https://uptime.home.soniiit.net
+      icon: uptime-kuma.png
+      widget:
+        type: uptimekuma
+        url: https://uptime.home.soniiit.net
+        slug: homepage
+
+- Kubernetes:
+  - Portainer-K8s:
+      href: https://192.168.178.60:9443
+      icon: portainer.png
+      description: Portainer on Kubernetes
+      siteMonitor: https://192.168.178.60:9443
+      widget:
+        type: portainer
+        url: https://192.168.178.60:9443
+        env: 2
+        key: {? {HOMEPAGE_VAR_PORTAINER_KUBE_KEY: ''} : ''}
+
+- Services:
+  - Gameserver:
+      href: http://192.168.178.30
+      icon: https://www.git.je/Alex/Pterodactyl-Panel/raw/commit/d2c770d21823c0f71ac14f30e9edd86eb5a15d16/public/favicons/android-icon-192x192.png
+      description: Gameserver on APP-SRV-01
+      siteMonitor: http://192.168.178.30
+      widget:
+        type: pterodactyl
+        url: http://192.168.178.30
+        key: ptlc_6dFHbmW99rilrqvrkNNd066KTcgqSPp1LHfLWWnDI6X
+
+- IoT and Smarthome:
+  - Home Assistant:
+      href: http://ha.home.soniiit.net:8123
+      icon: home-assistant.png
+      description: Homeassistant on Docker-SRV-01
+      siteMonitor: http://ha.home.soniiit.net:8123
+      widget:
+        type: homeassistant
+        url: http://ha.home.soniiit.net:8123
+        key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJiNDVkODg4NzFmMmI0NDZkYWJhZTQxNGM2NTFjNmI1ZiIsImlhdCI6MTcxMjg0NTYwNSwiZXhwIjoyMDI4MjA1NjA1fQ.vkBFeUtCaGhiuZdSouANaM83K37m3xLszoArsUSc20o
+        custom:

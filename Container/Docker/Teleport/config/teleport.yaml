@@ -1,0 +1,58 @@
+version: v2
+teleport:
+  nodename: teleport
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+
+auth_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3025
+  proxy_listener_mode: multiplex
+  cluster_name: teleport.example.com
+  # -- (Optional) Passwordless Authentication
+# authentication:
+#   type: local
+#   second_factor: on
+#   webauthn:
+#     rp_id: your-server-url
+#   connector_name: passwordless
+# -- (Optional) Teleport Assist
+# assist:
+#   openai:
+#     api_token_path: /etc/teleport/openai_key
+
+ssh_service:
+  enabled: "no"
+
+proxy_service:
+  enabled: "yes"
+  web_listen_addr: 0.0.0.0:3080
+  # -- (Optional) when using reverse proxy
+  public_addr: ['teleport.example.com:443']
+  https_keypairs: []
+  acme: {}
+  # --(Optional) ACME
+#acme:
+#  enabled: "yes"
+#  email: your-email@example.com
+# -- (Optional) Teleport Assist
+#assist:
+#  openai:
+#    api_token_path: /etc/teleport/openai_key
+
+# app_service:
+#   enabled: no
+#   # -- (Optional) App Service
+#   enabled: yes
+#   apps:
+#     - name: "app-name"
+#       uri: "http://ip-address:port/"
+#       insecure_skip_verify: true
+#
+#     - name: "app-name"
+#       uri: "http://ip-address/"
+#       insecure_skip_verify: true

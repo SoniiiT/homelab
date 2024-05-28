@@ -1,0 +1,14 @@
+$TTL 2d
+
+$ORIGIN dev.soniiit.net.
+
+@               IN      SOA     ns.dev.soniiit.net. sonilpreal.gmail.com (
+                                2024052500      ; serial
+                                12h             ; refresh
+                                15m             ; retry
+                                3w              ; expire
+                                2h              ; minimum ttl
+                                )
+                IN      NS      ns.dev.soniiit.net.
+
+NS              IN      A       192.168.178.3
