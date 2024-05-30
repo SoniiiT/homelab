@@ -1,1 +1,0 @@
-tg_api_token="TWINGATE_API_TOKEN"
