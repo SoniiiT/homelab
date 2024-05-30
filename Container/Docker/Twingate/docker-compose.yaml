@@ -1,0 +1,21 @@
+networks:
+  traefik-nw:
+    external: true
+services:
+  twingate_connector:
+    container_name: twingate_connector-dns
+    image: twingate/connector:latest
+    environment:
+      - TWINGATE_NETWORK=your-twingate-network
+      - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN}
+      - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN}
+      # -- (Optional) Change loglevel
+      - TWINGATE_LOG_LEVEL=3
+      # -- (Optional) Add custom DNS Server
+      - TWINGATE_DNS=192.168.178.3
+    sysctls:
+      net.ipv4.ping_group_range: "0 2147483647"
+    # -- (Optional) When using a custom network
+    networks:
+      - traefik-nw
+    restart: unless-stopped
