@@ -1,6 +1,6 @@
 # # hyperv-srv-01
 # resource "proxmox_vm_qemu" "hyperv-srv-01" {
-    
+
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
@@ -21,12 +21,12 @@
 
 #     # VM System Settings
 #     agent = 1
-    
+
 #     # VM CPU Settings
 #     cores = 4
 #     sockets = 1
 #     cpu = "host"
-    
+
 #     # VM Memory Settings
 #     memory = 20480
 
@@ -61,7 +61,7 @@
 
 # # hyperv-srv-02
 # resource "proxmox_vm_qemu" "hyperv-srv-02" {
-    
+
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
@@ -82,12 +82,12 @@
 
 #     # VM System Settings
 #     agent = 1
-    
+
 #     # VM CPU Settings
 #     cores = 4
 #     sockets = 1
 #     cpu = "host"
-    
+
 #     # VM Memory Settings
 #     memory = 20480
 

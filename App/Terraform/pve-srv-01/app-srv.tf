@@ -1,5 +1,5 @@
 resource "proxmox_vm_qemu" "app_srv_01" {
-    
+
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
@@ -20,12 +20,12 @@ resource "proxmox_vm_qemu" "app_srv_01" {
 
     # VM System Settings
     agent = 1
-    
+
     # VM CPU Settings
     cores = 4
     sockets = 2
     cpu = "kvm64"
-    
+
     # VM Memory Settings
     memory = 16384
 
@@ -71,7 +71,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
 }
 
 resource "proxmox_vm_qemu" "app_srv_02" {
-    
+
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
@@ -92,12 +92,12 @@ resource "proxmox_vm_qemu" "app_srv_02" {
 
     # VM System Settings
     agent = 1
-    
+
     # VM CPU Settings
     cores = 4
     sockets = 1
     cpu = "kvm64"
-    
+
     # VM Memory Settings
     memory = 8192
 
@@ -149,7 +149,7 @@ resource "proxmox_vm_qemu" "app_srv_02" {
 }
 
 resource "proxmox_vm_qemu" "app_srv_03" {
-    
+
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
@@ -170,12 +170,12 @@ resource "proxmox_vm_qemu" "app_srv_03" {
 
     # VM System Settings
     agent = 1
-    
+
     # VM CPU Settings
     cores = 2
     sockets = 1
     cpu = "kvm64"
-    
+
     # VM Memory Settings
     memory = 4096
 
@@ -221,7 +221,7 @@ resource "proxmox_vm_qemu" "app_srv_03" {
 }
 
 resource "proxmox_vm_qemu" "app_srv_04" {
-    
+
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
@@ -242,12 +242,12 @@ resource "proxmox_vm_qemu" "app_srv_04" {
 
     # VM System Settings
     agent = 1
-    
+
     # VM CPU Settings
     cores = 2
     sockets = 1
     cpu = "kvm64"
-    
+
     # VM Memory Settings
     memory = 4096
 

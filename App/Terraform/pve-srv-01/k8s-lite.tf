@@ -1,5 +1,5 @@
 # resource "proxmox_vm_qemu" "k8s-lite-soniiit-cp01" {
-    
+
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
@@ -20,12 +20,12 @@
 
 #     # VM System Settings
 #     agent = 1
-    
+
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
 #     cpu = "kvm64"
-    
+
 #     # VM Memory Settings
 #     memory = 8192
 
@@ -71,7 +71,7 @@
 # }
 
 # resource "proxmox_vm_qemu" "k8s-lite-soniiit-w01" {
-    
+
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
@@ -92,12 +92,12 @@
 
 #     # VM System Settings
 #     agent = 1
-    
+
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
 #     cpu = "kvm64"
-    
+
 #     # VM Memory Settings
 #     memory = 8192
 
@@ -143,7 +143,7 @@
 # }
 
 # resource "proxmox_vm_qemu" "k8s-lite-soniiit-w02" {
-    
+
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
@@ -164,12 +164,12 @@
 
 #     # VM System Settings
 #     agent = 1
-    
+
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
 #     cpu = "kvm64"
-    
+
 #     # VM Memory Settings
 #     memory = 8192
 
@@ -215,7 +215,7 @@
 # }
 
 # resource "proxmox_vm_qemu" "k8s-lite-soniiit-nfs02" {
-    
+
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
@@ -236,12 +236,12 @@
 
 #     # VM System Settings
 #     agent = 1
-    
+
 #     # VM CPU Settings
 #     cores = 2
 #     sockets = 1
 #     cpu = "kvm64"
-    
+
 #     # VM Memory Settings
 #     memory = 8192
 
