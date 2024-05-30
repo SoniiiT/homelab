@@ -3,10 +3,10 @@ networks:
     external: true
 services:
   twingate_connector:
-    container_name: twingate_connector-dns
+    container_name: twingate_connector-01
     image: twingate/connector:latest
     environment:
-      - TWINGATE_NETWORK=your-twingate-network
+      - TWINGATE_NETWORK=soniiit
       - TWINGATE_ACCESS_TOKEN=${TWINGATE_ACCESS_TOKEN}
       - TWINGATE_REFRESH_TOKEN=${TWINGATE_REFRESH_TOKEN}
       # -- (Optional) Change loglevel
