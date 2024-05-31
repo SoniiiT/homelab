@@ -16,6 +16,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
     networks:
       - traefik-nw
+
   app:
     image: nextcloud:29.0.0
     restart: always
