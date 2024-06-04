@@ -14,6 +14,13 @@ resource "dns_a_record_set" "drucker_wz" {
 }
 
 # Hosts
+resource "dns_a_record_set" "twg_cn_01" {
+    zone = "home.soniiit.net."
+    name = "twg-cn-01"
+    addresses = [ "192.168.178.11" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "pve_srv_01" {
     zone = "home.soniiit.net."
     name = "pve-srv-01"
@@ -78,6 +85,13 @@ resource "dns_a_record_set" "app_srv_05" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "twg_cn_02" {
+    zone = "home.soniiit.net."
+    name = "twg-cn-02"
+    addresses = [ "192.168.178.33" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "app_srv_06" {
     zone = "home.soniiit.net."
     name = "app-srv-06"
@@ -89,6 +103,34 @@ resource "dns_a_record_set" "dns" {
     zone = "home.soniiit.net."
     name = "dns"
     addresses = [ "192.168.178.3" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "app_srv_07" {
+    zone = "home.soniiit.net."
+    name = "app-srv-07"
+    addresses = [ "192.168.178.34" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "twg_cn_03" {
+    zone = "home.soniiit.net."
+    name = "twg-cn-03"
+    addresses = [ "192.168.178.34" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "app_srv_08" {
+    zone = "home.soniiit.net."
+    name = "app-srv-08"
+    addresses = [ "192.168.178.35" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "twg_cn_04" {
+    zone = "home.soniiit.net."
+    name = "twg-cn-04"
+    addresses = [ "192.168.178.35" ]
     ttl = 3600
 }
 
