@@ -377,6 +377,7 @@ resource "proxmox_vm_qemu" "app_srv_06" {
     onboot = true
     boot = "order=virtio0;net0"
     bootdisk = "virtio"
+    startup = "order=1,up=90"
     scsihw = "virtio-scsi-pci"
 
     # VM OS Settings
