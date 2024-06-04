@@ -71,14 +71,28 @@ resource "dns_a_record_set" "app_srv_04" {
     ttl = 3600
 }
 
-# Docker Hosts
-resource "dns_a_record_set" "docker_srv_dns" {
+resource "dns_a_record_set" "app_srv_05" {
     zone = "home.soniiit.net."
-    name = "docker-srv-dns"
+    name = "app-srv-05"
+    addresses = [ "192.168.178.33" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "app_srv_06" {
+    zone = "home.soniiit.net."
+    name = "app-srv-06"
     addresses = [ "192.168.178.3" ]
     ttl = 3600
 }
 
+resource "dns_a_record_set" "dns" {
+    zone = "home.soniiit.net."
+    name = "dns"
+    addresses = [ "192.168.178.3" ]
+    ttl = 3600
+}
+
+# Docker Hosts
 resource "dns_a_record_set" "docker_srv_mgm" {
     zone = "home.soniiit.net."
     name = "docker-srv-mgm"
@@ -111,14 +125,6 @@ resource "dns_a_record_set" "wild_docker_srv-02" {
     zone = "home.soniiit.net."
     name = "*.docker-srv-02"
     addresses = [ "192.168.178.22" ]
-    ttl = 3600
-}
-
-# Docker Containers on docker-srv-dns
-resource "dns_a_record_set" "dns" {
-    zone = "home.soniiit.net."
-    name = "dns"
-    addresses = [ "192.168.178.3" ]
     ttl = 3600
 }
 
