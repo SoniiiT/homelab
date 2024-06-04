@@ -15,6 +15,94 @@ resource "twingate_group" "admin" {
 }
 
 # Resources
+# Wildcard DNS
+resource "twingate_resource" "wildcard_dns_home" {
+    name = "Wildcard Home"
+    address = "*.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_prod_01.id
+
+    security_policy_id = data.twingate_security_policy.Default_Policy.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "ALLOW_ALL"
+        }
+        udp = {
+            policy = "ALLOW_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.admin.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.Default_Policy.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "wildcard_dns_dev" {
+    name = "Wildcard Dev"
+    address = "*.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_prod_01.id
+
+    security_policy_id = data.twingate_security_policy.Default_Policy.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "ALLOW_ALL"
+        }
+        udp = {
+            policy = "ALLOW_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.admin.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.Default_Policy.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "wildcard_dns_demo" {
+    name = "Wildcard Demo"
+    address = "*.demo.soniiit.net"
+    remote_network_id = twingate_remote_network.net_prod_01.id
+
+    security_policy_id = data.twingate_security_policy.Default_Policy.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "ALLOW_ALL"
+        }
+        udp = {
+            policy = "ALLOW_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.admin.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.Default_Policy.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
 # Host Servers
 resource "twingate_resource" "pve_srv_01" {
     name = "pve-srv-01"
@@ -216,7 +304,7 @@ resource "twingate_resource" "docker_srv_dns" {
         allow_icmp = true
         tcp = {
             policy = "RESTRICTED"
-            ports = ["22"]
+            ports = ["22","53"]
         }
         udp = {
             policy = "DENY_ALL"
