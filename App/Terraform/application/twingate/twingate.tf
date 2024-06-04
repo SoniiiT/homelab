@@ -172,11 +172,10 @@ resource "twingate_resource" "app_srv_04" {
     is_active = true
 }
 
-# Docker Servers
-resource "twingate_resource" "docker_srv_mgm" {
-    name = "docker-srv-mgm"
-    address = "192.168.178.20"
-    alias = "docker-srv-mgm.home.soniiit.net"
+resource "twingate_resource" "app_srv_05" {
+    name = "app-srv-05"
+    address = "192.168.178.33"
+    alias = "app-srv-05.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_prod_01.id
 
     security_policy_id = data.twingate_security_policy.Default_Policy.id
@@ -204,10 +203,43 @@ resource "twingate_resource" "docker_srv_mgm" {
     is_active = true
 }
 
-resource "twingate_resource" "docker_srv_dns" {
-    name = "docker-srv-dns"
+resource "twingate_resource" "app_srv_06" {
+    name = "app-srv-06"
     address = "192.168.178.3"
-    alias = "dns.home.soniiit.net"
+    alias = "app-srv-06.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_prod_01.id
+
+    security_policy_id = data.twingate_security_policy.Default_Policy.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22", "53"]
+        }
+        udp = {
+            policy = "RESTRICTED"
+            ports = ["53"]
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.admin.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.Default_Policy.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+# Docker Servers
+resource "twingate_resource" "docker_srv_mgm" {
+    name = "docker-srv-mgm"
+    address = "192.168.178.20"
+    alias = "docker-srv-mgm.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_prod_01.id
 
     security_policy_id = data.twingate_security_policy.Default_Policy.id
