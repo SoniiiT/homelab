@@ -14,13 +14,6 @@ resource "dns_a_record_set" "drucker_wz" {
 }
 
 # Hosts
-resource "dns_a_record_set" "twg_cn_01" {
-    zone = "home.soniiit.net."
-    name = "twg-cn-01"
-    addresses = [ "192.168.178.11" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "pve_srv_01" {
     zone = "home.soniiit.net."
     name = "pve-srv-01"
@@ -35,66 +28,9 @@ resource "dns_a_record_set" "proxmox" {
     ttl = 3600
 }
 
-# Application Hosts
-resource "dns_a_record_set" "app_srv_01" {
-    zone = "home.soniiit.net."
-    name = "app-srv-01"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "gameserver" {
-    zone = "home.soniiit.net."
-    name = "gameserver"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "app_srv_02" {
-    zone = "home.soniiit.net."
-    name = "app-srv-02"
-    addresses = [ "192.168.178.4" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "lancache" {
-    zone = "home.soniiit.net."
-    name = "lancache"
-    addresses = [ "192.168.178.4" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "app_srv_03" {
     zone = "home.soniiit.net."
     name = "app-srv-03"
-    addresses = [ "192.168.178.31" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "app_srv_04" {
-    zone = "home.soniiit.net."
-    name = "app-srv-04"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "app_srv_05" {
-    zone = "home.soniiit.net."
-    name = "app-srv-05"
-    addresses = [ "192.168.178.33" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "twg_cn_02" {
-    zone = "home.soniiit.net."
-    name = "twg-cn-02"
-    addresses = [ "192.168.178.33" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "app_srv_06" {
-    zone = "home.soniiit.net."
-    name = "app-srv-06"
     addresses = [ "192.168.178.3" ]
     ttl = 3600
 }
@@ -103,34 +39,6 @@ resource "dns_a_record_set" "dns" {
     zone = "home.soniiit.net."
     name = "dns"
     addresses = [ "192.168.178.3" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "app_srv_07" {
-    zone = "home.soniiit.net."
-    name = "app-srv-07"
-    addresses = [ "192.168.178.34" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "twg_cn_03" {
-    zone = "home.soniiit.net."
-    name = "twg-cn-03"
-    addresses = [ "192.168.178.34" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "app_srv_08" {
-    zone = "home.soniiit.net."
-    name = "app-srv-08"
-    addresses = [ "192.168.178.35" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "twg_cn_04" {
-    zone = "home.soniiit.net."
-    name = "twg-cn-04"
-    addresses = [ "192.168.178.35" ]
     ttl = 3600
 }
 
@@ -240,5 +148,100 @@ resource "dns_a_record_set" "traefik_02" {
     zone = "home.soniiit.net."
     name = "traefik-02"
     addresses = [ "192.168.178.22" ]
+    ttl = 3600
+}
+
+# Application Hosts
+resource "dns_a_record_set" "app_srv_01" {
+    zone = "home.soniiit.net."
+    name = "app-srv-01"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "gameserver" {
+    zone = "home.soniiit.net."
+    name = "gameserver"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "app_srv_02" {
+    zone = "home.soniiit.net."
+    name = "app-srv-02"
+    addresses = [ "192.168.178.4" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "lancache" {
+    zone = "home.soniiit.net."
+    name = "lancache"
+    addresses = [ "192.168.178.4" ]
+    ttl = 3600
+}
+
+# Twingate Connector Hosts
+resource "dns_a_record_set" "twingate_connector_01" {
+    zone = "home.soniiit.net."
+    name = "tg-cn-01"
+    addresses = [ "192.168.178.11" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "twingate_connector_02" {
+    zone = "home.soniiit.net."
+    name = "tg-cn-02"
+    addresses = [ "192.168.178.31" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "twingate_connector_03" {
+    zone = "home.soniiit.net."
+    name = "tg-cn-03"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "twingate_connector_04" {
+    zone = "home.soniiit.net."
+    name = "tg-cn-04"
+    addresses = [ "192.168.178.33" ]
+    ttl = 3600
+}
+
+# Github Agent Hosts
+resource "dns_a_record_set" "github_agent_01" {
+    zone = "home.soniiit.net."
+    name = "github-agent-01"
+    addresses = [ "192.168.178.34" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "github_agent_02" {
+    zone = "home.soniiit.net."
+    name = "github-agent-02"
+    addresses = [ "192.168.178.35" ]
+    ttl = 3600
+}
+
+# Terraform Agent Hosts
+resource "dns_a_record_set" "terrafrom_agent_01" {
+    zone = "home.soniiit.net."
+    name = "terraform-agent-01"
+    addresses = [ "192.168.178.36" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "terrafrom_agent_02" {
+    zone = "home.soniiit.net."
+    name = "terraform-agent-02"
+    addresses = [ "192.168.178.37" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "terrafrom_agent_03" {
+    zone = "home.soniiit.net."
+    name = "terraform-agent-03"
+    addresses = [ "192.168.178.38" ]
     ttl = 3600
 }

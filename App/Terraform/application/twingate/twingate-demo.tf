@@ -44,11 +44,11 @@ resource "twingate_resource" "wildcard_dns_demo" {
 
     is_active = true
 }
-
-resource "twingate_resource" "app_srv_08" {
-    name = "app-srv-08"
-    address = "192.168.178.35"
-    alias = "app-srv-08.home.soniiit.net"
+# Twingate Connector Servers
+resource "twingate_resource" "twingate_connector_04" {
+    name = "twingate-connector-04"
+    address = "192.168.178.33"
+    alias = "tg-cn-04.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_demo.id
 
     security_policy_id = data.twingate_security_policy.policy_demo.id

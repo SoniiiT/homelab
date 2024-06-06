@@ -45,10 +45,11 @@ resource "twingate_resource" "wildcard_dns_dev" {
     is_active = true
 }
 
-resource "twingate_resource" "app_srv_07" {
-    name = "app-srv-07"
-    address = "192.168.178.34"
-    alias = "app-srv-07.home.soniiit.net"
+# Twingate Connector Servers
+resource "twingate_resource" "twingate_connector_03" {
+    name = "twingate-connector-03"
+    address = "192.168.178.32"
+    alias = "tg-cn-03.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_dev.id
 
     security_policy_id = data.twingate_security_policy.policy_dev.id
