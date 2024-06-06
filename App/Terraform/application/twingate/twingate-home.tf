@@ -392,73 +392,42 @@ resource "twingate_resource" "github_agent_02" {
     is_active = true
 }
 
+resource "twingate_resource" "github_agent_03" {
+    name = "github-agent-03"
+    address = "192.168.178.37"
+    alias = "github-agent-03.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
 # Terraform Agent Servers
 resource "twingate_resource" "terraform_agent_01" {
     name = "terraform-agent-01"
     address = "192.168.178.36"
     alias = "terraform-agent-01.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.home.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_home.id
-            usage_based_autolock_duration_days = 30
-        }
-    }
-
-    is_active = true
-}
-
-resource "twingate_resource" "terraform_agent_02" {
-    name = "terraform-agent-02"
-    address = "192.168.178.37"
-    alias = "terraform-agent-02.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.home.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_home.id
-            usage_based_autolock_duration_days = 30
-        }
-    }
-
-    is_active = true
-}
-
-resource "twingate_resource" "terraform_agent_03" {
-    name = "terraform-agent-03"
-    address = "192.168.178.38"
-    alias = "terraform-agent-03.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id

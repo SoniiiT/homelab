@@ -224,24 +224,17 @@ resource "dns_a_record_set" "github_agent_02" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "github_agent_03" {
+    zone = "home.soniiit.net."
+    name = "github-agent-03"
+    addresses = [ "192.168.178.37" ]
+    ttl = 3600
+}
+
 # Terraform Agent Hosts
 resource "dns_a_record_set" "terrafrom_agent_01" {
     zone = "home.soniiit.net."
     name = "terraform-agent-01"
     addresses = [ "192.168.178.36" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "terrafrom_agent_02" {
-    zone = "home.soniiit.net."
-    name = "terraform-agent-02"
-    addresses = [ "192.168.178.37" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "terrafrom_agent_03" {
-    zone = "home.soniiit.net."
-    name = "terraform-agent-03"
-    addresses = [ "192.168.178.38" ]
     ttl = 3600
 }
