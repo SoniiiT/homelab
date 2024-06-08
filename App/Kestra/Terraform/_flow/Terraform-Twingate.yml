@@ -5,7 +5,7 @@ labels:
   Mode: GH-Actions
 
 variables:
-  chdir: "App/Terraform/applications/twingate"
+  chdir: "App/Terraform/application/twingate"
 
 tasks:
 - id: git

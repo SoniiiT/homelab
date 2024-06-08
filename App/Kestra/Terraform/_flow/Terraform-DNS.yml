@@ -5,7 +5,7 @@ labels:
   Mode: GH-Actions
 
 variables:
-  chdir: "App/Terraform/applications/dns"
+  chdir: "App/Terraform/application/dns"
 
 tasks:
 - id: git
