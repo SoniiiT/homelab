@@ -1,8 +1,11 @@
-id: Terraform-DNS
+id: Terraform-PVE-SRV-01
 namespace: terraform
+labels:
+  Project: Homelab
+  Mode: GH-Actions
 
 variables:
-  chdir: "App/Terraform/applications/dns"
+  chdir: "App/Terraform/pve-srv-01"
 
 tasks:
 - id: git
@@ -10,14 +13,16 @@ tasks:
   tasks:
   - id: clone_repository
     type: io.kestra.plugin.git.Clone
-    url: https://github.com/SoniiiT/devdisk
-    branch: master
+    url: https://github.com/SoniiiT/homelab
+    branch: main
 
   - id: provide
     type: io.kestra.core.tasks.storages.LocalFiles
     inputs:
       credentials.auto.tfvars: |
-        tsig_key = "{{ secret('PDNS_TSIG_KEY') }}"
+        proxmox_api_url = "https://192.168.178.10:8006/api2/json"
+        proxmox_api_token_id = "terraform@pam!terraform"
+        proxmox_api_token_secret = "{{ secret('TF_PVE_API_TOKEN') }}"
 
   - id: terraform
     type: io.kestra.plugin.terraform.cli.TerraformCLI
