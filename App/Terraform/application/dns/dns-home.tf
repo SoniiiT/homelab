@@ -143,6 +143,13 @@ resource "dns_a_record_set" "traefik_01" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "jellyfin" {
+    zone = "home.soniiit.net."
+    name = "jellyfin"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
 # Docker Containers on docker-srv-02
 resource "dns_a_record_set" "traefik_02" {
     zone = "home.soniiit.net."
