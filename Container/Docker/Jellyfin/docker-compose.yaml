@@ -1,24 +1,19 @@
-version: '3.5'
 services:
   jellyfin:
-    image: jellyfin/jellyfin
+    image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    user: uid:gid
-    network_mode: 'host'
-    volumes:
-      - ./jellyfin/config:/config
-      - ./jellyfin/cache:/cache
-      - type: bind
-        source: ./jellyfin/movies
-        target: /movies
-      - type: bind
-        source: ./jellyfin/tvshows
-        target: /tvshows
-        read_only: true
-    restart: 'unless-stopped'
-    # Optional - alternative address used for autodiscovery
     environment:
-      - JELLYFIN_PublishedServerUrl=http://jellyfin.home.soniiit.net
-    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - JELLYFIN_PublishedServerUrl=192.168.178.21 #optional
+    volumes:
+      - ./jellyfin/library:/config
+      - ./jellyfin/tvseries:/data/tvshows
+      - ./jellyfin/movies:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
