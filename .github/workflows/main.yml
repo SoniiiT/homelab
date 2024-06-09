@@ -1,0 +1,22 @@
+name: "Update DNS Records"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'App/Terraform/application/dns/*.tf'
+  workflow_dispatch:
+  
+defaults:
+  run:
+    working-directory: App/Terraform/application/dns
+
+jobs:
+  send_dns_update:
+    runs-on: "self-hosted"
+    steps:
+      # send webhook to update DNS records
+      - name: Send DNS Update Webhook
+        run: |
+          curl ${{ secrets.WEBHOOK_URL_DNS_UPDATE_KESTRA }}
