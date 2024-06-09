@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  send_dns_update:
+  send_twingate_update:
     runs-on: self-hosted
     steps:
       # send webhook to update DNS records
