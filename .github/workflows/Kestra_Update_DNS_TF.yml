@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - '/App/Terraform/application/dns/*.tf'
+      - 'App/Terraform/application/dns/*.tf'
   workflow_dispatch:
   
 defaults:
   run:
-    working-directory: /App/Terraform/application/dns
+    working-directory: App/Terraform/application/dns
 
 jobs:
   send_dns_update:
