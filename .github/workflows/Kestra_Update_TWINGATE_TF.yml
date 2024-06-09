@@ -1,0 +1,18 @@
+name: "Update DNS Records"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'App/Terraform/application/twingate/*.tf'
+  workflow_dispatch:
+
+jobs:
+  send_dns_update:
+    runs-on: self-hosted
+    steps:
+      # send webhook to update DNS records
+      - name: Send DNS Update Webhook
+        run: |
+          curl --insecure ${{ secrets.WEBHOOK_URL_TWINGATE_UPDATE_KESTRA }}
