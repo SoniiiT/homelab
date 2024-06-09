@@ -1,4 +1,4 @@
-name: "Update DNS Records"
+name: "Update PVE-SRV-01 VMs"
 
 on:
   push:
