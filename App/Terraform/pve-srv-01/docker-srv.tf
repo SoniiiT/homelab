@@ -6,6 +6,7 @@ resource "proxmox_vm_qemu" "docker_srv_mgm" {
     name = "docker-srv-mgm"
     tags = "ubuntu,docker"
     desc = "Docker Server 01"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
@@ -78,6 +79,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     name = "docker-srv-01"
     tags = "ubuntu,docker"
     desc = "Docker Server 01"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
@@ -156,6 +158,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     name = "docker-srv-02"
     tags = "ubuntu,docker"
     desc = "Docker Server 02"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true

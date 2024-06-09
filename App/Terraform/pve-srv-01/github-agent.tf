@@ -6,13 +6,13 @@ resource "proxmox_vm_qemu" "github_agent_01" {
     name = "github-agent-01"
     tags = "ubuntu,github"
     desc = "Github Runner Server 01"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
     bootdisk = "virtio"
     scsihw = "virtio-scsi-pci"
-    automatic_reboot = false
 
     # VM OS Settings
     full_clone = true
@@ -79,13 +79,13 @@ resource "proxmox_vm_qemu" "github_agent_02" {
     name = "github-agent-02"
     tags = "ubuntu,github"
     desc = "Github Runner Server 02"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
     bootdisk = "virtio"
     scsihw = "virtio-scsi-pci"
-    automatic_reboot = false
 
     # VM OS Settings
     full_clone = true
@@ -152,13 +152,13 @@ resource "proxmox_vm_qemu" "github_agent_03" {
     name = "github-agent-03"
     tags = "ubuntu,github"
     desc = "Github Runner Server 03"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
     bootdisk = "virtio"
     scsihw = "virtio-scsi-pci"
-    automatic_reboot = false
 
     # VM OS Settings
     full_clone = true

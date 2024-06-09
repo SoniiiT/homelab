@@ -6,6 +6,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
     name = "app-srv-01"
     tags = "ubuntu,application"
     desc = "Pterodactyl Gameserver"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
@@ -78,6 +79,7 @@ resource "proxmox_vm_qemu" "app_srv_02" {
     name = "app-srv-02"
     tags = "ubuntu,application"
     desc = "Lancache Server"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true

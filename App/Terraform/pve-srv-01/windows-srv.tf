@@ -7,6 +7,7 @@
 #     name = "hyperv-srv-01"
 #     tags = "windows"
 #     desc = "HyperV Server 01"
+#     automatic_reboot = false
 
 #     # VM Advanced General Settings
 #     onboot = false
@@ -68,6 +69,7 @@
 #     name = "hyperv-srv-02"
 #     tags = "windows"
 #     desc = "HyperV Server 02"
+#     automatic_reboot = false
 
 #     # VM Advanced General Settings
 #     onboot = false

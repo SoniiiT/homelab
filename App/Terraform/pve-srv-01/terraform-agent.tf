@@ -6,13 +6,13 @@ resource "proxmox_vm_qemu" "terrafrom_agent_01" {
     name = "terraform-agent-01"
     tags = "ubuntu,terraform"
     desc = "Terraform Agent Server 01"
+    automatic_reboot = false
 
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
     bootdisk = "virtio"
     scsihw = "virtio-scsi-pci"
-    automatic_reboot = false
 
     # VM OS Settings
     full_clone = true

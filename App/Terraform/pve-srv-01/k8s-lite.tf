@@ -6,6 +6,7 @@
 #     name = "k8s-soniiit-cp01"
 #     tags = "ubuntu,application"
 #     desc = "Control Plane Server 01 for Kubernetes Cluster"
+#     automatic_reboot = false
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -78,6 +79,7 @@
 #     name = "k8s-soniiit-w01"
 #     tags = "ubuntu,application"
 #     desc = "Worker Server 01 for Kubernetes Cluster"
+#     automatic_reboot = false
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -150,6 +152,7 @@
 #     name = "k8s-soniiit-w02"
 #     tags = "ubuntu,application"
 #     desc = "Worker Server 02 for Kubernetes Cluster"
+#     automatic_reboot = false
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -222,6 +225,7 @@
 #     name = "k8s-soniiit-cp01"
 #     tags = "ubuntu,application"
 #     desc = "Control Plane Server 01 for Kubernetes Cluster"
+#     automatic_reboot = false
 
 #     # VM Advanced General Settings
 #     onboot = true
