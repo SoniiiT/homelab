@@ -14,7 +14,7 @@ defaults:
 
 jobs:
   send_dns_update:
-    runs-on: "self-hosted"
+    runs-on: self-hosted
     steps:
       # send webhook to update DNS records
       - name: Send DNS Update Webhook
