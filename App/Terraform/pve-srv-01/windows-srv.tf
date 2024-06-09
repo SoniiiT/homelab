@@ -1,5 +1,5 @@
 # # hyperv-srv-01
-# resource "proxmox_vm_qemu" "hyperv-srv-01" {
+# resource "proxmox_vm_qemu" "hyperv_srv_01" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
@@ -61,7 +61,7 @@
 # }
 
 # # hyperv-srv-02
-# resource "proxmox_vm_qemu" "hyperv-srv-02" {
+# resource "proxmox_vm_qemu" "hyperv_srv_02" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"

@@ -76,3 +76,31 @@ resource "dns_a_record_set" "k8s_soniiit_vip" {
     addresses = [ "192.168.178.50" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "k8s_lite_soniiit_cp01" {
+    zone = "dev.soniiit.net."
+    name = "k8s-lite-soniiit-cp01"
+    addresses = [ "192.168.178.70" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "k8s_lite_soniiit_w01" {
+    zone = "dev.soniiit.net."
+    name = "k8s-lite-soniiit-w01"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "k8s_lite_soniiit_w02" {
+    zone = "dev.soniiit.net."
+    name = "k8s-lite-soniiit-w02"
+    addresses = [ "192.168.178.72" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "k8s_lite_soniiit_nfs01" {
+    zone = "dev.soniiit.net."
+    name = "k8s-lite-soniiit-nfs01"
+    addresses = [ "192.168.178.73" ]
+    ttl = 3600
+}

@@ -1,11 +1,11 @@
 # # k8s-soniiit-cp01
-# resource "proxmox_vm_qemu" "k8s-soniiit-cp01" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_cp01" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-cp01"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "Control Plane Server 01 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -73,13 +73,13 @@
 # }
 
 # # k8s-soniiit-cp02
-# resource "proxmox_vm_qemu" "k8s-soniiit-cp02" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_cp02" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-cp02"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "Control Plane Server 02 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -147,13 +147,13 @@
 # }
 
 # # k8s-soniiit-lb01
-# resource "proxmox_vm_qemu" "k8s-soniiit-lb01" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_lb01" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-lb01"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "Load Balancer Server 01 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -221,13 +221,13 @@
 # }
 
 # # k8s-soniiit-lb02
-# resource "proxmox_vm_qemu" "k8s-soniiit-lb02" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_lb02" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-lb02"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "Load Balancer Server 02 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -295,13 +295,13 @@
 # }
 
 # # k8s-soniiit-w01
-# resource "proxmox_vm_qemu" "k8s-soniiit-w01" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_w01" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-w01"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "Worker Server 01 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -369,13 +369,13 @@
 # }
 
 # # k8s-soniiit-w02
-# resource "proxmox_vm_qemu" "k8s-soniiit-w02" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_w02" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-w02"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "Worker Server 02 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -443,13 +443,13 @@
 # }
 
 # # k8s-soniiit-nfs01
-# resource "proxmox_vm_qemu" "k8s-soniiit-nfs01" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_nfs01" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-nfs01"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "NFS Server 01 for Kubernetes Cluster"
 #     automatic_reboot = false
 
@@ -523,13 +523,13 @@
 # }
 
 # # k8s-soniiit-nfs02
-# resource "proxmox_vm_qemu" "k8s-soniiit-nfs02" {
+# resource "proxmox_vm_qemu" "k8s_soniiit_nfs02" {
 
 #     # VM General Settings
 #     target_node = "pve-srv-01"
 #     vmid = "0"
 #     name = "k8s-soniiit-nfs02"
-#     tags = "ubuntu,application"
+#     tags = "ubuntu,kubernetes"
 #     desc = "NFS Server 02 for Kubernetes Cluster"
 #     automatic_reboot = false
 
