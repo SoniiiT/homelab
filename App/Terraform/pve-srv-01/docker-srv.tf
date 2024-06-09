@@ -125,12 +125,6 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
                     storage            = "VM-Storage"
                 }
             }
-            virtio1 {
-                disk {
-                    size               = 128
-                    storage            = "VM-Storage"
-                }
-            }
         }
     }
 
@@ -180,7 +174,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 16384
+    memory = 8192
 
     # VM Network Settings
     network {

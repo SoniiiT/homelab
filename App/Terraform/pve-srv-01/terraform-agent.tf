@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "terrafrom_agent_01" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 2048
 
     # VM Network Settings
     network {

@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "twingate_connector_02" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 2048
 
     # VM Network Settings
     network {
@@ -101,7 +101,7 @@ resource "proxmox_vm_qemu" "twingate_connector_03" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 2048
 
     # VM Network Settings
     network {
@@ -174,7 +174,7 @@ resource "proxmox_vm_qemu" "twingate_connector_04" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 2048
 
     # VM Network Settings
     network {
