@@ -13,6 +13,6 @@ jobs:
     runs-on: self-hosted
     steps:
       # send webhook to update DNS records
-      - name: Send DNS Update Webhook
+      - name: Send PVE 01 VM Update Webhook
         run: |
           curl --insecure ${{ secrets.WEBHOOK_URL_PVE_01_VM_UPDATE_KESTRA }}
