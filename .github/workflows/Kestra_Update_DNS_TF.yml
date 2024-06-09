@@ -15,4 +15,4 @@ jobs:
       # send webhook to update DNS records
       - name: Send DNS Update Webhook
         run: |
-          curl ${{ secrets.WEBHOOK_URL_DNS_UPDATE_KESTRA }}
+          curl --insecure ${{ secrets.WEBHOOK_URL_DNS_UPDATE_KESTRA }}
