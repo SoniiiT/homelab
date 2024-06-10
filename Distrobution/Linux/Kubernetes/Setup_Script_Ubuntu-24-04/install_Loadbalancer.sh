@@ -44,7 +44,7 @@ echo "Enter the network interface Name (ip a s (ex.: eht1)):"
 read name_interface
 
 # Installation of Keepalived and HAProxy
-sudo apt-get update
+sudo apt update && sudo apt upgrade -y
 sudo apt-get install -y keepalived haproxy
 
 # Creating an check_apiserver script
@@ -128,8 +128,8 @@ vrrp_instance VI_1 {
 }" >> /etc/keepalived/keepalived.conf
 fi
 
-sudo useradd keepalived_script #FIXME Kann keinen Benutzer mit dem Namen keepalived_script erstellen
-sudo chmod +x /etc/keepalived/check_apiserver.sh #FIXME Kann der Datei keine Berechtigung erteilen
+sudo useradd -r keepalived_script
+sudo chmod +x /etc/keepalived/check_apiserver.sh
 
 # Restarting and enabling Keepalived
 systemctl restart keepalived && systemctl enable keepalived
@@ -153,38 +153,35 @@ backend kubernetes-backend
 # Restarting and enabling HAProxy
 systemctl restart haproxy && systemctl enable haproxy
 
-# Add Firewall Rules
-sudo ufw allow 6443/tcp
-sudo ufw allow 6443/udp
-sudo systemctl restart ufw
 
-# Deactivate swap
-swapoff -a; sed -i '/swap/d' /etc/fstab
 
-# Install Kernel Modules
-echo "overlay
-br_netfilter" >> /etc/modules-load.d/containerd.conf
+# # Install Kernel Modules
+# echo "overlay
+# br_netfilter" >> /etc/modules-load.d/containerd.conf
 
-modprobe overlay
-modprobe br_netfilter
+# modprobe overlay
+# modprobe br_netfilter
 
-echo "net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables  = 1
-net.ipv4.ip_forward                 = 1" >> /etc/sysctl.d/kubernetes.conf
+# echo "net.bridge.bridge-nf-call-ip6tables = 1
+# net.bridge.bridge-nf-call-iptables  = 1
+# net.ipv4.ip_forward                 = 1" >> /etc/sysctl.d/kubernetes.conf
 
-sysctl --system
+# sysctl --system
 
 # Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-chmod +x get-docker.sh
-sudo sh ./get-docker.sh
+sudo apt install -y docker.io
 
 # Install Kubernetes
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 sudo apt update
-sudo apt install kubeadm kubelet kubectl kubernetes-cni -y
+sudo apt install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
 
-# Fixing Kubernetes
-sudo rm /etc/containerd/config.toml
-sudo systemctl restart containerd
+# Deactivate swap
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+# # Fixing Kubernetes
+# sudo rm /etc/containerd/config.toml
+# sudo systemctl restart containerd
