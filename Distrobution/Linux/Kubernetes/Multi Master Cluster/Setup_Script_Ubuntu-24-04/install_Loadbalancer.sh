@@ -32,7 +32,7 @@ for ((i=1; i<=num_masters; i++)); do
     # Store the IP in a variable with a dynamic name
     declare "ip_master_$i=$ip_master"
     # Append a server line for the current Master to the server lines string
-    server_lines+="    server kmaster$i $ip_master:6443 check fall 3 rise 2\n"
+    server_lines+="    server k8s-soniiit-cp$i $ip_master:6443 check fall 3 rise 2\n"
 done
 
 # Ask for the Virtual IP
@@ -153,21 +153,6 @@ backend kubernetes-backend
 # Restarting and enabling HAProxy
 systemctl restart haproxy && systemctl enable haproxy
 
-
-
-# # Install Kernel Modules
-# echo "overlay
-# br_netfilter" >> /etc/modules-load.d/containerd.conf
-
-# modprobe overlay
-# modprobe br_netfilter
-
-# echo "net.bridge.bridge-nf-call-ip6tables = 1
-# net.bridge.bridge-nf-call-iptables  = 1
-# net.ipv4.ip_forward                 = 1" >> /etc/sysctl.d/kubernetes.conf
-
-# sysctl --system
-
 # Install Docker
 sudo apt install -y docker.io
 
@@ -181,7 +166,3 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # Deactivate swap
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-
-# # Fixing Kubernetes
-# sudo rm /etc/containerd/config.toml
-# sudo systemctl restart containerd

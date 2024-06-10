@@ -16,20 +16,3 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # Deactivate swap
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-
-# # Install Kernel Modules
-# echo "overlay
-# br_netfilter" >> /etc/modules-load.d/containerd.conf
-
-# modprobe overlay
-# modprobe br_netfilter
-
-# echo "net.bridge.bridge-nf-call-ip6tables = 1
-# net.bridge.bridge-nf-call-iptables  = 1
-# net.ipv4.ip_forward                 = 1" >> /etc/sysctl.d/kubernetes.conf
-
-# sysctl --system
-
-# # Fixing Kubernetes
-# sudo rm /etc/containerd/config.toml
-# sudo systemctl restart containerd
