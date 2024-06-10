@@ -1,4 +1,5 @@
 #!/bin/bash
+# Works Only on Ubuntu 24.04
 
 # Ask for the IP of K8s-VI
 echo "Enter the IP of the K8s-VI (Virtual IP):"

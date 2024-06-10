@@ -1,4 +1,5 @@
 #!/bin/bash
+# Works Only on Ubuntu 22.04
 
 # Ask for the number of LBs
 echo "How many Loadbalancers are there?"
