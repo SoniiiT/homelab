@@ -2,27 +2,20 @@ all:
   vars:
     ansible_ssh_private_key_file: "id_rsa"
   children:
-    proxmox:
-      hosts:
-        proxmox-srv-01:
-          ansible_host: 192.168.178.10
-          ansible_user: root
-          ansible_ssh_private_key_file: id_rsa
-          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
     docker:
       hosts:
         docker-srv-mgm:
-          ansible_host: 192.168.178.11
-          ansible_user: soniiit
-          ansible_ssh_private_key_file: id_rsa
-          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-        docker-srv-01:
           ansible_host: 192.168.178.20
           ansible_user: soniiit
           ansible_ssh_private_key_file: id_rsa
           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-        docker-srv-02:
+        docker-srv-01:
           ansible_host: 192.168.178.21
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        docker-srv-02:
+          ansible_host: 192.168.178.22
           ansible_user: soniiit
           ansible_ssh_private_key_file: id_rsa
           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
@@ -33,13 +26,123 @@ all:
           ansible_user: soniiit
           ansible_ssh_private_key_file: id_rsa
           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-        app-srv-03:
+        app-srv-02:
           ansible_host: 192.168.178.4
           ansible_user: soniiit
           ansible_ssh_private_key_file: id_rsa
           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-        github-runner:
-          ansible_host: 192.168.178.99
+        app-srv-03:
+          ansible_host: 192.168.178.3
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    twingate-connector:
+      hosts:
+        twingate-connector-01:
+          ansible_host: 192.168.178.11
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        twingate-connector-02:
+          ansible_host: 192.168.178.31
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        twingate-connector-03:
+          ansible_host: 192.168.178.32
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        twingate-connector-04:
+          ansible_host: 192.168.178.33
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    github-agent:
+      hosts:
+        github-agent-01:
+          ansible_host: 192.168.178.34
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        github-agent-02:
+          ansible_host: 192.168.178.35
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        github-agent-03:
+          ansible_host: 192.168.178.37
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    terraform-agent:
+      hosts:
+        terraform-agent-01:
+          ansible_host: 192.168.178.36
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    # k8s-lite:
+    #   hosts:
+    #     k8s-lite-soniiit-cp01:
+    #       ansible_host: 192.168.178.70
+    #       ansible_user: soniiit
+    #       ansible_ssh_private_key_file: id_rsa
+    #       ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    #     k8s-lite-soniiit-w01:
+    #       ansible_host: 192.168.178.71
+    #       ansible_user: soniiit
+    #       ansible_ssh_private_key_file: id_rsa
+    #       ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    #     k8s-lite-soniiit-w02:
+    #       ansible_host: 192.168.178.72
+    #       ansible_user: soniiit
+    #       ansible_ssh_private_key_file: id_rsa
+    #       ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    #     k8s-lite-soniiit-nfs01:
+    #       ansible_host: 192.168.178.73
+    #       ansible_user: soniiit
+    #       ansible_ssh_private_key_file: id_rsa
+    #       ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    k8s-soniiit:
+      hosts:
+        k8s-soniiit-cp01:
+          ansible_host: 192.168.178.42
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-cp02:
+          ansible_host: 192.168.178.43
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-lb01:
+          ansible_host: 192.168.178.40
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-lb02:
+          ansible_host: 192.168.178.41
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-w01:
+          ansible_host: 192.168.178.44
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-w02:
+          ansible_host: 192.168.178.45
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-nfs01:
+          ansible_host: 192.168.178.46
+          ansible_user: soniiit
+          ansible_ssh_private_key_file: id_rsa
+          ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        k8s-soniiit-nfs02:
+          ansible_host: 192.168.178.47
           ansible_user: soniiit
           ansible_ssh_private_key_file: id_rsa
           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
