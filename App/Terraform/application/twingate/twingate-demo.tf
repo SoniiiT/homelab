@@ -48,7 +48,7 @@ resource "twingate_resource" "wildcard_dns_demo" {
 resource "twingate_resource" "twingate_connector_04" {
     name = "twingate-connector-04"
     address = "192.168.178.33"
-    alias = "tg-cn-04.home.soniiit.net"
+    alias = "tg-cn-04.demo.soniiit.net"
     remote_network_id = twingate_remote_network.net_demo.id
 
     security_policy_id = data.twingate_security_policy.policy_demo.id
