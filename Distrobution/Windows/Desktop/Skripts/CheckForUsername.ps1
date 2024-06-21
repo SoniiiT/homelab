@@ -1,1 +1,0 @@
-Write-Host "Domain:$env:USERDOMAIN Username: $env:USERNAME"
