@@ -13,6 +13,27 @@ resource "dns_a_record_set" "drucker_wz" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "gw_01" {
+    zone = "home.soniiit.net."
+    name = "gw-01"
+    addresses = [ "192.168.178.1" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "gw_02" {
+    zone = "home.soniiit.net."
+    name = "gw-02"
+    addresses = [ "192.168.178.2" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "sw_01" {
+    zone = "home.soniiit.net."
+    name = "sw-01"
+    addresses = [ "192.168.178.99" ]
+    ttl = 3600
+}
+
 # Hosts
 resource "dns_a_record_set" "pve_srv_01" {
     zone = "home.soniiit.net."
