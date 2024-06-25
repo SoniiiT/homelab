@@ -273,3 +273,10 @@ resource "dns_a_record_set" "terrafrom_agent_01" {
     addresses = [ "192.168.178.36" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "app_srv_05" {
+    zone = "home.soniiit.net."
+    name = "app-srv-05"
+    addresses = [ "192.168.178.38" ]
+    ttl = 3600
+}
