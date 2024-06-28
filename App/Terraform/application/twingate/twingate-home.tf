@@ -373,7 +373,7 @@ resource "twingate_resource" "docker_srv_01" {
         allow_icmp = true
         tcp = {
             policy = "RESTRICTED"
-            ports = ["22"]
+            ports = ["22", "80", "443"]
         }
         udp = {
             policy = "DENY_ALL"
