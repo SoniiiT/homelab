@@ -16,13 +16,13 @@ services:
       - "traefik.http.services.teleport.loadbalancer.server.port=3080"
       - "traefik.http.services.teleport.loadbalancer.server.scheme=https"
       - "traefik.http.routers.teleport-http.entrypoints=web"
-      - "traefik.http.routers.teleport-http.rule=HostRegexp(`teleport.example.com`, `{subhost:[a-z]+}.example.com`)"
+      - "traefik.http.routers.teleport-http.rule=HostRegexp(`teleport.home.soniiit.net`, `{subhost:[a-z]+}.home.soniiit.net`)"
       - "traefik.http.routers.teleport-https.entrypoints=websecure"
-      - "traefik.http.routers.teleport-https.rule=HostRegexp(`teleport.example.com`, `{subhost:[a-z]+}.example.com`)"
+      - "traefik.http.routers.teleport-https.rule=HostRegexp(`teleport.home.soniiit.net`, `{subhost:[a-z]+}.home.soniiit.net`)"
       - "traefik.http.routers.teleport-https.tls=true"
       - "traefik.http.routers.teleport-https.tls.certresolver=cloudflare"
-      - "traefik.http.routers.teleport-https.tls.domains[0].main=teleport.example.com"
-      - "traefik.http.routers.teleport-https.tls.domains[0].sans=*.teleport.example.com"
+      - "traefik.http.routers.teleport-https.tls.domains[0].main=teleport.home.soniiit.net"
+      - "traefik.http.routers.teleport-https.tls.domains[0].sans=*.teleport.home.soniiit.net"
     networks:
       - traefik-nw
     restart: unless-stopped

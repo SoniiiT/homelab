@@ -273,3 +273,17 @@ resource "dns_a_record_set" "terrafrom_agent_01" {
     addresses = [ "192.168.178.36" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "teleport_01" {
+    zone = "home.soniiit.net."
+    name = "teleport"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "wild_teleport_01" {
+    zone = "home.soniiit.net."
+    name = "teleport"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
