@@ -1,3 +1,18 @@
+#Permanent Dev Server
+resource "dns_a_record_set" "dev_srv_01" {
+    zone = "dev.soniiit.net."
+    name = "vscode"
+    addresses = [ "192.168.178.90" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "dev_docker_srv" {
+    zone = "dev.soniiit.net."
+    name = "docker"
+    addresses = [ "192.168.178.91" ]
+    ttl = 3600
+}
+
 # Windows Hosts
 resource "dns_a_record_set" "hyperv_srv_01" {
     zone = "dev.soniiit.net."

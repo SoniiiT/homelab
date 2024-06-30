@@ -77,6 +77,68 @@ resource "twingate_resource" "twingate_connector_03" {
     is_active = true
 }
 
+# Permanent Dev Server
+resource "twingate_resource" "dev_srv_01" {
+    name = "vscode"
+    address = "192.168.178.90"
+    alias = "vscode.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_dev.id
+
+    security_policy_id = data.twingate_security_policy.policy_dev.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "ALLOW_ALL"
+        }
+        udp = {
+            policy = "ALLOW_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.devops.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_dev.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "dev_docker_srv" {
+    name = "docker"
+    address = "192.168.178.91"
+    alias = "docker.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_dev.id
+
+    security_policy_id = data.twingate_security_policy.policy_dev.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "ALLOW_ALL"
+        }
+        udp = {
+            policy = "ALLOW_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.devops.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_dev.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+# K8s Lite Cluster
 resource "twingate_resource" "k8s_lite_soniiit_cp01" {
     name = "k8s-lite-soniiit-cp01"
     address = "192.168.178.70"
@@ -201,6 +263,7 @@ resource "twingate_resource" "k8s_lite_soniiit_nfs01" {
     is_active = true
 }
 
+# K8s Cluster
 resource "twingate_resource" "k8s_soniiit_cp01" {
     name = "k8s-soniiit-cp01"
     address = "192.168.178.42"
