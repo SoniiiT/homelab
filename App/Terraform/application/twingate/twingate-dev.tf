@@ -79,7 +79,7 @@ resource "twingate_resource" "twingate_connector_03" {
 
 # Permanent Dev Server
 resource "twingate_resource" "dev_srv_01" {
-    name = "vscode"
+    name = "dev-srv-01"
     address = "192.168.178.90"
     alias = "vscode.dev.soniiit.net"
     remote_network_id = twingate_remote_network.net_dev.id
@@ -109,7 +109,7 @@ resource "twingate_resource" "dev_srv_01" {
 }
 
 resource "twingate_resource" "dev_docker_srv" {
-    name = "docker"
+    name = "dev-docker-srv"
     address = "192.168.178.91"
     alias = "docker.dev.soniiit.net"
     remote_network_id = twingate_remote_network.net_dev.id

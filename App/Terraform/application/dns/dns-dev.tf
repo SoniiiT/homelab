@@ -1,14 +1,14 @@
 #Permanent Dev Server
 resource "dns_a_record_set" "dev_srv_01" {
     zone = "dev.soniiit.net."
-    name = "vscode"
+    name = "dev-srv-01"
     addresses = [ "192.168.178.90" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "dev_docker_srv" {
     zone = "dev.soniiit.net."
-    name = "docker"
+    name = "dev-docker-srv"
     addresses = [ "192.168.178.91" ]
     ttl = 3600
 }
