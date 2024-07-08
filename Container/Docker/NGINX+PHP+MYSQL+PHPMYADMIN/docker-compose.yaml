@@ -1,0 +1,42 @@
+version: "3"
+
+networks:
+  traefik-nw:
+    external: true
+
+services:
+  web:
+    image: nginx:latest
+    ports: 
+      - 1234:80
+    networks:
+      - traefik-nw
+    volumes:
+      - ./data:/var/www/html/
+      - ./config:/etc/nginx/conf.d/
+    links:
+      - php-fpm
+  php-fpm:
+    image: php:fpm-alpine
+    networks:
+      - traefik-nw
+    volumes:
+      - ./data:/var/www/html/
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      - traefik-nw
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    networks:
+      - traefik-nw
+    ports:
+      - 1235:80
+    environment:
+      - PMA_ARBITRARY=1
