@@ -1,42 +1,38 @@
-version: "3"
-
-networks:
-  traefik-nw:
-    external: true
+version: "3.8"
 
 services:
   web:
     image: nginx:latest
-    ports: 
-      - 1234:80
-    networks:
-      - traefik-nw
+    ports:
+      - "80:80"
     volumes:
-      - ./data:/var/www/html/
-      - ./config:/etc/nginx/conf.d/
-    links:
-      - php-fpm
+      - ./data:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - webnet
+
   php-fpm:
     image: php:fpm-alpine
-    networks:
-      - traefik-nw
     volumes:
-      - ./data:/var/www/html/
+      - ./data:/var/www/html
+    networks:
+      - webnet
+
   db:
-    image: mysql
+    image: mysql:5.7
     restart: always
-    ports:
-      - 3306:3306
-    networks:
-      - traefik-nw
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
+      MYSQL_ROOT_PASSWORD: meinpasswort
+      MYSQL_DATABASE: meineDatenbank
+      MYSQL_USER: benutzer
+      MYSQL_PASSWORD: benutzerpasswort
+    volumes:
+      - db_data:/var/lib/mysql
     networks:
-      - traefik-nw
-    ports:
-      - 1235:80
-    environment:
-      - PMA_ARBITRARY=1
+      - webnet
+
+networks:
+  webnet:
+
+volumes:
+  db_data:
