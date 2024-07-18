@@ -29,7 +29,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_cp01" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 8192
 
     # VM Network Settings
     network {
@@ -103,7 +103,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_cp02" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 8192
 
     # VM Network Settings
     network {
@@ -325,7 +325,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_w01" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
@@ -399,7 +399,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_w02" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
