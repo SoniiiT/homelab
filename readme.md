@@ -5,3 +5,4 @@ My other Repositories:
 - [docker-container-template](https://github.com/SoniiiT/docker-container-template)
 - [dotfiles](https://github.com/SoniiiT/dotfiles)
 - [k8s-container-template](https://github.com/SoniiiT/k8s-container-template)
+- [distro-scripts](https://github.com/SoniiiT/distro-scripts)
