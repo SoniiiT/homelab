@@ -34,6 +34,13 @@ resource "dns_a_record_set" "sw_01" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "truenas" {
+    zone = "home.soniiit.net."
+    name = "truenas"
+    addresses = [ "192.168.178.12" ]
+    ttl = 3600
+}
+
 # Hosts
 resource "dns_a_record_set" "pve_srv_01" {
     zone = "home.soniiit.net."
