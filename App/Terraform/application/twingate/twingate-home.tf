@@ -561,7 +561,7 @@ resource "twingate_resource" "win11-desk-01" {
         allow_icmp = true
         tcp = {
             policy = "RESTRICTED"
-            ports = ["22"]
+            ports = ["3389"]
         }
         udp = {
             policy = "DENY_ALL"
