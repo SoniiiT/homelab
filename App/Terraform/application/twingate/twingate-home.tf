@@ -548,3 +548,34 @@ resource "twingate_resource" "terraform_agent_01" {
 
     is_active = true
 }
+
+resource "twingate_resource" "win11-desk-01" {
+    name = "win11-desk-01"
+    address = "192.168.178.99"
+    alias = "win11-desk-01.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
