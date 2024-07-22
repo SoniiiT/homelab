@@ -1,19 +1,19 @@
 # Vanilla | Minecraft | v1.21
-resource "dns_a_record_set" "mc_vanilla_121" {
+resource "dns_a_record_set" "mc_vanilla" {
     zone = "home.soniiit.net."
-    name = "mc-121"
+    name = "mc-vanilla"
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
-resource "dns_srv_record_set" "mc_121_tcp" {
+resource "dns_srv_record_set" "mc_vanilla_tcp" {
     zone = "home.soniiit.net."
-    name = "_minecraft._tcp.mc"
+    name = "_minecraft._tcp.mc-vanilla"
     srv {
     priority = 0
     weight   = 0
-    target   = "mc-121.home.soniiit.net."
+    target   = "mc-vanilla.home.soniiit.net."
     port     = 27000
     }
-    ttl = 300
+    ttl = 3600
 }
