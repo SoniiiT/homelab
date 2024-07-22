@@ -17,3 +17,4 @@ resource "dns_srv_record_set" "mc_vanilla_121_tcp" {
     }
     ttl = 3600
 }
+# A
