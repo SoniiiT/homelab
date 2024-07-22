@@ -63,6 +63,18 @@ resource "dns_a_record_set" "proxmox" {
     ttl = 3600
 }
 
+resource "dns_srv_record_set" "proxmox_tcp" {
+    zone = "home.soniiit.net."
+    name = "_proxmox._tcp.proxmox"
+    srv {
+    priority = 0
+    weight   = 0
+    target   = "proxmox.home.soniiit.net."
+    port     = 8006
+    }
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "app_srv_03" {
     zone = "home.soniiit.net."
     name = "app-srv-03"
