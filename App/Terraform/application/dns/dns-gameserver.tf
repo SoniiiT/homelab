@@ -8,7 +8,7 @@ resource "dns_a_record_set" "mc_vanilla_121" {
 
 resource "dns_srv_record_set" "mc_121_tcp" {
     zone = "home.soniiit.net."
-    name = "_minecraft._tcp"
+    name = "_minecraft._tcp.mc"
     srv {
     priority = 0
     weight   = 0
