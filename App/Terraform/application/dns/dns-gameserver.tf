@@ -12,7 +12,7 @@ resource "dns_srv_record_set" "mcvanilla_tcp" {
     srv {
     priority = 0
     weight   = 0
-    target   = "mcvanilla.home.soniiit.net."
+    target   = "mcvanilla.home.soniiit.net"
     port     = 27000
     }
     ttl = 3600
