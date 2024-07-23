@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-02
+    restart: unless-stopped
+    networks:
+      - traefik-nw
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run
+networks:
+  traefik-nw:
+    external: true
