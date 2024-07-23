@@ -34,6 +34,20 @@ resource "dns_a_record_set" "sw_01" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "truenas" {
+    zone = "home.soniiit.net."
+    name = "truenas"
+    addresses = [ "192.168.178.12" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "win11-desk-01" {
+    zone = "home.soniiit.net."
+    name = "win11-desk-01"
+    addresses = [ "192.168.178.99" ]
+    ttl = 3600
+}
+
 # Hosts
 resource "dns_a_record_set" "pve_srv_01" {
     zone = "home.soniiit.net."
@@ -48,6 +62,7 @@ resource "dns_a_record_set" "proxmox" {
     addresses = [ "192.168.178.10" ]
     ttl = 3600
 }
+
 
 resource "dns_a_record_set" "app_srv_03" {
     zone = "home.soniiit.net."
