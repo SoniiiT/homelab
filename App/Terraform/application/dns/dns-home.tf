@@ -179,6 +179,20 @@ resource "dns_a_record_set" "affine" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "memos" {
+    zone = "home.soniiit.net."
+    name = "memos"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "planka" {
+    zone = "home.soniiit.net."
+    name = "planka"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "traefik_01" {
     zone = "home.soniiit.net."
     name = "traefik-01"
