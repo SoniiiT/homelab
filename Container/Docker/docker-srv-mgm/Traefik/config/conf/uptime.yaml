@@ -1,0 +1,23 @@
+delete-me
+# http:
+#   routers:
+#     uptime-router:
+#       rule: "Host(`uptime.home.soniiit.net`)"
+#       entryPoints: ["websecure"]
+#       tls:
+#         certResolver: cloudflare
+#       service: "uptime-service"
+#       middlewares:
+#         - uptime-middleware
+
+#   services:
+#     uptime-service:
+#       loadBalancer:
+#         servers:
+#           - url: "http://192.168.178.11:3001"
+
+#   middlewares:
+#     uptime-middleware:
+#       stripPrefix:
+#         prefixes:
+#           - "/uptime"

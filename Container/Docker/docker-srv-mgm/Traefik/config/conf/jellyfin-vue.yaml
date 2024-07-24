@@ -1,0 +1,20 @@
+http:
+  routers:
+    jellyfin-vue-route:
+      rule: "Host(`jellyfin-vue.home.soniiit.net`)"
+      service: jellyfin-vue-service
+      entryPoints:
+      - websecure
+      tls:
+        certResolver: cloudflare
+
+  services:
+    jellyfin-vue-service:
+      loadBalancer:
+        serversTransport: insecureTransport
+        servers:
+        - url: "http://192.168.178.21:8645"
+
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true
