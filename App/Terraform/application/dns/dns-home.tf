@@ -172,6 +172,13 @@ resource "dns_a_record_set" "kestra" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "affine" {
+    zone = "home.soniiit.net."
+    name = "affine"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "traefik_01" {
     zone = "home.soniiit.net."
     name = "traefik-01"
