@@ -135,7 +135,7 @@ sudo chmod +x /etc/keepalived/check_apiserver.sh
 systemctl restart keepalived && systemctl enable keepalived
 
 # Configuring HAProxy
-cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
 echo -e "frontend kubernetes-frontend
   bind *:6443
   mode tcp

@@ -222,6 +222,13 @@ resource "dns_a_record_set" "traefik_02" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "fireshare" {
+    zone = "home.soniiit.net."
+    name = "fireshare"
+    addresses = [ "192.168.178.22" ]
+    ttl = 3600
+}
+
 # Application Hosts
 resource "dns_a_record_set" "app_srv_01" {
     zone = "home.soniiit.net."
