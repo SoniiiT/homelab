@@ -103,7 +103,7 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
 
     # VM CPU Settings
     cores = 4
-    sockets = 1
+    sockets = 2
     cpu = "kvm64"
 
     # VM Memory Settings
@@ -127,18 +127,11 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
-                    storage            = "VM-Storage"
-                }
-            }
-            virtio1 {
-                disk {
-                    size               = 128
+                    size               = 160
                     storage            = "VM-Storage"
                 }
             }
         }
-
     }
 
     # VM Cloud-Init Settings
