@@ -8,6 +8,9 @@ resource "proxmox_vm_qemu" "twingate_connector_02" {
     desc = "Twingate Connector 02 | Home Network"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "Twingate"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -81,6 +84,9 @@ resource "proxmox_vm_qemu" "twingate_connector_03" {
     desc = "Twingate Connector 03 | Dev Network"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "Twingate"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -153,6 +159,9 @@ resource "proxmox_vm_qemu" "twingate_connector_04" {
     tags = "ubuntu,twingate"
     desc = "Twingate Connector 04 | Demo Network"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "Twingate"
 
     # VM Advanced General Settings
     onboot = true

@@ -8,6 +8,9 @@ resource "proxmox_vm_qemu" "docker_srv_mgm" {
     desc = "Docker Server 01"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "Docker"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -81,6 +84,9 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     desc = "Docker Server 01"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "Docker"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -153,6 +159,9 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     tags = "ubuntu,docker"
     desc = "Docker Server 02"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "Docker"
 
     # VM Advanced General Settings
     onboot = true

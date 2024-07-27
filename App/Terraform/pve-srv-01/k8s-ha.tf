@@ -9,6 +9,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_cp01" {
     desc = "Control Plane Server 01 for Kubernetes Cluster"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -82,6 +85,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_cp02" {
     tags = "ubuntu,kubernetes"
     desc = "Control Plane Server 02 for Kubernetes Cluster"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
 
     # VM Advanced General Settings
     onboot = true
@@ -157,6 +163,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_lb01" {
     desc = "Load Balancer Server 01 for Kubernetes Cluster"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -230,6 +239,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_lb02" {
     tags = "ubuntu,kubernetes"
     desc = "Load Balancer Server 02 for Kubernetes Cluster"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
 
     # VM Advanced General Settings
     onboot = true
@@ -305,6 +317,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_w01" {
     desc = "Worker Server 01 for Kubernetes Cluster"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -379,6 +394,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_w02" {
     desc = "Worker Server 02 for Kubernetes Cluster"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -452,6 +470,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_nfs01" {
     tags = "ubuntu,kubernetes"
     desc = "NFS Server 01 for Kubernetes Cluster"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
 
     # VM Advanced General Settings
     onboot = true
@@ -532,6 +553,9 @@ resource "proxmox_vm_qemu" "k8s_soniiit_nfs02" {
     tags = "ubuntu,kubernetes"
     desc = "NFS Server 02 for Kubernetes Cluster"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "K8s-HA"
 
     # VM Advanced General Settings
     onboot = true

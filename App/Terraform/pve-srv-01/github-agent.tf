@@ -8,6 +8,9 @@ resource "proxmox_vm_qemu" "github_agent_01" {
     desc = "Github Runner Server 01"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "Github"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -81,6 +84,9 @@ resource "proxmox_vm_qemu" "github_agent_02" {
     desc = "Github Runner Server 02"
     automatic_reboot = false
 
+    # The destination resource pool for the new VM
+    pool = "Github"
+
     # VM Advanced General Settings
     onboot = true
     boot = "order=virtio0;net0"
@@ -153,6 +159,9 @@ resource "proxmox_vm_qemu" "github_agent_03" {
     tags = "ubuntu,github"
     desc = "Github Runner Server 03"
     automatic_reboot = false
+
+    # The destination resource pool for the new VM
+    pool = "Github"
 
     # VM Advanced General Settings
     onboot = true

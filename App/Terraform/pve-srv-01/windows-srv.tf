@@ -9,6 +9,9 @@
 #     desc = "HyperV Server 01"
 #     automatic_reboot = false
 
+#     # The destination resource pool for the new VM
+#     pool = "Windows"
+
 #     # VM Advanced General Settings
 #     onboot = false
 #     boot = "order=scsi0;net0"
@@ -70,6 +73,9 @@
 #     tags = "windows"
 #     desc = "HyperV Server 02"
 #     automatic_reboot = false
+
+#     # The destination resource pool for the new VM
+#     pool = "Windows"
 
 #     # VM Advanced General Settings
 #     onboot = false
