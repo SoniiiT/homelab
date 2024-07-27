@@ -235,37 +235,6 @@ resource "twingate_resource" "pve_srv_01" {
 }
 
 # Application Servers
-resource "twingate_resource" "app_srv_01" {
-    name = "app-srv-01"
-    address = "192.168.178.30"
-    alias = "app-srv-01.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.home.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_home.id
-            usage_based_autolock_duration_days = 30
-        }
-    }
-
-    is_active = true
-}
-
 resource "twingate_resource" "app_srv_02" {
     name = "app-srv-02"
     address = "192.168.178.4"
@@ -562,6 +531,69 @@ resource "twingate_resource" "win11-desk-01" {
         tcp = {
             policy = "RESTRICTED"
             ports = ["3389"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+# Gameserver
+resource "twingate_resource" "gameserver" {
+    name = "gameserver"
+    address = "192.168.178.30"
+    alias = "gameserver.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22", "80", "443"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "gme_node1" {
+    name = "gme-node1"
+    address = "192.168.178.30"
+    alias = "gme-node1.home.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
         }
         udp = {
             policy = "DENY_ALL"

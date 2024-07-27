@@ -230,20 +230,6 @@ resource "dns_a_record_set" "fireshare" {
 }
 
 # Application Hosts
-resource "dns_a_record_set" "app_srv_01" {
-    zone = "home.soniiit.net."
-    name = "app-srv-01"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "gameserver" {
-    zone = "home.soniiit.net."
-    name = "gameserver"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "app_srv_02" {
     zone = "home.soniiit.net."
     name = "app-srv-02"
@@ -284,6 +270,21 @@ resource "dns_a_record_set" "twingate_connector_04" {
     zone = "home.soniiit.net."
     name = "tg-cn-04"
     addresses = [ "192.168.178.33" ]
+    ttl = 3600
+}
+
+# Gameserver
+resource "dns_a_record_set" "gameserver" {
+    zone = "home.soniiit.net."
+    name = "gameserver"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "node1" {
+    zone = "home.soniiit.net."
+    name = "gme-node1"
+    addresses = [ "192.168.178.80" ]
     ttl = 3600
 }
 

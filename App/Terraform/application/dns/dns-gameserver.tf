@@ -2,7 +2,7 @@
 resource "dns_a_record_set" "mc_vanilla_121" {
     zone = "home.soniiit.net."
     name = "mc-121"
-    addresses = [ "192.168.178.30" ]
+    addresses = [ "192.168.178.80" ]
     ttl = 3600
 }
 
