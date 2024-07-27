@@ -13,7 +13,7 @@ resource "dns_srv_record_set" "mc_vanilla_121_tcp" {
     priority = 0
     weight   = 0
     target   = "mc-121.home.soniiit.net."
-    port     = 27000
+    port     = 26000
     }
     ttl = 3600
 }
