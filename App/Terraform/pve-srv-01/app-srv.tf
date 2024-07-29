@@ -1,9 +1,9 @@
-resource "proxmox_vm_qemu" "app_srv_02" {
+resource "proxmox_vm_qemu" "app_srv_01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
-    name = "app-srv-02"
+    name = "app-srv-01"
     tags = "application"
     desc = "Kasm Workspaces Server"
     automatic_reboot = false
@@ -52,12 +52,6 @@ resource "proxmox_vm_qemu" "app_srv_02" {
             virtio0 {
                 disk {
                     size               = 32
-                    storage            = "VM-Storage"
-                }
-            }
-            virtio1 {
-                disk {
-                    size               = 2048
                     storage            = "VM-Storage"
                 }
             }
