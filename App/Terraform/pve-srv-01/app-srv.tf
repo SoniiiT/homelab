@@ -31,7 +31,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
@@ -51,7 +51,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = 128
                     storage            = "VM-Storage"
                 }
             }
