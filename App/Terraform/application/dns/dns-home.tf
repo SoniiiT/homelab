@@ -114,6 +114,13 @@ resource "dns_a_record_set" "wild_docker_srv-02" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "kasm" {
+    zone = "home.soniiit.net."
+    name = "kasm"
+    addresses = [ "192.168.178.13" ]
+    ttl = 3600
+}
+
 # Docker Containers on docker-srv-mgm
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
