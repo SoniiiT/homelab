@@ -51,7 +51,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 128
+                    size               = 512
                     storage            = "VM-Storage"
                 }
             }
