@@ -119,3 +119,10 @@ resource "dns_a_record_set" "k8s_lite_soniiit_nfs01" {
     addresses = [ "192.168.178.73" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "k8s_soniiit_ceph" {
+    zone = "dev.soniiit.net."
+    name = "ceph"
+    addresses = [ "192.168.178.46" ]
+    ttl = 3600
+}
