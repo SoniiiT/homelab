@@ -10,7 +10,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_cp01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -87,7 +87,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_cp02" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -164,7 +164,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_lb01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -241,7 +241,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_lb02" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -318,7 +318,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_w01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -395,7 +395,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_w02" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -472,7 +472,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_nfs01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
@@ -555,7 +555,7 @@ resource "proxmox_vm_qemu" "k8s_soniiit_nfs02" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K8s-HA"
+    pool = "K8s"
 
     # VM Advanced General Settings
     onboot = true
