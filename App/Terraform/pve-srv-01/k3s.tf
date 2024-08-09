@@ -32,7 +32,7 @@
 #     cpu = "host"
 
 #     # VM Memory Settings
-#     memory = 8192
+#     memory = 16384
 
 #     # VM Network Settings
 #     network {
@@ -53,6 +53,12 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
+#                     storage            = "VM-Storage"
+#                 }
+#             }
+#             virtio1 {
+#                 disk {
+#                     size               = 128
 #                     storage            = "VM-Storage"
 #                 }
 #             }
@@ -109,7 +115,7 @@
 #     cpu = "host"
 
 #     # VM Memory Settings
-#     memory = 8192
+#     memory = 16384
 
 #     # VM Network Settings
 #     network {
@@ -130,6 +136,12 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
+#                     storage            = "VM-Storage"
+#                 }
+#             }
+#             virtio1 {
+#                 disk {
+#                     size               = 128
 #                     storage            = "VM-Storage"
 #                 }
 #             }
@@ -186,7 +198,7 @@
 #     cpu = "host"
 
 #     # VM Memory Settings
-#     memory = 8192
+#     memory = 16384
 
 #     # VM Network Settings
 #     network {
@@ -207,6 +219,12 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
+#                     storage            = "VM-Storage"
+#                 }
+#             }
+#             virtio1 {
+#                 disk {
+#                     size               = 128
 #                     storage            = "VM-Storage"
 #                 }
 #             }
@@ -263,7 +281,7 @@
 #     cpu = "host"
 
 #     # VM Memory Settings
-#     memory = 8192
+#     memory = 16384
 
 #     # VM Network Settings
 #     network {
@@ -284,6 +302,12 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
+#                     storage            = "VM-Storage"
+#                 }
+#             }
+#             virtio1 {
+#                 disk {
+#                     size               = 128
 #                     storage            = "VM-Storage"
 #                 }
 #             }
