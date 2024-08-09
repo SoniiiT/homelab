@@ -45,7 +45,7 @@ resource "twingate_resource" "wildcard_dns_home" {
     is_active = true
 }
 
-resource "twingate_resource" "wildcard_dns_home" {
+resource "twingate_resource" "wildcard_dns_dev" {
     name = "Wildcard Dev"
     address = "*.dev.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
