@@ -1,4 +1,4 @@
-# Remote Network
+# Remote Networ
 resource "twingate_remote_network" "net_home" {
     name = "net-home"
     location = "ON_PREMISE"
