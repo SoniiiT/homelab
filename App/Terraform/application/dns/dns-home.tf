@@ -340,30 +340,37 @@ resource "dns_a_record_set" "wild_teleport_01" {
 }
 
 # K3S Cluster
+resource "dns_a_record_set" "k3s_soniiit_vip" {
+    zone = "home.soniiit.net."
+    name = "k3s-soniiit-vip"
+    addresses = [ "192.168.178.10" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "k3s_soniiit_node01" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-node01"
-    addresses = [ "192.168.178.10" ]
+    addresses = [ "192.168.178.11" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "k3s_soniiit_node02" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-node02"
-    addresses = [ "192.168.178.11" ]
+    addresses = [ "192.168.178.12" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "k3s_soniiit_node03" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-node03"
-    addresses = [ "192.168.178.12" ]
+    addresses = [ "192.168.178.13" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "k3s_soniiit_node04" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-node04"
-    addresses = [ "192.168.178.13" ]
+    addresses = [ "192.168.178.14" ]
     ttl = 3600
 }
