@@ -37,7 +37,7 @@ resource "dns_a_record_set" "sw_01" {
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."
     name = "truenas"
-    addresses = [ "192.168.178.12" ]
+    addresses = [ "192.168.178.8" ]
     ttl = 3600
 }
 
@@ -117,7 +117,7 @@ resource "dns_a_record_set" "wild_docker_srv-02" {
 resource "dns_a_record_set" "kasm" {
     zone = "home.soniiit.net."
     name = "kasm"
-    addresses = [ "192.168.178.13" ]
+    addresses = [ "192.168.178.9" ]
     ttl = 3600
 }
 
