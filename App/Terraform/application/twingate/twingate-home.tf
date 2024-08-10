@@ -77,7 +77,7 @@ resource "twingate_resource" "wildcard_dns_dev" {
 # Twingate Connector Servers
 resource "twingate_resource" "twingate_connector_01" {
     name = "twingate-connector-01"
-    address = "192.168.178.11"
+    address = "192.168.178.7"
     alias = "tg-cn-01.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
@@ -234,7 +234,7 @@ resource "twingate_resource" "sw_01" {
 # Host Servers
 resource "twingate_resource" "pve_srv_01" {
     name = "pve-srv-01"
-    address = "192.168.178.10"
+    address = "192.168.178.6"
     alias = "proxmox.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
