@@ -164,5 +164,5 @@ systemctl restart haproxy && systemctl enable haproxy
 # sudo apt-mark hold kubelet kubeadm kubectl
 
 # Deactivate swap
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+# sudo swapoff -a
+# sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
