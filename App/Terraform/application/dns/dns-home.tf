@@ -59,7 +59,7 @@ resource "dns_a_record_set" "pve_srv_01" {
 resource "dns_a_record_set" "proxmox" {
     zone = "home.soniiit.net."
     name = "proxmox"
-    addresses = [ "192.168.178.10" ]
+    addresses = [ "192.168.178.6" ]
     ttl = 3600
 }
 
@@ -255,7 +255,7 @@ resource "dns_a_record_set" "lancache" {
 resource "dns_a_record_set" "twingate_connector_01" {
     zone = "home.soniiit.net."
     name = "tg-cn-01"
-    addresses = [ "192.168.178.11" ]
+    addresses = [ "192.168.178.7" ]
     ttl = 3600
 }
 
