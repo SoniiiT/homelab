@@ -1,18 +1,4 @@
 # Home Network
-resource "dns_a_record_set" "drucker_iris" {
-    zone = "home.soniiit.net."
-    name = "drucker-iris"
-    addresses = [ "192.168.178.202" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "drucker_wz" {
-    zone = "home.soniiit.net."
-    name = "drucker-wz"
-    addresses = [ "192.168.178.201" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "gw_01" {
     zone = "home.soniiit.net."
     name = "gw-01"
@@ -30,7 +16,7 @@ resource "dns_a_record_set" "gw_02" {
 resource "dns_a_record_set" "sw_01" {
     zone = "home.soniiit.net."
     name = "sw-01"
-    addresses = [ "192.168.178.99" ]
+    addresses = [ "192.168.178.210" ]
     ttl = 3600
 }
 
@@ -41,21 +27,7 @@ resource "dns_a_record_set" "truenas" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "win11-desk-01" {
-    zone = "home.soniiit.net."
-    name = "win11-desk-01"
-    addresses = [ "192.168.178.99" ]
-    ttl = 3600
-}
-
 # Hosts
-resource "dns_a_record_set" "pve_srv_01" {
-    zone = "home.soniiit.net."
-    name = "pve-srv-01"
-    addresses = [ "192.168.178.10" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "proxmox" {
     zone = "home.soniiit.net."
     name = "proxmox"
@@ -67,13 +39,6 @@ resource "dns_a_record_set" "proxmox" {
 resource "dns_a_record_set" "app_srv_03" {
     zone = "home.soniiit.net."
     name = "app-srv-03"
-    addresses = [ "192.168.178.3" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "dns" {
-    zone = "home.soniiit.net."
-    name = "dns"
     addresses = [ "192.168.178.3" ]
     ttl = 3600
 }
@@ -114,13 +79,6 @@ resource "dns_a_record_set" "wild_docker_srv-02" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "kasm" {
-    zone = "home.soniiit.net."
-    name = "kasm"
-    addresses = [ "192.168.178.9" ]
-    ttl = 3600
-}
-
 # Docker Containers on docker-srv-mgm
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
@@ -151,12 +109,6 @@ resource "dns_a_record_set" "traefik_mgm" {
 }
 
 # Docker Containers on docker-srv-01
-resource "dns_a_record_set" "authentik" {
-    zone = "home.soniiit.net."
-    name = "authentik"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
 
 resource "dns_a_record_set" "homeassistant" {
     zone = "home.soniiit.net."
@@ -179,13 +131,6 @@ resource "dns_a_record_set" "kestra" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "affine" {
-    zone = "home.soniiit.net."
-    name = "affine"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "memos" {
     zone = "home.soniiit.net."
     name = "memos"
@@ -203,20 +148,6 @@ resource "dns_a_record_set" "planka" {
 resource "dns_a_record_set" "traefik_01" {
     zone = "home.soniiit.net."
     name = "traefik-01"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "jellyfin" {
-    zone = "home.soniiit.net."
-    name = "jellyfin"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "jellyfin-vue" {
-    zone = "home.soniiit.net."
-    name = "jellyfin-vue"
     addresses = [ "192.168.178.21" ]
     ttl = 3600
 }
@@ -266,20 +197,6 @@ resource "dns_a_record_set" "twingate_connector_02" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "twingate_connector_03" {
-    zone = "home.soniiit.net."
-    name = "tg-cn-03"
-    addresses = [ "192.168.178.32" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "twingate_connector_04" {
-    zone = "home.soniiit.net."
-    name = "tg-cn-04"
-    addresses = [ "192.168.178.33" ]
-    ttl = 3600
-}
-
 # Gameserver
 resource "dns_a_record_set" "gameserver" {
     zone = "home.soniiit.net."
@@ -300,77 +217,5 @@ resource "dns_a_record_set" "github_agent_01" {
     zone = "home.soniiit.net."
     name = "github-agent-01"
     addresses = [ "192.168.178.34" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "github_agent_02" {
-    zone = "home.soniiit.net."
-    name = "github-agent-02"
-    addresses = [ "192.168.178.35" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "github_agent_03" {
-    zone = "home.soniiit.net."
-    name = "github-agent-03"
-    addresses = [ "192.168.178.37" ]
-    ttl = 3600
-}
-
-# Terraform Agent Hosts
-resource "dns_a_record_set" "terrafrom_agent_01" {
-    zone = "home.soniiit.net."
-    name = "terraform-agent-01"
-    addresses = [ "192.168.178.36" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "teleport_01" {
-    zone = "home.soniiit.net."
-    name = "teleport"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "wild_teleport_01" {
-    zone = "home.soniiit.net."
-    name = "teleport"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
-# K3S Cluster
-resource "dns_a_record_set" "k3s_soniiit_vip" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-vip"
-    addresses = [ "192.168.178.10" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "k3s_soniiit_node01" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-node01"
-    addresses = [ "192.168.178.11" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "k3s_soniiit_node02" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-node02"
-    addresses = [ "192.168.178.12" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "k3s_soniiit_node03" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-node03"
-    addresses = [ "192.168.178.13" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "k3s_soniiit_node04" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-node04"
-    addresses = [ "192.168.178.14" ]
     ttl = 3600
 }
