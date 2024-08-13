@@ -486,10 +486,10 @@ resource "twingate_resource" "gameserver" {
 }
 
 # K3s Cluster
-resource "twingate_resource" "k3s_soniiit_vip" {
-    name = "k3s-soniiit-vip"
+resource "twingate_resource" "k3s_soniiit_etcd01" {
+    name = "k3s-soniiit-etcd01"
     address = "192.168.178.10"
-    alias = "k3s-soniiit-vip.home.soniiit.net"
+    alias = "k3s-soniiit-etcd01.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id

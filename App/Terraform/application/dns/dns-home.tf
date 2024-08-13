@@ -222,9 +222,9 @@ resource "dns_a_record_set" "github_agent_01" {
 
 # K3s Cluster
 
-resource "dns_a_record_set" "k3s_soniiit_vip" {
+resource "dns_a_record_set" "k3s_soniiit_etcd01" {
     zone = "home.soniiit.net."
-    name = "k3s-soniiit-vip"
+    name = "k3s-soniiit-etcd01"
     addresses = [ "192.168.178.10" ]
     ttl = 3600
 }
