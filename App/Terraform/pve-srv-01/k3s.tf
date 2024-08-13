@@ -76,12 +76,12 @@ resource "proxmox_vm_qemu" "k3s_soniiit_etcd01" {
 }
 
 # k3s-soniiit-node01
-resource "proxmox_vm_qemu" "k3s_soniiit_node01" {
+resource "proxmox_vm_qemu" "k3s_soniiit_cp01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
-    name = "k3s-soniiit-node01"
+    name = "k3s-soniiit-cp01"
     tags = "ubuntu,kubernetes"
     desc = "Node 01 Server for Kubernetes Cluster"
     automatic_reboot = false
@@ -159,7 +159,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_node01" {
 }
 
 # k3s-soniiit-node02
-resource "proxmox_vm_qemu" "k3s_soniiit_node02" {
+resource "proxmox_vm_qemu" "k3s_soniiit_node01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
@@ -242,7 +242,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_node02" {
 }
 
 # k3s-soniiit-node03
-resource "proxmox_vm_qemu" "k3s_soniiit_node03" {
+resource "proxmox_vm_qemu" "k3s_soniiit_node02" {
 
     # VM General Settings
     target_node = "pve-srv-01"
@@ -325,7 +325,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_node03" {
 }
 
 # k3s-soniiit-node04
-resource "proxmox_vm_qemu" "k3s_soniiit_node04" {
+resource "proxmox_vm_qemu" "k3s_soniiit_node03" {
 
     # VM General Settings
     target_node = "pve-srv-01"

@@ -517,10 +517,10 @@ resource "twingate_resource" "k3s_soniiit_etcd01" {
     is_active = true
 }
 
-resource "twingate_resource" "k3s_soniiit_node01" {
-    name = "k3s-soniiit-node01"
+resource "twingate_resource" "k3s_soniiit_cp01" {
+    name = "k3s-soniiit-cp01"
     address = "192.168.178.11"
-    alias = "k3s-soniiit-node01.home.soniiit.net"
+    alias = "k3s-soniiit-cp01.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -548,7 +548,7 @@ resource "twingate_resource" "k3s_soniiit_node01" {
     is_active = true
 }
 
-resource "twingate_resource" "k3s_soniiit_node02" {
+resource "twingate_resource" "k3s_soniiit_node01" {
     name = "k3s-soniiit-node02"
     address = "192.168.178.12"
     alias = "k3s-soniiit-node02.home.soniiit.net"
@@ -579,7 +579,7 @@ resource "twingate_resource" "k3s_soniiit_node02" {
     is_active = true
 }
 
-resource "twingate_resource" "k3s_soniiit_node03" {
+resource "twingate_resource" "k3s_soniiit_node02" {
     name = "k3s-soniiit-node03"
     address = "192.168.178.13"
     alias = "k3s-soniiit-node03.home.soniiit.net"
@@ -610,7 +610,7 @@ resource "twingate_resource" "k3s_soniiit_node03" {
     is_active = true
 }
 
-resource "twingate_resource" "k3s_soniiit_node04" {
+resource "twingate_resource" "k3s_soniiit_node03" {
     name = "k3s-soniiit-node04"
     address = "192.168.178.14"
     alias = "k3s-soniiit-node04.home.soniiit.net"
