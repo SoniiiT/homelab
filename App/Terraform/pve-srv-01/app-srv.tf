@@ -239,7 +239,7 @@ resource "proxmox_vm_qemu" "app_srv_04" {
     target_node = "pve-srv-01"
     vmid = "0"
     name = "app-srv-04"
-    tags = "ubuntu,application,dns"
+    tags = "ubuntu,application"
     desc = "Web Hosting Server CloudPanel"
     automatic_reboot = false
 
@@ -298,7 +298,7 @@ resource "proxmox_vm_qemu" "app_srv_04" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.3/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.32/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"
