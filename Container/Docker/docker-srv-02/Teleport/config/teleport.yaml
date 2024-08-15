@@ -1,6 +1,6 @@
 version: v2
 teleport:
-  nodename: teleport
+  nodename: teleport.home.soniiit.net
   data_dir: /var/lib/teleport
   log:
     output: stderr
@@ -14,16 +14,16 @@ auth_service:
   proxy_listener_mode: multiplex
   cluster_name: teleport.home.soniiit.net
   # -- (Optional) Passwordless Authentication
-# authentication:
-#   type: local
-#   second_factor: on
-#   webauthn:
-#     rp_id: your-server-url
-#   connector_name: passwordless
-# -- (Optional) Teleport Assist
-# assist:
-#   openai:
-#     api_token_path: /etc/teleport/openai_key
+  # authentication:
+  #   type: local
+  #   second_factor: on
+  #   webauthn:
+  #     rp_id: your-server-url
+  #   connector_name: passwordless
+  # -- (Optional) Teleport Assist
+  # assist:
+  #   openai:
+  #     api_token_path: /etc/teleport/openai_key
 
 ssh_service:
   enabled: "no"
@@ -36,23 +36,19 @@ proxy_service:
   https_keypairs: []
   acme: {}
   # --(Optional) ACME
-#acme:
-#  enabled: "yes"
-#  email: your-email@example.com
-# -- (Optional) Teleport Assist
-#assist:
-#  openai:
-#    api_token_path: /etc/teleport/openai_key
+  # acme:
+  #   enabled: "yes"
+  #   email: your-email-address
+  # -- (Optional) Teleport Assist
+  # assist:
+  #   openai:
+  #     api_token_path: /etc/teleport/openai_key
 
-# app_service:
-#   enabled: no
-#   # -- (Optional) App Service
-#   enabled: yes
-#   apps:
-#     - name: "app-name"
-#       uri: "http://ip-address:port/"
-#       insecure_skip_verify: true
-#
-#     - name: "app-name"
-#       uri: "http://ip-address/"
-#       insecure_skip_verify: true
+app_service:
+  enabled: no
+  # -- (Optional) App Service
+  # enabled: yes
+  # apps:
+  #   - name: "yourapp"
+  #     uri: "http://your-app-url"
+  #     insecure_skip_verify: false

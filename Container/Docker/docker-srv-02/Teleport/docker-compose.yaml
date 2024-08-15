@@ -7,7 +7,7 @@ services:
   teleport:
     image: public.ecr.aws/gravitational/teleport-distroless:16
     container_name: teleport
-    ports:
+    # ports:
       # -- (Optional) Remove this section, when using Traefik
       # - "3080:3080"
       # - "3023:3023"
@@ -26,7 +26,7 @@ services:
       - "traefik.http.routers.teleport-https.entrypoints=websecure"
       - "traefik.http.routers.teleport-https.rule=HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.home.soniiit.net(?::\\d+)?$`)"
       - "traefik.http.routers.teleport-https.tls=true"
-      - "traefik.http.routers.teleport-https.tls.certresolver=your-certresolver"
+      - "traefik.http.routers.teleport-https.tls.certresolver=cloudflare"
       - "traefik.http.routers.teleport-https.tls.domains[0].main=teleport.home.soniiit.net"
       - "traefik.http.routers.teleport-https.tls.domains[0].sans=*.teleport.home.soniiit.net"
     networks:
