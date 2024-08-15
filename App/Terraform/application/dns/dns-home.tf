@@ -152,6 +152,20 @@ resource "dns_a_record_set" "traefik_01" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "teleport" {
+    zone = "home.soniiit.net."
+    name = "teleport"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "wild_teleport" {
+    zone = "home.soniiit.net."
+    name = "*.teleport"
+    addresses = [ "192.168.178.21" ]
+    ttl = 3600
+}
+
 # Docker Containers on docker-srv-02
 resource "dns_a_record_set" "traefik_02" {
     zone = "home.soniiit.net."
