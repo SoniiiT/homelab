@@ -5,7 +5,7 @@ networks:
     external: true
 services:
   teleport:
-    image: public.ecr.aws/gravitational/teleport-distroless:16
+    image: public.ecr.aws/gravitational/teleport-distroless:16.1.4
     container_name: teleport
     # ports:
       # -- (Optional) Remove this section, when using Traefik
@@ -22,13 +22,13 @@ services:
       - "traefik.http.services.teleport.loadbalancer.server.port=3080"
       - "traefik.http.services.teleport.loadbalancer.server.scheme=https"
       - "traefik.http.routers.teleport-http.entrypoints=web"
-      - "traefik.http.routers.teleport-http.rule=HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.home.soniiit.net(?::\\d+)?$`)"
+      - "traefik.http.routers.teleport-http.rule=HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.soniiit.net(?::\\d+)?$`)"
       - "traefik.http.routers.teleport-https.entrypoints=websecure"
-      - "traefik.http.routers.teleport-https.rule=HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.home.soniiit.net(?::\\d+)?$`)"
+      - "traefik.http.routers.teleport-https.rule=HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.soniiit.net(?::\\d+)?$`)"
       - "traefik.http.routers.teleport-https.tls=true"
       - "traefik.http.routers.teleport-https.tls.certresolver=cloudflare"
-      - "traefik.http.routers.teleport-https.tls.domains[0].main=teleport.home.soniiit.net"
-      - "traefik.http.routers.teleport-https.tls.domains[0].sans=*.teleport.home.soniiit.net"
+      - "traefik.http.routers.teleport-https.tls.domains[0].main=teleport.soniiit.net"
+      - "traefik.http.routers.teleport-https.tls.domains[0].sans=*.teleport.soniiit.net"
     networks:
       - traefik-nw
     restart: unless-stopped

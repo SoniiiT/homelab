@@ -234,8 +234,14 @@ resource "dns_a_record_set" "github_agent_01" {
     ttl = 3600
 }
 
-# K3s Cluster
+resource "dns_a_record_set" "cloudpanel" {
+    zone = "home.soniiit.net."
+    name = "cloudpanel"
+    addresses = [ "192.168.178.32" ]
+    ttl = 3600
+}
 
+# K3s Cluster
 resource "dns_a_record_set" "k3s_soniiit_etcd01" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-etcd01"

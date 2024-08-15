@@ -1,6 +1,6 @@
 version: v2
 teleport:
-  nodename: teleport.home.soniiit.net
+  nodename: docker-srv-02
   data_dir: /var/lib/teleport
   log:
     output: stderr
@@ -12,7 +12,7 @@ auth_service:
   enabled: "yes"
   listen_addr: 0.0.0.0:3025
   proxy_listener_mode: multiplex
-  cluster_name: teleport.home.soniiit.net
+  cluster_name: docker-srv-02
   # -- (Optional) Passwordless Authentication
   # authentication:
   #   type: local
@@ -32,7 +32,7 @@ proxy_service:
   enabled: "yes"
   web_listen_addr: 0.0.0.0:3080
   # -- (Optional) when using reverse proxy
-  public_addr: ['teleport.home.soniiit.net:443']
+  public_addr: ['teleport.soniiit.net:443']
   https_keypairs: []
   acme: {}
   # --(Optional) ACME
