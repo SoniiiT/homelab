@@ -16,6 +16,7 @@ services:
     volumes:
       - ./config:/etc/teleport
       - ./data:/var/lib/teleport
+      - ./certs:/mnt/shared/certs
     # -- (Optional) Traefik example configuration
     labels:
       - "traefik.enable=true"
@@ -32,3 +33,9 @@ services:
     networks:
       - traefik-nw
     restart: unless-stopped
+    healthcheck:
+      test: tctl status
+      interval: 2s
+      timeout: 2s
+      retries: 3
+      start_period: 5s
