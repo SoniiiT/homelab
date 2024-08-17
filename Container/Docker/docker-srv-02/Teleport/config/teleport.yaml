@@ -1,6 +1,6 @@
 version: v2
 teleport:
-  nodename: docker-srv-02
+  nodename: teleport.soniiit.net
   data_dir: /var/lib/teleport
   log:
     output: stderr
@@ -12,7 +12,7 @@ auth_service:
   enabled: "yes"
   listen_addr: 0.0.0.0:3025
   proxy_listener_mode: multiplex
-  cluster_name: docker-srv-02
+  cluster_name: teleport.soniiit.net
   # -- (Optional) Passwordless Authentication
   # authentication:
   #   type: local
@@ -49,6 +49,6 @@ app_service:
   # -- (Optional) App Service
   # enabled: yes
   # apps:
-  #   - name: "yourapp"
-  #     uri: "http://your-app-url"
-  #     insecure_skip_verify: false
+  #   - name: "Homepage"
+  #     uri: "http://192.168.178.21:3001"
+  #     insecure_skip_verify: true
