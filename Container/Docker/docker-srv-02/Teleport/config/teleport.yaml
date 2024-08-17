@@ -2,6 +2,7 @@ version: v2
 teleport:
   nodename: teleport.soniiit.net
   data_dir: /var/lib/teleport
+  auth_token: "hiertoken"
   log:
     output: stderr
     severity: INFO
@@ -26,7 +27,9 @@ auth_service:
   #     api_token_path: /etc/teleport/openai_key
 
 ssh_service:
-  enabled: "no"
+  enabled: "yes"
+  lables:
+    env: node
 
 proxy_service:
   enabled: "yes"
