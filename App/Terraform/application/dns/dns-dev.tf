@@ -61,10 +61,3 @@ resource "dns_a_record_set" "k8s_soniiit_w03" {
     addresses = [ "192.168.178.47" ]
     ttl = 3600
 }
-
-resource "dns_a_record_set" "centos_dash" {
-    zone = "dev.soniiit.net."
-    name = "centos-dash"
-    addresses = [ "192.168.178.48" ]
-    ttl = 3600
-}
