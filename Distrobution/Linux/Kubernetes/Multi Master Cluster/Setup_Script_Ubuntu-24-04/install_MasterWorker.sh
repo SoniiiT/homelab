@@ -3,6 +3,28 @@
 
 sudo apt update && sudo apt upgrade -y
 
+# Deactivate swap
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+
+# Kernel preperation
+sudo modprobe overlay
+sudo modprobe br_netfilter
+sudo tee /etc/modules-load.d/k8s.conf <<EOF
+overlay
+br_netfilter
+EOF
+sudo tee /etc/sysctl.d/kubernetes.conf <<EOT
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOT
+sudo sysctl --system
+
+# Firewall deactivation
+sudo ufw disable
+
 # Install Docker
 sudo apt install -y docker.io
 
@@ -12,7 +34,3 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --
 sudo apt update
 sudo apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
-
-# Deactivate swap
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab

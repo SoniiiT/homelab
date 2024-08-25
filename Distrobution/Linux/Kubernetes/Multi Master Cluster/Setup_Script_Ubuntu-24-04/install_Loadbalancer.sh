@@ -47,6 +47,27 @@ read name_interface
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install -y keepalived haproxy
 
+# Deactivate swap
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+# Kernel preperation
+sudo modprobe overlay
+sudo modprobe br_netfilter
+sudo tee /etc/modules-load.d/k8s.conf <<EOF
+overlay
+br_netfilter
+EOF
+sudo tee /etc/sysctl.d/kubernetes.conf <<EOT
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOT
+sudo sysctl --system
+
+# Firewall deactivation
+sudo ufw disable
+
 # Creating an check_apiserver script
 echo "#!/bin/sh
 
@@ -59,6 +80,9 @@ curl --silent --max-time 2 --insecure https://localhost:6443/ -o /dev/null || er
 if ip addr | grep -q $ip_virtual; then
   curl --silent --max-time 2 --insecure https://$ip_virtual:6443/ -o /dev/null || errorExit "Error GET https://$ip_virtual:6443/"
 fi" >> /etc/keepalived/check_apiserver.sh
+
+sudo useradd -r keepalived_script
+sudo chmod +x /etc/keepalived/check_apiserver.sh
 
 # Configuring Keepalived
 # Check if there is only one load balancer
@@ -128,9 +152,6 @@ vrrp_instance VI_1 {
 }" >> /etc/keepalived/keepalived.conf
 fi
 
-sudo useradd -r keepalived_script
-sudo chmod +x /etc/keepalived/check_apiserver.sh
-
 # Restarting and enabling Keepalived
 systemctl restart keepalived && systemctl enable keepalived
 
@@ -164,7 +185,3 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --
 sudo apt update
 sudo apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
-
-# Deactivate swap
-sudo swapoff -a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
