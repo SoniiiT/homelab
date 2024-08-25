@@ -764,3 +764,159 @@ resource "twingate_resource" "k8s_soniiit_w03" {
 
     is_active = true
 }
+
+# K3s Cluster
+resource "twingate_resource" "k3s_soniiit_vip" {
+    name = "k3s-soniiit-vip"
+    address = "192.168.178.10"
+    alias = "k3s-soniiit-vip.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["6443"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "k3s_soniiit_node01" {
+    name = "k3s-soniiit-node01"
+    address = "192.168.178.11"
+    alias = "k3s-soniiit-node01.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "k3s_soniiit_node02" {
+    name = "k3s-soniiit-node02"
+    address = "192.168.178.12"
+    alias = "k3s-soniiit-node02.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "k3s_soniiit_node03" {
+    name = "k3s-soniiit-node03"
+    address = "192.168.178.13"
+    alias = "k3s-soniiit-node03.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
+
+resource "twingate_resource" "k3s_soniiit_node04" {
+    name = "k3s-soniiit-node04"
+    address = "192.168.178.14"
+    alias = "k3s-soniiit-node04.dev.soniiit.net"
+    remote_network_id = twingate_remote_network.net_home.id
+
+    security_policy_id = data.twingate_security_policy.policy_home.id
+
+    protocols = {
+        allow_icmp = true
+        tcp = {
+            policy = "RESTRICTED"
+            ports = ["22"]
+        }
+        udp = {
+            policy = "DENY_ALL"
+        }
+    }
+
+    dynamic "access_group" {
+        for_each = [twingate_group.home.id]
+        content {
+            group_id = access_group.value
+            security_policy_id = data.twingate_security_policy.policy_home.id
+            usage_based_autolock_duration_days = 30
+        }
+    }
+
+    is_active = true
+}
