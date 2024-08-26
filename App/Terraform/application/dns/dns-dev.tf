@@ -70,30 +70,43 @@ resource "dns_a_record_set" "k3s_soniiit_vip" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "k3s_soniiit_node01" {
+resource "dns_a_record_set" "k3s_soniiit_server01" {
     zone = "dev.soniiit.net."
-    name = "node01"
+    name = "server01"
     addresses = [ "192.168.178.11" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "k3s_soniiit_node02" {
+resource "dns_a_record_set" "k3s_soniiit_server02" {
     zone = "dev.soniiit.net."
-    name = "node02"
+    name = "server02"
     addresses = [ "192.168.178.12" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "k3s_soniiit_node03" {
+resource "dns_a_record_set" "k3s_soniiit_server03" {
     zone = "dev.soniiit.net."
     name = "node03"
     addresses = [ "192.168.178.13" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "k3s_soniiit_node04" {
+resource "dns_a_record_set" "k3s_soniiit_agent01" {
     zone = "dev.soniiit.net."
-    name = "node04"
+    name = "agent01"
     addresses = [ "192.168.178.14" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "k3s_soniiit_agent02" {
+    zone = "dev.soniiit.net."
+    name = "agent02"
+    addresses = [ "192.168.178.15" ]
+    ttl = 3600
+}
+resource "dns_a_record_set" "k3s_soniiit_agent02" {
+    zone = "dev.soniiit.net."
+    name = "agent02"
+    addresses = [ "192.168.178.16" ]
     ttl = 3600
 }
