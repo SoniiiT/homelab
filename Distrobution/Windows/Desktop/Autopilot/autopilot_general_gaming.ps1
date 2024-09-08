@@ -20,12 +20,17 @@ choco install prismlauncher -y
 choco install itch -y
 choco install googlechrome -y
 choco install firefox -y
+choco install epicgameslauncher -y
 # choco install opera-gx -y
 
 # Optional
 # choco install streamdeck -y
 # choco install icue -y
 # choco install nzxt -y
+# choco install razer-synapse-3 -y
+# choco install parsec -y
+# choco install steelseries-engine -y
+# choco install lghub -y
 
 # Only for Nvidia GPU
 # choco install geforce-experience -y
@@ -52,7 +57,15 @@ $battleNetExe = "$output\BattleNetSetup.exe"
 Invoke-WebRequest -Uri $urlBattleNet -OutFile $battleNetExe
 Start-Process -FilePath $battleNetExe -ArgumentList "/S" -Wait
 
-#Set Default Browser
-$browserPath = "C:\Program Files\Google\Chrome\Application\chrome.exe" # Replace with the path to your desired browser executable
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Classes\http\shell\open\command" -Name "(Default)" -Value """$browserPath"" %1"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Classes\https\shell\open\command" -Name "(Default)" -Value """$browserPath"" %1"
+# Install JBL Quantum Engine
+# $urlJBL = "https://update.quantum.harman.com/upload/JBL_QuantumENGINE_1.18.0.1985_x64.exe"
+# $jblExe = "$output\JBL_QuantumENGINE_1.18.0.1985_x64.exe"
+# Start-BitsTransfer -Source $urlJBL -Destination $jblExe
+# Start-Process -FilePath $jblExe -ArgumentList "/S" -Wait
+
+# Install Elgato 4K Capture Utility
+# $urlElgato = "https://edge.elgato.com/egc/windows/spotlight/1.7.13/4KCaptureUtility_1.7.13.6046_x64.msi"
+# $elgatoMsi = "$output\4KCaptureUtility_1.7.13.6046_x64.msi"
+# Invoke-WebRequest -Uri $urlElgato -OutFile $elgatoMsi
+# Start-Process -FilePath "msiexec.exe" -ArgumentList "/i", $elgatoMsi, "/quiet" -Wait
+
