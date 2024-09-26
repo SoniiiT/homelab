@@ -128,7 +128,7 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
             virtio0 {
                 disk {
                     size               = 160
-                    storage            = "M2-Storage"
+                    storage            = "HDD-Storage"
                 }
             }
         }
