@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
         ide {
             ide0 {
                 cloudinit {
-                    storage = "VM-Storage"
+                    storage = "M2-Storage"
                 }
             }
         }
@@ -52,7 +52,7 @@ resource "proxmox_vm_qemu" "app_srv_01" {
             virtio0 {
                 disk {
                     size               = 512
-                    storage            = "VM-Storage"
+                    storage            = "M2-Storage"
                 }
             }
         }
