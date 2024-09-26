@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "gme_srv_panel" {
         ide {
             ide0 {
                 cloudinit {
-                    storage = "VM-Storage"
+                    storage = "M2-Storage"
                 }
             }
         }
@@ -52,7 +52,7 @@ resource "proxmox_vm_qemu" "gme_srv_panel" {
             virtio0 {
                 disk {
                     size               = 32
-                    storage            = "VM-Storage"
+                    storage            = "M2-Storage"
                 }
             }
         }
@@ -120,7 +120,7 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
         ide {
             ide0 {
                 cloudinit {
-                    storage = "VM-Storage"
+                    storage = "M2-Storage"
                 }
             }
         }
@@ -128,7 +128,7 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
             virtio0 {
                 disk {
                     size               = 160
-                    storage            = "VM-Storage"
+                    storage            = "M2-Storage"
                 }
             }
         }

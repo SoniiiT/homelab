@@ -44,7 +44,7 @@ resource "proxmox_vm_qemu" "docker_srv_mgm" {
         ide {
             ide0 {
                 cloudinit {
-                    storage = "VM-Storage"
+                    storage = "M2-Storage"
                 }
             }
         }
@@ -52,7 +52,7 @@ resource "proxmox_vm_qemu" "docker_srv_mgm" {
             virtio0 {
                 disk {
                     size               = 32
-                    storage            = "VM-Storage"
+                    storage            = "M2-Storage"
                 }
             }
         }
@@ -120,7 +120,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
         ide {
             ide0 {
                 cloudinit {
-                    storage = "VM-Storage"
+                    storage = "M2-Storage"
                 }
             }
         }
@@ -128,7 +128,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
             virtio0 {
                 disk {
                     size               = 64
-                    storage            = "VM-Storage"
+                    storage            = "M2-Storage"
                 }
             }
         }
@@ -196,7 +196,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
         ide {
             ide0 {
                 cloudinit {
-                    storage = "VM-Storage"
+                    storage = "M2-Storage"
                 }
             }
         }
@@ -204,7 +204,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
             virtio0 {
                 disk {
                     size               = 64
-                    storage            = "VM-Storage"
+                    storage            = "M2-Storage"
                 }
             }
             virtio1 {

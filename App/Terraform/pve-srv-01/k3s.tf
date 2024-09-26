@@ -44,7 +44,7 @@
 #         ide {
 #             ide0 {
 #                 cloudinit {
-#                     storage = "VM-Storage"
+#                     storage = "M2-Storage"
 #                 }
 #             }
 #         }
@@ -52,7 +52,7 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
-#                     storage            = "VM-Storage"
+#                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
@@ -126,7 +126,7 @@
 #         ide {
 #             ide0 {
 #                 cloudinit {
-#                     storage = "VM-Storage"
+#                     storage = "M2-Storage"
 #                 }
 #             }
 #         }
@@ -134,7 +134,7 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
-#                     storage            = "VM-Storage"
+#                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
@@ -208,7 +208,7 @@
 #         ide {
 #             ide0 {
 #                 cloudinit {
-#                     storage = "VM-Storage"
+#                     storage = "M2-Storage"
 #                 }
 #             }
 #         }
@@ -216,7 +216,7 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
-#                     storage            = "VM-Storage"
+#                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
@@ -290,7 +290,7 @@
 #         ide {
 #             ide0 {
 #                 cloudinit {
-#                     storage = "VM-Storage"
+#                     storage = "M2-Storage"
 #                 }
 #             }
 #         }
@@ -298,7 +298,7 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
-#                     storage            = "VM-Storage"
+#                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
@@ -372,7 +372,7 @@
 #         ide {
 #             ide0 {
 #                 cloudinit {
-#                     storage = "VM-Storage"
+#                     storage = "M2-Storage"
 #                 }
 #             }
 #         }
@@ -380,7 +380,7 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
-#                     storage            = "VM-Storage"
+#                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
@@ -454,7 +454,7 @@
 #         ide {
 #             ide0 {
 #                 cloudinit {
-#                     storage = "VM-Storage"
+#                     storage = "M2-Storage"
 #                 }
 #             }
 #         }
@@ -462,7 +462,7 @@
 #             virtio0 {
 #                 disk {
 #                     size               = 32
-#                     storage            = "VM-Storage"
+#                     storage            = "M2-Storage"
 #                 }
 #             }
 #             virtio1 {
