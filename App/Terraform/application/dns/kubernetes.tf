@@ -64,3 +64,10 @@ resource "dns_a_record_set" "nginx" {
     addresses = [ "192.168.178.24" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "ceph" {
+    zone = "home.soniiit.net."
+    name = "ceph"
+    addresses = [ "192.168.178.24" ]
+    ttl = 3600
+}
