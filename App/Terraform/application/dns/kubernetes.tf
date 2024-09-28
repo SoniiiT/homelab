@@ -57,3 +57,10 @@ resource "dns_a_record_set" "traefik" {
     addresses = [ "192.168.178.24" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "nginx" {
+    zone = "home.soniiit.net."
+    name = "nginx"
+    addresses = [ "192.168.178.24" ]
+    ttl = 3600
+}
