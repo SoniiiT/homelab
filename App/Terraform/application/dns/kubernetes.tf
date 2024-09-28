@@ -85,3 +85,10 @@ resource "dns_a_record_set" "rancher" {
     addresses = [ "192.168.178.24" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "portainer" {
+    zone = "home.soniiit.net."
+    name = "portainer"
+    addresses = [ "192.168.178.24" ]
+    ttl = 3600
+}

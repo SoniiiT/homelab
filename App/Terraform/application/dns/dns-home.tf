@@ -80,13 +80,6 @@ resource "dns_a_record_set" "wild_docker_srv-02" {
 }
 
 # Docker Containers on docker-srv-mgm
-resource "dns_a_record_set" "portainer" {
-    zone = "home.soniiit.net."
-    name = "portainer"
-    addresses = [ "192.168.178.20" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "dockge" {
     zone = "home.soniiit.net."
     name = "dockge"
