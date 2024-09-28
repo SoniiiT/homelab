@@ -78,3 +78,10 @@ resource "dns_a_record_set" "crowdsec" {
     addresses = [ "192.168.178.24" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "rancher" {
+    zone = "home.soniiit.net."
+    name = "rancher"
+    addresses = [ "192.168.178.24" ]
+    ttl = 3600
+}
