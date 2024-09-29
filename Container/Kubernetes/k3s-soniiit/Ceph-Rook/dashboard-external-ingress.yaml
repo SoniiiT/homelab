@@ -4,18 +4,20 @@ metadata:
   name: rook-ceph-mgr-dashboard
   namespace: rook-ceph
   annotations:
-    kubernetes.io/tls-acme: "true"
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    # nginx.ingress.kubernetes.io/server-snippet: |
-    #   proxy_ssl_verify off;
+    # (Optional): Annotations for the Ingress Controller
+    # -- ingress class is needed when traefik is not the default
+    kubernetes.io/ingress.class: traefik
+    # ---
+    # -- entrypoint and tls configurations
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    # ---
+    # -- optional middlewares
+    # traefik.ingress.kubernetes.io/router.middlewares:your-middleware@kubernetescrd
+    # ---
 spec:
-  ingressClassName: "traefik"
-  tls:
-   - hosts:
-     - ceph.home.soniiit.net
-     secretName: home-soniiit-net-selfsigned-tls
   rules:
-  - host: ceph.home.soniiit.net
+  - host: "ceph.home.soniiit.net"
     http:
       paths:
       - path: /
@@ -25,3 +27,9 @@ spec:
             name: rook-ceph-mgr-dashboard
             port:
               name: https-dashboard
+  # (Optional) TLS settings
+  tls:
+  - hosts:
+    - ceph.home.soniiit.net  # Your hostname
+    secretName: home-soniiit-net-selfsigned-tls  # Your TLS Secret
+  # ---
