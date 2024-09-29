@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rook-ceph-mgr-dashboard
+  namespace: rook-ceph
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/server-snippet: |
+      proxy_ssl_verify off;
+spec:
+  ingressClassName: "traefik"
+  tls:
+   - hosts:
+     - ceph.home.soniiit.net
+     secretName: home-soniiit-net-selfsigned-tls
+  rules:
+  - host: ceph.home.soniiit.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rook-ceph-mgr-dashboard
+            port:
+              name: https-dashboard
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: home-soniiit-net-selfsigned
+  namespace: rook-ceph
+spec:
+  secretName: home-soniiit-net-selfsigned-tls
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "ceph.home.soniiit.net"
