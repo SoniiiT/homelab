@@ -5,8 +5,6 @@ globalArguments:
 additionalArguments:
   - "--serversTransport.insecureSkipVerify=true"
   - "--log.level=INFO"
-  - "--experimental.plugins.crowdsec-bouncer-traefik-plugin.modulename=github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
-  - "--experimental.plugins.crowdsec-bouncer-traefik-plugin.version=v1.3.4-beta1"
 
 deployment:
   enabled: true
@@ -35,7 +33,7 @@ ingressRoute:
 providers:
   kubernetesCRD:
     enabled: true
-    ingressClass: traefik-external
+    ingressClass: traefik
     allowExternalNameServices: true
   kubernetesIngress:
     enabled: true
@@ -53,6 +51,5 @@ service:
   labels: {}
   spec:
     loadBalancerIP: 192.168.178.24 # this should be an IP in the MetalLB range
-    externalTrafficPolicy: Local # required to show the source IP - Cluster will not show internal IP and crowdsec will not work
   loadBalancerSourceRanges: []
   externalIPs: []
