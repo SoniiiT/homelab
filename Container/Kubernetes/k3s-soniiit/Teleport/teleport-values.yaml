@@ -1,0 +1,6 @@
+roles: kube,app,discovery
+authToken: token
+proxyAddr: teleport.example.com:443
+kubeClusterName: k8s-example
+labels:
+    teleport.internal/resource-id: RecourceID

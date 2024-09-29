@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: soniiit-net-staging
+  namespace: default
+spec:
+  secretName: soniiit-net-staging-tls
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: "*.soniiit.net"
+  dnsNames:
+  - "soniiit.net"
+  - "*.soniiit.net"
