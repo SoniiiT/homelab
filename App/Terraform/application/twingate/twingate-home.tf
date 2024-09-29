@@ -106,37 +106,6 @@ resource "twingate_resource" "twingate_connector_01" {
     is_active = true
 }
 
-resource "twingate_resource" "twingate_connector_02" {
-    name = "twingate-connector-02"
-    address = "192.168.178.31"
-    alias = "tg-cn-02.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.home.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_home.id
-            usage_based_autolock_duration_days = 30
-        }
-    }
-
-    is_active = true
-}
-
 # Home Network
 resource "twingate_resource" "gw_01" {
     name = "gw-01"
@@ -264,37 +233,6 @@ resource "twingate_resource" "pve_srv_01" {
 }
 
 # Application Servers
-resource "twingate_resource" "app_srv_02" {
-    name = "app-srv-02"
-    address = "192.168.178.4"
-    alias = "app-srv-02.home.soniiit.net"
-    remote_network_id = twingate_remote_network.net_home.id
-
-    security_policy_id = data.twingate_security_policy.policy_home.id
-
-    protocols = {
-        allow_icmp = true
-        tcp = {
-            policy = "RESTRICTED"
-            ports = ["22"]
-        }
-        udp = {
-            policy = "DENY_ALL"
-        }
-    }
-
-    dynamic "access_group" {
-        for_each = [twingate_group.home.id]
-        content {
-            group_id = access_group.value
-            security_policy_id = data.twingate_security_policy.policy_home.id
-            usage_based_autolock_duration_days = 30
-        }
-    }
-
-    is_active = true
-}
-
 resource "twingate_resource" "app_srv_03" {
     name = "app-srv-03"
     address = "192.168.178.3"
@@ -485,291 +423,11 @@ resource "twingate_resource" "gameserver" {
     is_active = true
 }
 
-# K8s Cluster
-# resource "twingate_resource" "k8s_soniiit_vip" {
-#     name = "k8s-soniiit-vip"
-#     address = "192.168.178.40"
-#     alias = "k8s-soniiit-vip.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["6443"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_cp01" {
-#     name = "k8s-soniiit-cp01"
-#     address = "192.168.178.43"
-#     alias = "k8s-soniiit-cp01.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_cp02" {
-#     name = "k8s-soniiit-cp02"
-#     address = "192.168.178.44"
-#     alias = "k8s-soniiit-cp02.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_cp03" {
-#     name = "k8s-soniiit-cp03"
-#     address = "192.168.178.45"
-#     alias = "k8s-soniiit-cp03.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_lb01" {
-#     name = "k8s-soniiit-lb01"
-#     address = "192.168.178.41"
-#     alias = "k8s-soniiit-lb01.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_lb02" {
-#     name = "k8s-soniiit-lb02"
-#     address = "192.168.178.42"
-#     alias = "k8s-soniiit-lb02.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_w01" {
-#     name = "k8s-soniiit-w01"
-#     address = "192.168.178.46"
-#     alias = "k8s-soniiit-w01.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_w02" {
-#     name = "k8s-soniiit-w02"
-#     address = "192.168.178.47"
-#     alias = "k8s-soniiit-w02.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
-# resource "twingate_resource" "k8s_soniiit_w03" {
-#     name = "k8s-soniiit-w03"
-#     address = "192.168.178.48"
-#     alias = "k8s-soniiit-w03.dev.soniiit.net"
-#     remote_network_id = twingate_remote_network.net_home.id
-
-#     security_policy_id = data.twingate_security_policy.policy_home.id
-
-#     protocols = {
-#         allow_icmp = true
-#         tcp = {
-#             policy = "RESTRICTED"
-#             ports = ["22"]
-#         }
-#         udp = {
-#             policy = "DENY_ALL"
-#         }
-#     }
-
-#     dynamic "access_group" {
-#         for_each = [twingate_group.home.id]
-#         content {
-#             group_id = access_group.value
-#             security_policy_id = data.twingate_security_policy.policy_home.id
-#             usage_based_autolock_duration_days = 30
-#         }
-#     }
-
-#     is_active = true
-# }
-
 # K3s Cluster
 resource "twingate_resource" "k3s_soniiit_vip" {
     name = "k3s-soniiit-vip"
     address = "192.168.178.10"
-    alias = "k3s-soniiit-vip.dev.soniiit.net"
+    alias = "k3s-soniiit-vip.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -800,7 +458,7 @@ resource "twingate_resource" "k3s_soniiit_vip" {
 resource "twingate_resource" "k3s_soniiit_server01" {
     name = "k3s-soniiit-server01"
     address = "192.168.178.11"
-    alias = "k3s-soniiit-server01.dev.soniiit.net"
+    alias = "k3s-soniiit-server01.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -831,7 +489,7 @@ resource "twingate_resource" "k3s_soniiit_server01" {
 resource "twingate_resource" "k3s_soniiit_server02" {
     name = "k3s-soniiit-server02"
     address = "192.168.178.12"
-    alias = "k3s-soniiit-server02.dev.soniiit.net"
+    alias = "k3s-soniiit-server02.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -862,7 +520,7 @@ resource "twingate_resource" "k3s_soniiit_server02" {
 resource "twingate_resource" "k3s_soniiit_server03" {
     name = "k3s-soniiit-server03"
     address = "192.168.178.13"
-    alias = "k3s-soniiit-server03.dev.soniiit.net"
+    alias = "k3s-soniiit-server03.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -893,7 +551,7 @@ resource "twingate_resource" "k3s_soniiit_server03" {
 resource "twingate_resource" "k3s_soniiit_agent01" {
     name = "k3s-soniiit-agent01"
     address = "192.168.178.14"
-    alias = "k3s-soniiit-agent01.dev.soniiit.net"
+    alias = "k3s-soniiit-agent01.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -924,7 +582,7 @@ resource "twingate_resource" "k3s_soniiit_agent01" {
 resource "twingate_resource" "k3s_soniiit_agent02" {
     name = "k3s-soniiit-agent02"
     address = "192.168.178.15"
-    alias = "k3s-soniiit-agent02.dev.soniiit.net"
+    alias = "k3s-soniiit-agent02.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
@@ -955,7 +613,7 @@ resource "twingate_resource" "k3s_soniiit_agent02" {
 resource "twingate_resource" "k3s_soniiit_agent03" {
     name = "k3s-soniiit-agent03"
     address = "192.168.178.16"
-    alias = "k3s-soniiit-agent03.dev.soniiit.net"
+    alias = "k3s-soniiit-agent03.home.soniiit.net"
     remote_network_id = twingate_remote_network.net_home.id
 
     security_policy_id = data.twingate_security_policy.policy_home.id
