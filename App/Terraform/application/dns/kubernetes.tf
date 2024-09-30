@@ -113,3 +113,10 @@ resource "dns_a_record_set" "homepage_kube" {
     addresses = [ "192.168.178.24" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "authentik" {
+    zone = "home.soniiit.net."
+    name = "authentik"
+    addresses = [ "192.168.178.24" ]
+    ttl = 3600
+}
