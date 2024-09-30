@@ -1,0 +1,32 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homepage
+  namespace: homepage
+  annotations: 
+    kubernetes.io/ingress.class: traefik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`homepage-kube.home.soniiit.net`)
+      kind: Rule
+      services:
+        - name: homepage
+          port: 3000
+  tls:
+    secretName: home-soniiit-net-selfsigned-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: home-soniiit-net-selfsigned
+  namespace: homepage
+spec:
+  secretName: home-soniiit-net-selfsigned-tls
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "homepage-kube.home.soniiit.net"
+
