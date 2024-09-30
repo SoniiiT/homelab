@@ -55,15 +55,15 @@ spec:
       middlewares:
         - name: default-headers
   tls:
-    secretName: home-soniiit-net-selfsigned-tls
+    secretName: soniiit-net-staging-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: home-soniiit-net-selfsigned
+  name: soniiit-net-staging
   namespace: default
 spec:
-  secretName: home-soniiit-net-selfsigned-tls
+  secretName: soniiit-net-staging-tls
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
