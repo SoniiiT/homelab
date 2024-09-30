@@ -1,19 +1,24 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: disable-tls-verify
+  namespace: rook-ceph
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Proto: "http"
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: rook-ceph-mgr-dashboard
   namespace: rook-ceph
   annotations:
-    kubernetes.io/tls-acme: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/server-snippet: |
-      proxy_ssl_verify off;
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: rook-ceph-disable-tls-verify@kubernetescrd
 spec:
-  ingressClassName: "traefik"
-  tls:
-   - hosts:
-     - ceph.home.soniiit.net
-     secretName: home-soniiit-net-selfsigned-tls
+  ingressClassName: traefik
   rules:
   - host: ceph.home.soniiit.net
     http:
@@ -25,6 +30,10 @@ spec:
             name: rook-ceph-mgr-dashboard
             port:
               name: https-dashboard
+  tls:
+    - hosts:
+      - ceph.home.soniiit.net
+      secretName: home-soniiit-net-selfsigned-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
