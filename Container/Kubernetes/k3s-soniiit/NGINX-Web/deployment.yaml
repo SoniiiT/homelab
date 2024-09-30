@@ -47,7 +47,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`nginx.home.soniiit.net`)
+    - match: Host(`nginx.soniiit.net`)
       kind: Rule
       services:
         - name: nginx
@@ -68,4 +68,4 @@ spec:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "nginx.home.soniiit.net"
+    - "nginx.soniiit.net"
