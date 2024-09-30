@@ -6,7 +6,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 3
+  replicas: 1
   progressDeadlineSeconds: 600
   revisionHistoryLimit: 2
   strategy:
@@ -55,17 +55,19 @@ spec:
       middlewares:
         - name: default-headers
   tls:
-    secretName: soniiit-net-staging-tls
+    secretName: soniiit-net-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: soniiit-net-staging
+  name: soniiit-net-production
   namespace: default
 spec:
-  secretName: soniiit-net-staging-tls
+  secretName: soniiit-net-production-tls
   issuerRef:
-    name: selfsigned-issuer
+    name: letsencrypt-production
     kind: ClusterIssuer
+  commonName: "nginx.soniiit.net"
   dnsNames:
-    - "nginx.soniiit.net"
+  - "nginx.soniiit.net"
+
