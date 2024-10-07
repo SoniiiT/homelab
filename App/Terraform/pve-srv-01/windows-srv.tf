@@ -39,12 +39,14 @@ resource "proxmox_vm_qemu" "dc_srv_01" {
         model  = "virtio"
     }
 
+    # Efi Disk Settings
+    efidisk {
+        efitype = "4m"
+        storage = "M2-Storage"
+    }
+
     # VM Disk Settings Cloud-Init
     disks {
-        efidisk {
-            efitype = "4m"
-            storage = "M2-Storage"
-        }
         scsi {
             scsi0 {
                 disk {
