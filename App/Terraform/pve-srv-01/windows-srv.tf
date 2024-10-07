@@ -1,4 +1,4 @@
-resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
+resource "proxmox_vm_qemu" "dc_srv_01" {
 
     # VM General Settings
     target_node = "pve-srv-01"
