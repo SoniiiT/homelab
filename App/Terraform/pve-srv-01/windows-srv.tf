@@ -13,7 +13,7 @@ resource "proxmox_vm_qemu" "dc_srv_01" {
 
     # VM Advanced General Settings
     onboot = true
-    boot = "order=scsi0;net0"
+    boot = "order=scsi0"
     bootdisk = "virtio"
     scsihw = "virtio-scsi-pci"
 
@@ -73,7 +73,7 @@ resource "proxmox_vm_qemu" "dc_srv_02" {
 
     # VM Advanced General Settings
     onboot = true
-    boot = "order=scsi0;net0"
+    boot = "order=scsi0"
     bootdisk = "virtio"
     scsihw = "virtio-scsi-pci"
 
