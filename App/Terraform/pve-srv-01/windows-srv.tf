@@ -23,7 +23,7 @@ resource "proxmox_vm_qemu" "dc_srv_01" {
     bios = "ovmf"
 
     # VM System Settings
-    agent = 0
+    agent = 1
 
     # VM CPU Settings
     cores = 2
@@ -56,6 +56,9 @@ resource "proxmox_vm_qemu" "dc_srv_01" {
             }
         }
     }
+
+    # IP Address and Gateway
+    ipconfig0 = "ip=dhcp,ip6=dhcp"
 }
 
 resource "proxmox_vm_qemu" "dc_srv_02" {
@@ -83,7 +86,7 @@ resource "proxmox_vm_qemu" "dc_srv_02" {
     bios = "ovmf"
 
     # VM System Settings
-    agent = 0
+    agent = 1
 
     # VM CPU Settings
     cores = 2
@@ -116,4 +119,7 @@ resource "proxmox_vm_qemu" "dc_srv_02" {
             }
         }
     }
+
+    # IP Address and Gateway
+    ipconfig0 = "ip=dhcp,ip6=dhcp"
 }
