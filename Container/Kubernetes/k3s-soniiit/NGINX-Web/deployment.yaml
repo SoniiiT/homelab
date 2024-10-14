@@ -22,6 +22,13 @@ spec:
       containers:
       - name: nginx
         image: nginx:latest
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "256Mi"
+          requests:
+            cpu: "0.1"
+            memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -70,4 +77,3 @@ spec:
   commonName: "nginx.soniiit.net"
   dnsNames:
   - "nginx.soniiit.net"
-
