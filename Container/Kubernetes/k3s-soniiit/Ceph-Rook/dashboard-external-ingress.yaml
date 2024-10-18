@@ -25,7 +25,8 @@ metadata:
 spec:
   secretName: home-soniiit-net-selfsigned-tls
   issuerRef:
-    name: selfsigned-issuer
+    name: home-soniiit-net-selfsigned
     kind: ClusterIssuer
+  commonName: "ceph.home.soniiit.net"
   dnsNames:
     - "ceph.home.soniiit.net"

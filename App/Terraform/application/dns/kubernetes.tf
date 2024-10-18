@@ -100,16 +100,16 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "kestra_kube" {
+resource "dns_a_record_set" "kestra" {
     zone = "home.soniiit.net."
-    name = "kestra-kube"
+    name = "kestra"
     addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
-resource "dns_a_record_set" "homepage_kube" {
+resource "dns_a_record_set" "homepage" {
     zone = "home.soniiit.net."
-    name = "homepage-kube"
+    name = "homepage"
     addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
