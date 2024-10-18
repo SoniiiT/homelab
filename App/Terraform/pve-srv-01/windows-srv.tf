@@ -59,6 +59,9 @@ resource "proxmox_vm_qemu" "dc_srv_01" {
 
     # IP Address and Gateway
     ipconfig0 = "ip=dhcp,ip6=dhcp"
+
+    # Skip IPv6 Validation
+    skip_ipv6 = true
 }
 
 resource "proxmox_vm_qemu" "dc_srv_02" {
@@ -122,4 +125,7 @@ resource "proxmox_vm_qemu" "dc_srv_02" {
 
     # IP Address and Gateway
     ipconfig0 = "ip=dhcp,ip6=dhcp"
+
+    # Skip IPv6 Validation
+    skip_ipv6 = true
 }

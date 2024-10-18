@@ -54,69 +54,69 @@ resource "dns_a_record_set" "k3s_soniiit_agent03" {
 resource "dns_a_record_set" "traefik" {
     zone = "home.soniiit.net."
     name = "traefik"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "nginx" {
     zone = "home.soniiit.net."
     name = "nginx"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "ceph" {
     zone = "home.soniiit.net."
     name = "ceph"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "crowdsec" {
     zone = "home.soniiit.net."
     name = "crowdsec"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "rancher" {
     zone = "home.soniiit.net."
     name = "rancher"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "argocd" {
     zone = "home.soniiit.net."
     name = "argocd"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "kestra_kube" {
     zone = "home.soniiit.net."
     name = "kestra-kube"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "homepage_kube" {
     zone = "home.soniiit.net."
     name = "homepage-kube"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "authentik" {
     zone = "home.soniiit.net."
     name = "authentik"
-    addresses = [ "192.168.178.24" ]
+    addresses = [ "192.168.178.70" ]
     ttl = 3600
 }
