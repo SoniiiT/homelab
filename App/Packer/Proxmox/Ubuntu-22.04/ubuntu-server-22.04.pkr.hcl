@@ -17,7 +17,7 @@ variable "proxmox_api_token_secret" {
 }
 
 # Resource Definiation for the VM Template
-source "proxmox-iso" "ubuntu-server-22-04" {
+source "proxmox-iso" "ubuntu-server-22-04-05" {
 
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
@@ -29,7 +29,7 @@ source "proxmox-iso" "ubuntu-server-22-04" {
     # VM General Settings
     node = "pve-srv-01"
     # vm_id = "100"
-    vm_name = "ubuntu-server-22-04"
+    vm_name = "ubuntu-server-22-04-05"
     template_description = "Ubuntu Server jammy Image"
 
     # VM OS Settings
@@ -37,8 +37,8 @@ source "proxmox-iso" "ubuntu-server-22-04" {
     # iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
     # - or -
     # (Option 2) Download ISO
-    iso_url = "https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso"
-    iso_checksum = "45f873de9f8cb637345d6e66a583762730bbea30277ef7b32c9c3bd6700a32b2"
+    iso_url = "https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso"
+    iso_checksum = "9bc6028870aef3f74f4e16b900008179e78b130e6b0b9a140635434a46aa98b0"
     iso_storage_pool = "local"
     unmount_iso = true
 
@@ -51,7 +51,7 @@ source "proxmox-iso" "ubuntu-server-22-04" {
     disks {
         disk_size = "32G"
         format = "raw"
-        storage_pool = "VM-Storage"
+        storage_pool = "M2-Storage"
         type = "virtio"
     }
 
@@ -73,7 +73,7 @@ source "proxmox-iso" "ubuntu-server-22-04" {
 
     # VM Cloud-Init Settings
     cloud_init = true
-    cloud_init_storage_pool = "VM-Storage"
+    cloud_init_storage_pool = "M2-Storage"
 
     # PACKER Boot Commands
     boot_command = [
@@ -88,16 +88,16 @@ source "proxmox-iso" "ubuntu-server-22-04" {
     boot_wait = "5s"
 
     # PACKER Autoinstall Settings
-    http_directory = "C:/Users/ToniR/git/devdisk/App/Packer/Ubuntu-22.04/http" 
+    http_directory = "./http" 
     # (Optional) Bind IP Address and Port
-    http_bind_address = "192.168.178.90"
+    http_bind_address = "192.168.178.254"
     http_port_min = 8802
     http_port_max = 8802
 
     ssh_username = "soniiit"
 
     # (Option 1) Add your Password here
-    # ssh_password = "your-password"
+    # ssh_password = ""
     # - or -
     # (Option 2) Add your Private SSH KEY file here
     ssh_private_key_file = "C:/ssh/id_rsa"
@@ -109,8 +109,8 @@ source "proxmox-iso" "ubuntu-server-22-04" {
 # Build Definition to create the VM Template
 build {
 
-    name = "ubuntu-server-22-04"
-    sources = ["source.proxmox-iso.ubuntu-server-22-04"]
+    name = "ubuntu-server-22-04-05"
+    sources = ["source.proxmox-iso.ubuntu-server-22-04-05"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
@@ -130,7 +130,7 @@ build {
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
     provisioner "file" {
-        source = "C:/Users/ToniR/git/devdisk/App/Packer/Ubuntu-22.04/files/99-pve.cfg"
+        source = "./files/99-pve.cfg"
         destination = "/tmp/99-pve.cfg"
     }
 

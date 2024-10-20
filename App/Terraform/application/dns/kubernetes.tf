@@ -72,20 +72,6 @@ resource "dns_a_record_set" "ceph" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "crowdsec" {
-    zone = "home.soniiit.net."
-    name = "crowdsec"
-    addresses = [ "192.168.178.70" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "rancher" {
-    zone = "home.soniiit.net."
-    name = "rancher"
-    addresses = [ "192.168.178.70" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
@@ -100,23 +86,9 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "kestra" {
-    zone = "home.soniiit.net."
-    name = "kestra"
-    addresses = [ "192.168.178.70" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "homepage" {
-    zone = "home.soniiit.net."
-    name = "homepage"
-    addresses = [ "192.168.178.70" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "authentik" {
-    zone = "home.soniiit.net."
-    name = "authentik"
-    addresses = [ "192.168.178.70" ]
-    ttl = 3600
-}
+# resource "dns_a_record_set" "homepage" {
+#     zone = "home.soniiit.net."
+#     name = "homepage"
+#     addresses = [ "192.168.178.70" ]
+#     ttl = 3600
+# }

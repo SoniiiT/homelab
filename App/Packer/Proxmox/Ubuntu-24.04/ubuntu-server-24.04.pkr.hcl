@@ -17,7 +17,7 @@ variable "proxmox_api_token_secret" {
 }
 
 # Resource Definiation for the VM Template
-source "proxmox-iso" "ubuntu-server-24-04" {
+source "proxmox-iso" "ubuntu-server-24-04-01" {
 
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
@@ -29,16 +29,16 @@ source "proxmox-iso" "ubuntu-server-24-04" {
     # VM General Settings
     node = "pve-srv-01"
     # vm_id = "100"
-    vm_name = "ubuntu-server-24-04"
-    template_description = "Ubuntu Server jammy Image"
+    vm_name = "ubuntu-server-24-04-01"
+    template_description = "Ubuntu Server noble Image"
 
     # VM OS Settings
     # (Option 1) Local ISO File
     # iso_file = "local:iso/ubuntu-22.04-live-server-amd64.iso"
     # - or -
     # (Option 2) Download ISO
-    iso_url = "https://releases.ubuntu.com/24.04/ubuntu-24.04-live-server-amd64.iso"
-    iso_checksum = "8762f7e74e4d64d72fceb5f70682e6b069932deedb4949c6975d0f0fe0a91be3"
+    iso_url = "https://releases.ubuntu.com/24.04.1/ubuntu-24.04.1-live-server-amd64.iso"
+    iso_checksum = "e240e4b801f7bb68c20d1356b60968ad0c33a41d00d828e74ceb3364a0317be9"
     iso_storage_pool = "local"
     unmount_iso = true
 
@@ -51,7 +51,7 @@ source "proxmox-iso" "ubuntu-server-24-04" {
     disks {
         disk_size = "32G"
         format = "raw"
-        storage_pool = "VM-Storage"
+        storage_pool = "M2-Storage"
         type = "virtio"
     }
 
@@ -73,7 +73,7 @@ source "proxmox-iso" "ubuntu-server-24-04" {
 
     # VM Cloud-Init Settings
     cloud_init = true
-    cloud_init_storage_pool = "VM-Storage"
+    cloud_init_storage_pool = "M2-Storage"
 
     # PACKER Boot Commands
     boot_command = [
@@ -88,9 +88,9 @@ source "proxmox-iso" "ubuntu-server-24-04" {
     boot_wait = "5s"
 
     # PACKER Autoinstall Settings
-    http_directory = "C:/Users/ToniR/git/devdisk/App/Packer/Ubuntu-24.04/http" 
+    http_directory = "./http" 
     # (Optional) Bind IP Address and Port
-    http_bind_address = "192.168.178.90"
+    http_bind_address = "192.168.178.254"
     http_port_min = 8802
     http_port_max = 8802
 
@@ -109,8 +109,8 @@ source "proxmox-iso" "ubuntu-server-24-04" {
 # Build Definition to create the VM Template
 build {
 
-    name = "ubuntu-server-22-04"
-    sources = ["source.proxmox-iso.ubuntu-server-24-04"]
+    name = "ubuntu-server-24-04-01"
+    sources = ["source.proxmox-iso.ubuntu-server-24-04-01"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
@@ -130,7 +130,7 @@ build {
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
     provisioner "file" {
-        source = "C:/Users/ToniR/git/devdisk/App/Packer/Ubuntu-24.04/files/99-pve.cfg"
+        source = "./files/99-pve.cfg"
         destination = "/tmp/99-pve.cfg"
     }
 

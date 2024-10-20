@@ -28,41 +28,11 @@ resource "dns_a_record_set" "proxmox" {
     ttl = 3600
 }
 
-
+# Application Hosts
 resource "dns_a_record_set" "app_srv_03" {
     zone = "home.soniiit.net."
     name = "app-srv-03"
     addresses = [ "192.168.178.3" ]
-    ttl = 3600
-}
-
-# Docker Hosts
-resource "dns_a_record_set" "docker_srv_mgm" {
-    zone = "home.soniiit.net."
-    name = "docker-srv-mgm"
-    addresses = [ "192.168.178.20" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "docker_srv_01" {
-    zone = "home.soniiit.net."
-    name = "docker-srv-01"
-    addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "docker_srv_02" {
-    zone = "home.soniiit.net."
-    name = "docker-srv-02"
-    addresses = [ "192.168.178.22" ]
-    ttl = 3600
-}
-
-# Application Hosts
-resource "dns_a_record_set" "app_srv_02" {
-    zone = "home.soniiit.net."
-    name = "app-srv-02"
-    addresses = [ "192.168.178.4" ]
     ttl = 3600
 }
 
@@ -89,7 +59,7 @@ resource "dns_a_record_set" "gameserver" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "node1" {
+resource "dns_a_record_set" "gme_node1" {
     zone = "home.soniiit.net."
     name = "gme-node1"
     addresses = [ "192.168.178.80" ]
