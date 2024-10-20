@@ -59,6 +59,4 @@
         groups: docker
         append: true
 
-    - name: Reboot Docker Host
-      reboot:
-        msg: "Docker Host Rebooted"
+    - name: Reboot 
