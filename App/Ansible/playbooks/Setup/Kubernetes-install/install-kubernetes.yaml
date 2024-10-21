@@ -13,6 +13,40 @@
       ansible.builtin.apt:
         upgrade: dist
 
+- name: Install Docker
+  hosts: docker
+  become: true
+
+  tasks:
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu noble stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        pkg:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: latest
+        update_cache: true
+
+    - name: Add User to Docker Group
+      user:
+        name: soniiit
+        groups: docker
+        append: true
+
+    - name: Reboot 
+
 - name: Install Kubernetes Server
   hosts: server
   become: true
@@ -53,6 +87,10 @@
 
     - name: Install K3s on K3s other Server
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | sh - server --server https://192.168.178.11:6443 --token {{ k3s_token.stdout }} --tls-san {{ kubernetes_vip }} --no-extras --k3s-extra-args '--disable local-storage --docker'
+        cmd: curl -sfL https://get.k3s.io | sh - server --server https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token {{ k3s_token.stdout }} --tls-san {{ kubernetes_vip }} --no-extras --k3s-extra-args '--disable local-storage --docker'
       when: inventory_hostname != "k3s-soniiit-server01" and inventory_hostname in groups['server']
 
+    - name: Install K3s on Agents
+      ansible.builtin.shell:
+        cmd: curl -sfL https://get.k3s.io | sh - agent --server https://{{ kubernetes_vip }}:6443 --token {{ k3s_token.stdout }} --k3s-extra-args '--docker'
+      when: inventory_hostname in groups['agent']
