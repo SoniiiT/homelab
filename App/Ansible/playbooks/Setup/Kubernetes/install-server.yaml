@@ -1,0 +1,70 @@
+- name: Update and upgrade apt packages
+  hosts: server
+  become: true
+
+  tasks:
+    - name: Update packages with apt
+      when: ansible_pkg_mgr == 'apt' and inventory_hostname != "k3s-soniiit-server01"
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Upgrade packages with apt
+      when: ansible_pkg_mgr == 'apt' and inventory_hostname != "k3s-soniiit-server01"
+      ansible.builtin.apt:
+        upgrade: dist
+
+- name: Install Docker
+  hosts: server
+  become: true
+
+  tasks:
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: inventory_hostname != "k3s-soniiit-server01"
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu noble stable
+        state: present
+      when: inventory_hostname != "k3s-soniiit-server01"
+
+    - name: Update apt and install docker-ce
+      apt:
+        pkg:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: latest
+        update_cache: true
+      when: inventory_hostname != "k3s-soniiit-server01"
+
+    - name: Add User to Docker Group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: true
+      when: inventory_hostname != "k3s-soniiit-server01"
+
+    - name: Reboot machine
+      ansible.builtin.reboot:
+        msg: "Rebooting machine in 5 seconds"
+      when: inventory_hostname != "k3s-soniiit-server01"
+
+- name: Install Kubernetes Server
+  hosts: server
+  become: true
+
+  tasks:
+    - name: Retrieve K3s node token
+      ansible.builtin.shell: cat /var/lib/rancher/k3s/server/node-token
+      register: k3s_token
+      when: inventory_hostname == "k3s-soniiit-server01"
+
+    - name: Install K3s on K3s other Server
+      ansible.builtin.shell:
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --disable=servicelb --disable=traefik --disable=local-storage --docker
+      when: inventory_hostname != "k3s-soniiit-server01" and inventory_hostname in groups['server']

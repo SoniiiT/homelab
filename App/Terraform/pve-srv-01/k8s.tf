@@ -10,7 +10,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -87,7 +87,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -164,7 +164,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -241,7 +241,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -318,7 +318,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -395,7 +395,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -478,7 +478,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true
@@ -561,7 +561,7 @@
 #     automatic_reboot = false
 
 #     # The destination resource pool for the new VM
-#     pool = "K8s"
+#     pool = "Kubernetes"
 
 #     # VM Advanced General Settings
 #     onboot = true

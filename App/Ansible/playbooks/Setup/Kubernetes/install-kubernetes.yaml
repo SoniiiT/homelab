@@ -41,11 +41,13 @@
 
     - name: Add User to Docker Group
       user:
-        name: soniiit
+        name: "{{ ansible_user }}"
         groups: docker
         append: true
 
-    - name: Reboot 
+    - name: Reboot machine
+      ansible.builtin.reboot:
+        msg: "Rebooting machine in 5 seconds"
 
 - name: Install Kubernetes Server
   hosts: k3s_cluster
@@ -54,8 +56,12 @@
   tasks:
     - name: Install K3s on k3s-soniiit-server01
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | sh - server --cluster-init --tls-san {{ kubernetes_vip }} --no-extras --k3s-extra-args '--disable local-storage --docker'
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --disable=servicelb --disable=traefik --disable=local-storage --tls-san={{ kubernetes_vip }} --docker --cluster-init
       when: inventory_hostname == "k3s-soniiit-server01"
+
+    - name: Create K3s Manifest Directory
+      ansible.builtin.shell: mkdir -p /var/lib/rancher/k3s/server/manifests
+      when: inventory_hostname in groups['server']
 
     - name: Install KubeVIP RBAC
       ansible.builtin.shell:
@@ -87,10 +93,17 @@
 
     - name: Install K3s on K3s other Server
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | sh - server --server https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token {{ k3s_token.stdout }} --tls-san {{ kubernetes_vip }} --no-extras --k3s-extra-args '--disable local-storage --docker'
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --disable=servicelb --disable=traefik --disable=local-storage --docker
       when: inventory_hostname != "k3s-soniiit-server01" and inventory_hostname in groups['server']
 
     - name: Install K3s on Agents
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | sh - agent --server https://{{ kubernetes_vip }}:6443 --token {{ k3s_token.stdout }} --k3s-extra-args '--docker'
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ kubernetes_vip }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --docker
       when: inventory_hostname in groups['agent']
+
+    - name: Copy Kubeconfig to home directory
+      ansible.builtin.copy:
+        src: /etc/rancher/k3s/k3s.yaml
+        dest: /home/{{ hostvars['k3s-soniiit-server01']['ansible_user'] }}/config
+        remote_src: true
+      when: inventory_hostname == "k3s-soniiit-server01"

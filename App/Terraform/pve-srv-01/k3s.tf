@@ -9,7 +9,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s"
+    pool = "Kubernetes"
 
     # VM Advanced General Settings
     onboot = true
@@ -91,7 +91,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server02" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s"
+    pool = "Kubernetes"
 
     # VM Advanced General Settings
     onboot = true
@@ -173,7 +173,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server03" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s"
+    pool = "Kubernetes"
 
     # VM Advanced General Settings
     onboot = true
@@ -255,7 +255,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s"
+    pool = "Kubernetes"
 
     # VM Advanced General Settings
     onboot = true
@@ -337,7 +337,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent02" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s"
+    pool = "Kubernetes"
 
     # VM Advanced General Settings
     onboot = true
@@ -419,7 +419,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent03" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "K3s"
+    pool = "Kubernetes"
 
     # VM Advanced General Settings
     onboot = true
