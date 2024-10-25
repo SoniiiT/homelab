@@ -92,3 +92,17 @@ resource "dns_a_record_set" "argocd" {
 #     addresses = [ "192.168.178.70" ]
 #     ttl = 3600
 # }
+
+resource "dns_a_record_set" "teleport" {
+    zone = "home.soniiit.net."
+    name = "teleport"
+    addresses = [ "192.168.178.70" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "teleport_wildcard" {
+    zone = "home.soniiit.net."
+    name = "*.teleport"
+    addresses = [ "192.168.178.70" ]
+    ttl = 3600
+}
