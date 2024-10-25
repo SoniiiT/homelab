@@ -16,7 +16,7 @@
 clusterName: "teleport.soniiit.net"
 
 # Name for this kubernetes cluster to be used by teleport users.
-kubeClusterName: ""
+kubeClusterName: "k3s-soniiit-vip.home.soniiit.net"
 
 ##################################################
 # Values that you may need to change.
@@ -248,7 +248,7 @@ enterprise: false
 
 # CRDs are installed by default when the operator is enabled. This manual override allows to disable CRD installation
 # when deploying multiple releases in the same cluster.
-# installCRDs:
+installCRDs: true
 
 # Configuration of the optional Teleport operator
 operator:
@@ -553,7 +553,7 @@ tls:
   # Name of an existing secret to use which contains a TLS keypair. Will automatically set the https_keypairs section in teleport.yaml.
   # Create the secret in the same namespace as Teleport using `kubectl create secret tls my-tls-secret --cert=/path/to/cert/file --key=/path/to/key/file`
   # See https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets for more information.
-  existingSecretName: ""
+  # existingSecretName: "home-soniiit-net-selfsigned-tls"
   # (optional) Name of an existing secret to use which contains a CA or trust bundle in x509 PEM format.
   # Useful for building trust when using intermediate certificate authorities.
   # This will automatically set the SSL_CERT_FILE environment variable to trust the CA.
@@ -699,7 +699,7 @@ service:
 # Using an Ingress also requires that you use the `tsh` client to connect to Kubernetes clusters and databases behind Teleport.
 # See https://goteleport.com/docs/architecture/tls-routing/#working-with-layer-7-load-balancers-or-reverse-proxies-preview for details.
 ingress:
-  enabled: true
+  enabled: false
   # useExisting indicates to the chart that you are managing your own ingress.
   # (or HTTPRoute, or any other LoadBalancing method that terminates TLS).
   # The chart will configure Teleport like it's running behind an ingress, but will not create the ingress resource.
@@ -709,19 +709,9 @@ ingress:
   # by the Ingress. This may be desirable if you don't use Teleport Application Access.
   suppressAutomaticWildcards: false
   # Additional entries here will be added to the ingress spec.
-  spec:
-    ingressClassName: traefik
-    annotations:
-      traefik.ingress.kubernetes.io/backend-protocol: HTTPS
-    hosts:
-      - host: teleport.home.soniiit.net
-        paths:
-          - path: "/"
-    tls:
-      - secretName: home-soniiit-net-selfsigned-tls
-        hosts:
-          - teleport.home.soniiit.net
-          - "*.teleport.home.soniiit.net"
+  spec: {}
+    # ingressClassName: nginx
+
 # Extra arguments to pass to 'teleport start' for the main Teleport pod
 extraArgs: []
 
