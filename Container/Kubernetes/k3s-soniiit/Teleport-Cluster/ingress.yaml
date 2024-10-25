@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: soniiit-net-staging
+  name: soniiit-net-production
   namespace: teleport-cluster
 spec:
-  secretName: soniiit-net-staging-tls
+  secretName: soniiit-net-production-tls
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-production
     kind: ClusterIssuer
   commonName: "teleport.soniiit.net"
   dnsNames:
@@ -91,7 +91,7 @@ spec:
       middlewares:
         - name: traefik-teleport-cluster-security
   tls:
-    secretName: soniiit-net-staging-tls
+    secretName: soniiit-net-production-tls
     domains:
       - main: "teleport.soniiit.net"
         sans:
