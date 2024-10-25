@@ -54,41 +54,55 @@ resource "dns_a_record_set" "k3s_soniiit_agent03" {
 resource "dns_a_record_set" "traefik" {
     zone = "home.soniiit.net."
     name = "traefik"
-    addresses = [ "192.168.178.70" ]
+    addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "nginx" {
     zone = "home.soniiit.net."
     name = "nginx"
-    addresses = [ "192.168.178.70" ]
+    addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "ceph" {
     zone = "home.soniiit.net."
     name = "ceph"
-    addresses = [ "192.168.178.70" ]
+    addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
-    addresses = [ "192.168.178.70" ]
+    addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "argocd" {
     zone = "home.soniiit.net."
     name = "argocd"
-    addresses = [ "192.168.178.70" ]
+    addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
 
 # resource "dns_a_record_set" "homepage" {
 #     zone = "home.soniiit.net."
 #     name = "homepage"
-#     addresses = [ "192.168.178.70" ]
+#     addresses = [ "192.168.178.71" ]
 #     ttl = 3600
 # }
+
+resource "dns_a_record_set" "teleport" {
+    zone = "home.soniiit.net."
+    name = "teleport"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "teleport_wildcard" {
+    zone = "home.soniiit.net."
+    name = "*.teleport"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}

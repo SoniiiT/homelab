@@ -68,7 +68,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`nginx.home.soniiit.net`)
+    - match: Host(`nginx.soniiit.net`)
       kind: Rule
       services:
         - name: nginx
@@ -76,18 +76,18 @@ spec:
       middlewares:
         - name: default-headers
   tls:
-    secretName: home-soniiit-net-selfsigned-tls
+    secretName: soniiit-net-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: home-soniiit-net-selfsigned
+  name: soniiit-net-production
   namespace: default
 spec:
-  secretName: home-soniiit-net-selfsigned-tls
+  secretName: soniiit-net-production-tls
   issuerRef:
-    name: home-soniiit-net-selfsigned
+    name: letsencrypt-
     kind: ClusterIssuer
-  commonName: "nginx.home.soniiit.net"
+  commonName: "nginx.soniiit.net"
   dnsNames:
-  - "nginx.home.soniiit.net"
+  - "nginx.soniiit.net"
