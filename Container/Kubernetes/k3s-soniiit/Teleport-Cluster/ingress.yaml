@@ -83,7 +83,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`teleport.soniiit.net`)
+      match: HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.soniiit.net(?::\\d+)?$`)
       services:
         - name: teleport-cluster
           port: 443
@@ -94,5 +94,5 @@ spec:
     secretName: soniiit-net-production-tls
     domains:
       - main: "teleport.soniiit.net"
-        sans:
-          - "*.teleport.soniiit.net"
+      - sans:
+        - "*.teleport.soniiit.net"

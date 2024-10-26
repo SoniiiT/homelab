@@ -16,7 +16,7 @@
 clusterName: "teleport.soniiit.net"
 
 # Name for this kubernetes cluster to be used by teleport users.
-kubeClusterName: "k3s-soniiit-vip.home.soniiit.net"
+kubeClusterName: ""
 
 ##################################################
 # Values that you may need to change.
@@ -78,7 +78,12 @@ auth:
   #   auth_service:
   #     client_idle_timeout: 2h
   #     client_idle_timeout_message: "Connection closed after 2hours without activity"
-  teleportConfig: {}
+  teleportConfig:
+    auth_service:
+      enabled: yes
+      listen_addr: 0.0.0.0:3025
+      proxy_listener_mode: multiplex
+      cluster_name: "teleport.soniiit.net"
 
 # `proxy` allows you to set chart values only for Kubernetes resources related to the Teleport Proxy Service. 
 # This is merged with chart-scoped values and takes precedence in case of conflict.
@@ -105,7 +110,14 @@ proxy:
   #     https_keypairs:
   #       - key_file: /my-custom-mount/key.pem
   #         cert_file: /my-custom-mount/cert.pem
-  teleportConfig: {}
+  teleportConfig:
+    proxy_service:
+      enabled: "yes"
+      web_listen_addr: 0.0.0.0:3080
+      # -- (Optional) when using reverse proxy
+      public_addr: ['teleport.soniiit.net:443']
+      https_keypairs: []
+      acme: {}
 
 authentication:
   # Default authentication type. Possible values are 'local' and 'github' for OSS, plus 'oidc' and 'saml' for Enterprise.
