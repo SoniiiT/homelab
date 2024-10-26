@@ -83,7 +83,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: HostRegexp(`^(?i)(?:[[:alnum:]]+(?:-+[[:alnum:]]+)*\\.)?teleport.soniiit.net(?::\\d+)?$`)
+      match: Host(`teleport.soniiit.net`)
       services:
         - name: teleport-cluster
           port: 443
@@ -92,7 +92,30 @@ spec:
         - name: traefik-teleport-cluster-security
   tls:
     secretName: soniiit-net-production-tls
-    domains:
-      - main: "teleport.soniiit.net"
-      - sans:
-        - "*.teleport.soniiit.net"
+    options:
+      name: traefik-teleport-cluster-tlsoptions
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: teleport-cluster-wildcard-ingress
+  namespace: teleport-cluster
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.priority: "1"
+spec:
+  tls:
+  - hosts:
+    - "*.teleport.soniiit.net"
+    secretName: soniiit-net-production-tls
+  rules:
+  - host: "*.teleport.soniiit.net"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: teleport-cluster
+            port: 
+              number: 443
