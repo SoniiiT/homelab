@@ -360,7 +360,6 @@ persistence:
   # Size of persistent volume to request when created by Teleport.
   # Ignored if existingClaimName is provided.
   volumeSize: 10Gi
-  storageClassName: rook-cephfs
 
 ##################################################
 # AWS-specific settings (only used in "aws" mode)
