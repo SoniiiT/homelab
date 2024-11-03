@@ -1,0 +1,38 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+title: My Awesome Homepage
+headerStyle: boxed
+
+background:
+  image: https://4kwallpapers.com/images/walls/thumbs_3t/11757.png
+  blur: md
+  brightness: 50
+  opacity: 70
+
+cardBlur: sm
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey
+
+quicklaunch:
+    searchDescriptions: true
+    hideInternetSearch: true
+    hideVisitURL: true
+
+layout:
+  Networking:
+    icon: mdi-network-#FFFFFF
+  Infrastructure and Data:
+    icon: mdi-server-#FFFFFF
+  Management:
+    icon: mdi-auto-fix-#FFFFFF
+  Monitoring:
+    icon: mdi-list-status-#FFFFFF
+  Services:
+    icon: mdi-cog-#FFFFFF
+  IoT and Smarthome:
+    icon: mdi-home-#FFFFFF
+  Kubernetes:
+    icon: mdi-kubernetes-#FFFFFF

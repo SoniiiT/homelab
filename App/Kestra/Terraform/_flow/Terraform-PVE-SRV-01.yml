@@ -1,0 +1,47 @@
+id: Terraform-PVE-SRV-01
+namespace: terraform
+labels:
+  Project: Homelab
+  Mode: GH-Actions
+
+variables:
+  chdir: "App/Terraform/pve-srv-01"
+
+tasks:
+- id: git
+  type: io.kestra.core.tasks.flows.WorkingDirectory
+  tasks:
+  - id: clone_repository
+    type: io.kestra.plugin.git.Clone
+    url: https://github.com/SoniiiT/homelab
+    branch: main
+
+  - id: provide
+    type: io.kestra.core.tasks.storages.LocalFiles
+    inputs:
+      credentials.auto.tfvars: |
+        proxmox_api_url = "https://192.168.178.6:8006/api2/json"
+        proxmox_api_token_id = "terraform@pam!terraform"
+        proxmox_api_token_secret = "{{ secret('TF_PVE_API_TOKEN') }}"
+
+  - id: terraform
+    type: io.kestra.plugin.terraform.cli.TerraformCLI
+    beforeCommands:
+    - mv ./credentials.auto.tfvars ./{{ vars.chdir }}
+    - terraform -chdir={{ vars.chdir }} init
+    commands:
+    - terraform -chdir={{ vars.chdir }} plan 2>&1 | tee plan_output.txt
+    - terraform -chdir={{ vars.chdir }} apply -auto-approve 2>&1 | tee apply_output.txt
+    env:
+      TF_TOKEN_app_terraform_io: "{{ secret('TF_ID_TOKEN') }}"
+
+  - id: outputs
+    type: io.kestra.core.tasks.storages.LocalFiles
+    outputs:
+    - "*.txt"
+
+triggers:
+  - id: github_actions
+    type: io.kestra.core.models.triggers.types.Webhook
+    # the required key to start this flow - might be passed as a secret
+    key: xyz

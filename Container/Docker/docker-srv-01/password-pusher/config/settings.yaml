@@ -1,0 +1,957 @@
+# Global Application Configuration
+#
+# This file uses YAML syntax.  Indentation must be 2 spaces (not tabs).
+#
+# See also https://github.com/pglombardo/PasswordPusher/blob/master/Configuration.md
+# for a further explanation of the larger settings available here.
+
+### Application Defaults
+#
+
+### URL Pushes
+#
+# Enable or disable URL based pushes.  These allow you to share URLs securely.
+# Like regular pushes, they expire after a set time or amount of views.
+#
+# Note that `enable_logins` is required for URL based pushes to work.  It is a
+# feature for logged in users only.
+#
+# Environment variable override:
+# PWP__ENABLE_URL_PUSHES='false'
+#
+enable_url_pushes: true
+
+### File Uploads
+#
+# File uploads are disabled by default since they require a place to store
+# those files.
+#
+# If enabling file uploads, make sure to fill out the 'files' section below.
+#
+# Note that `enable_logins` is required for file uploads to work.  It is a
+# feature for logged in users only.
+#
+# Environment variable override:
+# PWP__ENABLE_FILE_PUSHES='false'
+#
+enable_file_pushes: true
+
+### Logins (User accounts)
+#
+# Logins are disabled by default since they require an MTA (email) server
+# available to send emails through.
+#
+# If enabling logins, make sure to fill out the 'mail' section below.
+#
+# For instructions on how to enable logins, see this page:
+# https://github.com/pglombardo/PasswordPusher/discussions/276
+#
+# Environment variable override:
+# PWP__ENABLE_LOGINS='false'
+#
+enable_logins: true
+
+## Disable Signups
+#
+# Disallow new user accounts to be created in the application.
+#
+# Set this after you have your desired user accounts created.  It will
+# not allow any further user account creation.
+#
+# Environment variable override:
+# PWP__DISABLE_SIGNUPS='false'
+#
+disable_signups: false
+
+## Limit Signups to Specific Email Domains
+#
+# By default, anyone can sign up for an account.  The following default regular
+# expression just validates if it is a valid email address.
+#
+# signup_email_regexp: '\A[^@\s]+@[^@\s]+\z'
+#
+# If you would like to limit signups to specific email domains, you can extend
+# the regular expression below to include the domains you want to allow.
+#
+# For example, to only allow signups from the domain 'hey.com', you would
+# change the following to:
+#
+#   signup_email_regexp: '\A[^@\s]+@(hey\.com)\z'
+#
+# or for multiple domains:
+#
+#  signup_email_regexp: '\A[^@\s]+@(hey\.com|gmail\.com)\z'
+#
+# Tip: use https://rubular.com to test out your regular expressions. It includes
+# a guide to what each component means in regexp.
+#
+# Environment variable override:
+# PWP__SIGNUP_EMAIL_REGEXP='\A[^@\s]+@[^@\s]+\z'
+#
+signup_email_regexp: '\A[^@\s]+@(soniiit\.net|itcares\.de)\z'
+
+### Allow Anonymous
+#
+# By default, Password Pusher can be used by anonymous users to push
+# new passwords and generate secret URLs.  If you want to limit functionality
+# to logged in  users only, set the following value to true.
+#
+# This does not affect password secret URLs themselves as anonymous is always
+# allowed there.
+#
+# Environment variable override:
+# PWP__ALLOW_ANONYMOUS='true'
+#
+allow_anonymous: true
+
+### Host Domain
+#
+# The domain (without protocol) where this instance is hosted
+# Used in generating fully qualified URLs.
+#
+# Make sure to set this for email links to work correctly.
+#
+# Environment variable override:
+# PWP__HOST_DOMAIN='pwpush.com'
+#
+host_domain: 'pwpush.soniiit.net'
+
+### Host Protocol
+#
+# The protocol to reach the domain above
+# Used in generating fully qualified URLs.
+#
+# Make sure to set this for email links to work correctly.
+#
+# Environment variable override:
+# PWP__HOST_PROTOCOL='https'
+#
+host_protocol: 'https'
+
+### Base URL Override
+#
+# Set the following value to force the base URL of generated links.
+#
+# Environment variable override:
+# PWP__OVERRIDE_BASE_URL='https://pwpush.mydomain.com'
+#
+# You could even add a port if needed:
+# PWP__OVERRIDE_BASE_URL='https://pwpush.mydomain.com:5100'
+#
+# Set this value without a trailing slash ('/').
+#
+override_base_url: 'https://pwpush.soniiit.net'
+
+### Show version on the footer
+#
+# Enable/disable PasswordPusher version on the footer.
+#
+# Environment variable override:
+# PWP__SHOW_VERSION=true
+#
+# Default: true
+show_version: false
+
+### Show the GDPR cookie consent banner
+#
+# Enable/disable the GDPR cookie consent banner.
+#
+# Environment variable override:
+# PWP__SHOW_GDPR_CONSENT_BANNER=true
+#
+# Default: true
+show_gdpr_consent_banner: true
+
+### Timezone
+#
+# Set the timezone for the application.  A full list of timezone strings
+# can be found here:
+# https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+#
+# Environment variable override:
+# PWP__TIMEZONE='America/New_York'
+#
+# Default: 'America/New_York'
+timezone: 'Europe/Berlin'
+
+### Allowed Hosts
+#
+# This is a list of allowed hosts for the application.  This is used to
+# prevent host header attacks.
+#
+# When set, the application will only respond to requests with a host header
+# that matches one of the values in this list.
+#
+# This feature is generally only used when the application is behind a proxy.
+#
+# It's generally not required to use this unless you are getting the related error
+# in the application.  localhost and the IP that the application is running on
+# are always allowed.
+#
+# Note: If you need more than one value to the environment variable, separate
+# entries by a single space.
+#
+# Environment variable override:
+# PWP__ALLOWED_HOSTS='pwpush.com pwpush.mydomain.com pwpush.myotherdomain'
+#
+allowed_hosts:
+  - 'pwpush.soniiit.net'
+  - '192.168.178.40:5100'
+#   - 'pwpush.myotherdomain.com'
+
+## Expiration Settings for Password Pushes
+#
+pw:
+  # Expire Password Pushes After XX Days
+  #
+  # Controls the "Expire After Days" for Password Pushes
+  #
+  # Environment variable overrides:
+  # PWP__PW__EXPIRE_AFTER_DAYS_DEFAULT=7
+  # PWP__PW__EXPIRE_AFTER_DAYS_MIN=1
+  # PWP__PW__EXPIRE_AFTER_DAYS_MAX=90
+  #
+  expire_after_days_default: 7
+  expire_after_days_min: 1
+  expire_after_days_max: 90
+
+  # Expire Password Pushes After XX Views
+  #
+  # Controls the "Expire After Views" form settings in Password#new
+  #
+  # Environment variable overrides:
+  # PWP__PW__EXPIRE_AFTER_VIEWS_DEFAULT=5
+  # PWP__PW__EXPIRE_AFTER_VIEWS_MIN=1
+  # PWP__PW__EXPIRE_AFTER_VIEWS_MAX=100
+  #
+  expire_after_views_default: 5
+  expire_after_views_min: 1
+  expire_after_views_max: 100
+
+  # Retrieval Step for Password Pushes
+  #
+  # This enables or disables the "1-click retrieval step" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__PW__ENABLE_RETRIEVAL_STEP='false'
+  #
+  enable_retrieval_step: true
+
+  # Default Form Value for the Retrieval Step
+  #
+  # When the retrieval step is enabled (above), what is the default value on the form?
+  #
+  # When true, secret URLs will be generated as /p/xxxxxxxx/r which will show a page
+  # requiring a click to view the page /p/xxxxxxxx
+  #
+  # Environment variable override:
+  # PWP__PW__RETRIEVAL_STEP_DEFAULT='true'
+  #
+  retrieval_step_default: true
+
+  # Deletable Password Pushes
+  #
+  # default: true
+  #
+  # This enables or disables the "Allow Immediate Deletion" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__PW__ENABLE_DELETABLE_PUSHES='false'
+  #
+  enable_deletable_pushes: true
+
+  # Deletable Pushes Default Value
+  #
+  # default: true
+  #
+  # When this is set to true, this option does two things:
+  #   1. Sets the default check state for the "Allow viewers to
+  #       optionally delete password before expiration" checkbox
+  #   2. JSON API: Sets the default value for newly pushed passwords if
+  #       unspecified
+  #
+  # Environment variable override:
+  # PWP__PW__DELETABLE_PUSHES_DEFAULT='false'
+  #
+  deletable_pushes_default: true
+
+  # Blur Payloads
+  #
+  # default: true
+  #
+  # This option does  not affect the JSON API - web UI only.
+  # When this is set to true, this option will display the pushed text payload as
+  # blurred out text.  This is useful for recipients in public places who don't
+  # want to reveal the sensitive information until when they choose.
+  #
+  # The blur is disabled with a single mouse click.
+  #
+  # Setting this option to false will disable the blur feature entirely for password pushes.
+  #
+  # Note: This is a global on/off switch currently.  This may be made configurable per push
+  # in the future by adding a new checkbox and a `blur_default` setting.
+  #
+  # Environment variable override:
+  # PWP__PW__BLUR='false'
+  #
+  enable_blur: true
+
+## Expiration Settings for URL Pushes
+#
+url:
+  # Expire URL Pushes After XX Days
+  #
+  # Controls the "Expire After Days" for URL Pushes
+  #
+  # Environment variable overrides:
+  # PWP__URL__EXPIRE_AFTER_DAYS_DEFAULT=7
+  # PWP__URL__EXPIRE_AFTER_DAYS_MIN=1
+  # PWP__URL__EXPIRE_AFTER_DAYS_MAX=90
+  #
+  expire_after_days_default: 7
+  expire_after_days_min: 1
+  expire_after_days_max: 90
+
+  # Expire URL Pushes After XX Views
+  #
+  # Controls the "Expire After Views" form settings in Password#new
+  #
+  # Environment variable overrides:
+  # PWP__URL__EXPIRE_AFTER_VIEWS_DEFAULT=5
+  # PWP__URL__EXPIRE_AFTER_VIEWS_MIN=1
+  # PWP__URL__EXPIRE_AFTER_VIEWS_MAX=100
+  #
+  expire_after_views_default: 5
+  expire_after_views_min: 1
+  expire_after_views_max: 100
+
+  # Retrieval Step for URL Pushes
+  #
+  # This enables or disables the "1-click retrieval step" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__URL__ENABLE_RETRIEVAL_STEP='false'
+  #
+  enable_retrieval_step: true
+
+  # Default Form Value for the Retrieval Step
+  #
+  # When the retrieval step is enabled (above), what is the default value on the form?
+  #
+  # When true, secret URLs will be generated as /r/xxxxxxxx/r which will show a page
+  # requiring a click to view the page /r/xxxxxxxx
+  #
+  # Environment variable override:
+  # PWP__URL__RETRIEVAL_STEP_DEFAULT='true'
+  #
+  retrieval_step_default: false
+
+### File Upload: Expiration & Storage Settings
+#
+files:
+  # Expire File Pushes After XX Days
+  #
+  # Controls the "Expire After Days" for File Pushes
+  #
+  # Environment variable overrides:
+  # PWP__FILES__EXPIRE_AFTER_DAYS_DEFAULT=7
+  # PWP__FILES__EXPIRE_AFTER_DAYS_MIN=1
+  # PWP__FILES__EXPIRE_AFTER_DAYS_MAX=90
+  #
+  expire_after_days_default: 7
+  expire_after_days_min: 1
+  expire_after_days_max: 90
+
+  # Expire File Pushes After XX Views
+  #
+  # Controls the "Expire After Views" form settings for File Pushes
+  #
+  # Environment variable overrides:
+  # PWP__FILES__EXPIRE_AFTER_VIEWS_DEFAULT=5
+  # PWP__FILES__EXPIRE_AFTER_VIEWS_MIN=1
+  # PWP__FILES__EXPIRE_AFTER_VIEWS_MAX=100
+  #
+  expire_after_views_default: 5
+  expire_after_views_min: 1
+  expire_after_views_max: 100
+
+  # Retrieval Step for File Pushes
+  #
+  # This enables or disables the "1-click retrieval step" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__FILES__ENABLE_RETRIEVAL_STEP='false'
+  #
+  enable_retrieval_step: true
+
+  # Default Form Value for the Retrieval Step
+  #
+  # When the retrieval step is enabled (above), what is the default value on the form?
+  #
+  # When true, secret URLs will be generated as /f/xxxxxxxx/r which will show a page
+  # requiring a click to view the page /f/xxxxxxxx
+  #
+  # Environment variable override:
+  # PWP__FILES__RETRIEVAL_STEP_DEFAULT='true'
+  #
+  retrieval_step_default: false
+
+  # Deletable File Pushes
+  #
+  # default: true
+  #
+  # This enables or disables the "Allow Immediate Deletion" feature entirely.  For the default value
+  # when it is enabled here, see the next setting.
+  #
+  # Environment variable override:
+  # PWP__FILES__ENABLE_DELETABLE_PUSHES='false'
+  #
+  enable_deletable_pushes: true
+
+  # Deletable File Pushes Default Value
+  #
+  # default: true
+  #
+  # When this is set to true, this option does two things:
+  #   1. Sets the default check state for the "Allow viewers to
+  #       optionally delete password before expiration" checkbox
+  #   2. JSON API: Sets the default value for newly pushed passwords if
+  #       unspecified
+  #
+  # Environment variable override:
+  # PWP__FILES__DELETABLE_PUSHES_DEFAULT='false'
+  #
+  deletable_pushes_default: true
+
+  # Blur Payloads
+  #
+  # default: true
+  #
+  # This option does not affect the JSON API - web UI only.
+  # When this is set to true, this option will display the pushed text payload as
+  # blurred out text.  This is useful for recipients in public places who don't
+  # want to reveal the sensitive information until when they choose.
+  #
+  # The blur is disabled with a single mouse click.
+  #
+  # Setting this option to false will disable the blur feature entirely for file pushes.
+  #
+  # Note: This is a global on/off switch currently.  This may be made configurable per push
+  # in the future by adding a new checkbox and a `blur_default` setting.
+  #
+  # Environment variable override:
+  # PWP__FILES__BLUR='false'
+  #
+  enable_blur: true
+
+  # Maximum File Upload Count
+  #
+  # default: 10
+  #
+  # This option controls the maximum number of files that can be uploaded
+  # in a single push.
+  #
+  # Environment variable override:
+  # PWP__FILES__MAX_FILE_UPLOADS=10
+  #
+  max_file_uploads: 10
+
+  # File Storage
+  #
+  # Password Pusher can store uploaded files into Amazon S3, Google Cloud Services
+  # or Microsoft Azure.
+  #
+  # Choose your file storage preference by setting the following option to
+  # one of the following values:
+  #   * local     - use local disk (likely won't work in container environments)
+  #   * amazon    - use Amazon S3 (and provide 's3' credentials below)
+  #   * google    - use Google Cloud Storage (and provide 'gcs' credentials below)
+  #   * microsoft - use Microsoft Azure Storage (and provide 'as' credentials below)
+  #
+  # Environment variable override:
+  # PWP__FILES_STORAGE='local'
+  #
+  storage: 'local'
+
+  # # Amazon S3 Storage Credentials
+  # s3:
+  #   # Environment Variable Override: PWP__FILES__S3__ENDPOINT=''
+  #   endpoint: ''
+  #   # Environment Variable Override: PWP__FILES__S3__ACCESS_KEY_ID=''
+  #   access_key_id: '_'
+  #   # Environment Variable Override: PWP__FILES__S3__SECRET_ACCESS_KEY=''
+  #   secret_access_key: ''
+  #   # Environment Variable Override: PWP__FILES__S3__REGION=''
+  #   region: 'us-east-1'
+  #   # Environment Variable Override: PWP__FILES__S3__BUCKET=''
+  #   bucket: 'pwpush-files'
+
+  # # Google Cloud Storage Credentials
+  # gcs:
+  #   # Environment Variable Override: PWP__FILES__GCS__PROJECT=''
+  #   project: ''
+  #   # Environment Variable Override: PWP__FILES__GCS__CREDENTIALS=''
+  #   credentials: ''
+  #   # Environment Variable Override: PWP__FILES__GCS__BUCKET=''
+  #   bucket: ''
+  #   #
+  #   # Optionally use IAM instead of the credentials when signing URLs.
+  #   # This is useful if you are authenticating your GKE applications with Workload Identity,
+  #   # See here: https://edgeguides.rubyonrails.org/active_storage_overview.html#google-cloud-storage-service
+  #   #
+  #   # Environment Variable Override: PWP__FILES__GCS__IAM=true
+  #   iam: false
+  #   # Environment Variable Override: PWP__FILES__GCS__GSA_EMAIL='email@domain.com'
+  #   gsa_email: null
+
+  # # Microsoft Azure Storage Credentials
+  # as:
+  #   # Environment Variable Override: PWP__FILES__AS__STORAGE_ACCOUNT_NAME=''
+  #   storage_account_name: ''
+  #   # Environment Variable Override: PWP__FILES__AS__STORAGE_ACCESS_KEY=''
+  #   storage_access_key: ''
+  #   # Environment Variable Override: PWP__FILES__AS__CONTAINER=''
+  #   container: ''
+
+
+### Password Generator Defaults
+#
+# Set the defaults of the front page password generator.
+#
+gen:
+  # Whether generated passwords have numbers
+  #
+  # Environment variable override:
+  # PWP__GEN__HAS_NUMBERS='true'
+  #
+  has_numbers: true
+
+  # Whether generated passwords will be title cased
+  #
+  # Environment variable override:
+  # PWP__GEN__TITLE_CASED='true'
+  #
+  title_cased: true
+
+  # Whether generated passwords will use separators between syllables
+  #
+  # Environment variable override:
+  # PWP__GEN__USE_SEPARATORS='true'
+  #
+  use_separators: true
+
+  # List of consonants to generate from
+  #
+  # Environment variable override:
+  # PWP__GEN__CONSONANTS='bcdfghklmnprstvz'
+  #
+  consonants: 'bcdfghklmnprstvz'
+
+  # List of vowels to generate from
+  #
+  # Environment variable override:
+  # PWP__GEN__VOWELS='aeiouy'
+  #
+  vowels: 'aeiouy'
+
+  # If `use_separators` is enabled above, the list of separators to use (randomly)
+  #
+  # Environment variable override:
+  # PWP__GEN__SEPARATORS='-_='
+  #
+  separators: '-_='
+
+  # The maximum length of each syllable that a generated password can have
+  #
+  # Environment variable override:
+  # PWP__GEN__MAX_SYLLABLE_LENGTH=3
+  #
+  max_syllable_length: 3
+
+  # The minimum length of each syllable that a generated password can have
+  #
+  # Environment variable override:
+  # PWP__GEN__MIN_SYLLABLE_LENGTH=1
+  #
+  min_syllable_length: 1
+
+  # The exact number of syllables that a generated password will have
+  #
+  # Environment variable override:
+  # PWP__GEN__SYLLABLE_COUNT=3
+  #
+  syllables_count: 3
+
+brand:
+  ### Site Title
+  #
+  # Environment variable override: PWP__BRAND__TITLE='Acme Corp.'
+  #
+  title: 'SoniiiT Password Pusher'
+
+  ### Site Tagline
+  #
+  # Environment variable override: PWP__BRAND__TAGLINE='Security First'
+  #
+  tagline: 'Bist du die nummer 14?'
+
+  ### Site Disclaimer
+  #
+  # Environment variable override: PWP__BRAND__DISCLAIMER='Use at own use risk.'
+  # disclaimer: 'This is a dummy disclaimer and should not be considered legally binding or taken seriously in any way. The content provided here is for entertainment and illustrative purposes only. Any resemblance to actual disclaimers is purely coincidental. We do not endorse or encourage the use of this disclaimer for any real-world applications, and we strongly advise consulting a legal professional for creating legitimate and appropriate disclaimers for your specific needs. By reading this disclaimer, you agree not to hold us responsible for any confusion, amusement, or bewilderment it may cause. This disclaimer has no legal validity, and any attempt to rely on it for legal, financial, or any other serious matters is ill-advised. Please use disclaimers responsibly and in accordance with applicable laws and regulations.'
+
+  ### Show Footer Menu Toggle
+  #
+  # Environment variable override: PWP__BRAND__SHOW_FOOTER_MENU='true'
+  #
+  show_footer_menu: false
+
+  ### Site logo
+  #
+  # ..for both a light and dark theme
+  #
+  # You can also replace these relative paths with fully qualified HTTP links to
+  # external resources such as Amazon S3 etc.
+  # e.g. PWP__BRAND__DARK_LOGO='https://mys3bucket.amazonaws.com/a/some-image.png'
+  #
+  # Environment variable override: PWP__BRAND__LIGHT_LOGO='https://mys3bucket.amazonaws.com/a/lea+giuliana.png'
+  # Environment variable override: PWP__BRAND__DARK_LOGO='https://mys3bucket.amazonaws.com/a/lea+giuliana.png'
+  #
+  light_logo: '/logos/logo-transparent-sm-bare.png'
+  dark_logo: '/logos/logo-transparent-sm-dark-bare.png'
+
+  ### Favicon & icon images for mobile.  When people on mobile (phones/tablets), bookmark
+  # the site or it is shown in history, these icons are used.
+  #
+  # You can also replace these relative paths with fully qualified HTTP links to
+  # external resources such as Amazon S3 etc.
+  # e.g. PWP__BRAND__ICON_57x57='https://mys3bucket.amazonaws.com/a/some-image.png'
+  #
+  # Although you should set all of the following values, at a bare minimum, make sure
+  # to set at least icon_57x57 and icon_96x96.  Without these two, things are guaranteed
+  # to not work.
+  #
+  # You can use an icon generator such as:
+  # https://www.favicongenerator.com
+  # https://www.favicon-generator.org
+
+  #
+  # Environment variable override: PWP__BRAND__ICON_57x57='/path/to/image'
+  icon_57x57: '/logos/apple-icon-57x57.png'
+  # Environment variable override: PWP__BRAND__ICON_60x60='/path/to/image'
+  icon_60x60: '/logos/apple-icon-60x60.png'
+  # Environment variable override: PWP__BRAND__ICON_72x72='/path/to/image'
+  icon_72x72: '/logos/apple-icon-72x72.png'
+  # Environment variable override: PWP__BRAND__ICON_76x76='/path/to/image'
+  icon_76x76: '/logos/apple-icon-76x76.png'
+  # Environment variable override: PWP__BRAND__ICON_114x114='/path/to/image'
+  icon_114x114: '/logos/apple-icon-114x114.png'
+  # Environment variable override: PWP__BRAND__ICON_120x120='/path/to/image'
+  icon_120x120: '/logos/apple-icon-120x120.png'
+  # Environment variable override: PWP__BRAND__ICON_144x144='/path/to/image'
+  icon_144x144: '/logos/apple-icon-144x144.png'
+  # Environment variable override: PWP__BRAND__ICON_152x152='/path/to/image'
+  icon_152x152: '/logos/apple-icon-152x152.png'
+  # Environment variable override: PWP__BRAND__ICON_180x180='/path/to/image'
+  icon_180x180: '/logos/apple-icon-180x180.png'
+  # Environment variable override: PWP__BRAND__ICON_192x192='/path/to/image'
+  icon_192x192: '/logos/android-icon-192x192.png'
+  # Environment variable override: PWP__BRAND__ICON_32x32='/path/to/image'
+  icon_32x32: '/logos/favicon-32x32.png'
+  # Environment variable override: PWP__BRAND__ICON_96x96='/path/to/image'
+  icon_96x96: '/logos/favicon-96x96.png'
+  # Environment variable override: PWP__BRAND__ICON_16x16='/path/to/image'
+  icon_16x16: '/logos/favicon-16x16.png'
+  # Environment variable override: PWP__BRAND__ICON_144x144='/path/to/image'
+  ms_icon_144x144: '/logos/ms-icon-144x144.png'
+
+### Throttling
+#
+# Configure the application throttling limits.
+#
+# Throttling enforces a minimum time interval
+# between subsequent HTTP requests from a particular client, as
+# well as by defining a maximum number of allowed HTTP requests
+# per a given time period (per second or minute)
+#
+# See https://github.com/rack/rack-attack
+#
+throttling:
+  # ..maximum number of allowed HTTP requests per minute
+  #
+  # Default: 120
+  #
+  # Environment Variable Override: PWP__THROTTLING__MINUTE='60'
+  minute: 120
+
+  # ..maximum number of allowed HTTP requests per second
+  #
+  # Default: 60
+  #
+  # Environment Variable Override: PWP__THROTTLING__SECOND='20'
+  second: 60
+
+
+### Mail Server Configuration
+#
+# When logins are enabled, an SMTP server is required to send emails to users
+# for things such as forgot password, unlock account, confirm account etc.
+# If `enable_logins` is set to true above, the following _are required_ to be
+# filled out with valid values.
+#
+# These values are passed through to ActionMailer configuration.  The documentation
+# for ActionMailer is at:
+# https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration
+#
+# IMPORTANT: Also set host_domain and host_protocol above for email links to work correctly!
+#
+mail:
+#   # Email delivery errors will be shown in the application
+#   # Environment Variable Override: PWP__MAIL__RAISE_DELIVERY_ERRORS='false'
+  raise_delivery_errors: true
+#
+#   # Allows you to use a remote mail server. Just change it from its default "localhost" setting.
+#   # Environment Variable Override: PWP__MAIL__SMTP_ADDRESS='smtp.example.com'
+  smtp_address: smtp.office365.com
+#
+#   # If you need to specify a HELO domain, you can do it here.
+#   # Environment Variable Override: PWP__MAIL__SMTP_DOMAIN='xyz.dev'
+#   # smtp_domain: ''
+#
+#   # Port of the SMTP server
+#   # Environment Variable Override: PWP__MAIL__SMTP_PORT='587'
+  smtp_port: 587
+#
+#   # If your mail server requires authentication, you need to specify the
+#   # authentication type here. This is a string and one of :plain (will send
+#   # the password in the clear), :login (will send password Base64 encoded)
+#   # or :cram_md5 (combines a Challenge/Response mechanism to exchange
+#   # information and a cryptographic Message Digest 5 algorithm to hash
+#   # important information)
+#   #
+#   # Important: Comment this out if your server doesn't require authentication.
+#   #
+#   # Environment Variable Override: PWP__MAIL__SMTP_AUTHENTICATION='plain'
+  smtp_authentication: 'login'
+#
+#   # If your mail server requires authentication, set the username in this setting.
+#   # Environment Variable Override: PWP__MAIL__SMTP_USER_NAME='apikey'
+  smtp_user_name: ''
+#
+#   # If your mail server requires authentication, set the password in this setting.
+#   # Environment Variable Override: PWP__MAIL__SMTP_PASSWORD='something@&#$'
+  smtp_password: ''
+#
+#   # Use STARTTLS when connecting to your SMTP server and fail if unsupported.
+#   # Environment Variable Override: PWP__MAIL__SMTP_STARTTLS='true'
+  smtp_starttls: true
+#
+#   # Detects if STARTTLS is enabled in your SMTP server and starts to use it. Defaults to true.
+#   # Environment Variable Override: PWP__MAIL__SMTP_ENABLE_STARTTLS_AUTO='false'
+  smtp_enable_starttls_auto: true
+#
+#   # Number of seconds to wait while attempting to open a connection.
+#   # Environment Variable Override: PWP__MAIL__SMTP_OPEN_TIMEOUT='10'
+  smtp_open_timeout: 10
+#
+#   # Number of seconds to wait until timing-out a read(2) call.
+#   # Environment Variable Override: PWP__MAIL__SMTP_READ_TIMEOUT='10'
+  smtp_read_timeout: 10
+#
+#   # When using TLS, you can set how OpenSSL checks the certificate. This is
+#   # useful if you need to validate a self-signed and/or a wildcard certificate.
+#   # This can be one of the OpenSSL verify constants, :none or :peer
+#   # Environment Variable Override: PWP__MAIL__SMTP_OPENSSL_VERIFY_MODE='none'
+#   # smtp_openssl_verify_mode: 'peer'
+#
+#   # Configure the e-mail address which will be shown as 'From' in emails
+#   # See config/initializers/devise.rb where this is used
+#   # Environment Variable Override: PWP__MAIL__MAILER_SENDER='"Password Pusher" <pglombardo@pwpush.com>'
+  mailer_sender: '"Password Pusher" <email@email.com>'
+
+### Feedback Form
+# feedback:
+#   # The email that will receive the information filled out by users in the
+#   # Feedback form.
+#   #
+#   # Environment Variable Override: PWP__FEEDBACK__EMAIL='my@email.com'
+#   email: 'feedback@pwpush.com'
+
+### Docker Pre-compilation
+#
+# This is useful if you modified the assets (e.g. CSS, JS, images) to customize
+# the theme etc...  Assets are precompiled before serving.
+#
+# If you set a custom theme, you will need to precompile the assets on container boot.
+#
+# Pre-compilation isn't supported in this yaml file.  It is only supported
+# through the environment variable PWP_PRECOMPILE='true'.
+#
+# See the following for more information:
+# https://github.com/pglombardo/PasswordPusher/blob/master/Configuration.md#how-to-precompile-css-assets
+#
+# Environment Variable: PWP_PRECOMPILE='false'
+
+### Themes
+#
+# Password Pusher uses Bootswatch themes.  See https://bootswatch.com/
+#
+# The following are the available themes.  The default theme is 'default'.
+#
+#   'cerulean', 'cosmo', 'cyborg', 'darkly', 'flatly', 'journal', 'litera', 'lumen',
+#   'lux', 'materia', 'minty', 'morph', 'pulse', 'quartz', 'sandstone', 'simplex',
+#   'sketchy', 'slate', 'solar', 'spacelab', 'superhero', 'united', 'vapor', 'yeti', 'zephyr'
+#
+# To change the theme, set the `theme` value to the name of the theme you
+# want to use.
+#
+# Environment Variable Override: PWP__THEME='default'
+#
+# Important Note: This setting can only be controlled by environment variable. (PWP__THEME)
+#                 It cannot be set in this config file.
+# theme: 'default'
+
+### Site Default Locale
+#
+# The default language for the application.  This must be one of the
+# valid/supported language codes from the list above.
+#
+# Note: This locale _must_ be in the list of enabled_language_codes.
+#
+# Example: default_locale: :es
+#
+# Environment Variable Override: PWP__DEFAULT_LOCALE='es'
+default_locale: :de
+
+### Language & Internationalization
+#
+# List of enabled languages for the application.
+#
+# To remove the availability of languages from the application entirely,
+# comment out (or remove) the language code(s) from the `enabled_language_codes`
+# list below.
+#
+enabled_language_codes:
+  - ca # 'Català'
+  - cs # 'Čeština'
+  - da # 'Dansk'
+  - de # 'Deutsch'
+  - en # 'English'
+  - es # 'Español'
+  - eu # 'Euskara'
+  - fi # 'Suomi'
+  - fr # 'Français'
+  - hi # 'हिन्दी'
+  - hu # 'Magyar'
+  - id # 'Indonesian'
+  - is # 'Íslenska'
+  - it # 'Italiano'
+  - ja # '日本語'
+  - ko # '한국어'
+  - lv # 'Latviski'
+  - nl # 'Nederlands'
+  - 'no' # 'Norsk' # _no_ keyword in Ruby evaluates to false  #-(
+  - pl # 'Polski'
+  - pt-BR # 'Português'
+  - pt-PT # 'Português'
+  - ro # 'Română'
+  - ru # 'Русский'
+  - sr # 'Српски'
+  - sk # 'Slovenský'
+  - sv # 'Svenska'
+  - th # 'ไทย'
+  - uk # 'Українська'
+  - ur # 'اردو'
+  - zh-CN # '中文'
+
+### Language & Internationalization
+#
+# Map of language codes to language name.
+# Used internally for the language selector model.
+#
+# <language code>: '<language name>'
+language_codes:
+  ca: 'Català'
+  cs: 'Čeština'
+  da: 'Dansk'
+  de: 'Deutsch'
+  en: 'English'
+  es: 'Español'
+  eu: 'Euskara'
+  fi: 'Suomi'
+  fr: 'Français'
+  hi: 'हिन्दी'
+  hu: 'Magyar'
+  id: 'Indonesian'
+  is: 'Íslenska'
+  it: 'Italiano'
+  ja: '日本語'
+  ko: '한국어'
+  lv: 'Latviski'
+  nl: 'Nederlands'
+  'no': 'Norsk' # _no_ keyword in Ruby evaluates to false :-(
+  pl: 'Polski'
+  pt-BR: 'Português'
+  pt-PT: 'Português'
+  ro: 'Română'
+  ru: 'Русский'
+  sk: 'Slovenský'
+  sr: 'Српски'
+  sv: 'Svenska'
+  th: 'ไทย'
+  uk: 'Українська'
+  ur: 'اردو'
+  zh-CN: '中文'
+
+# Used internally for the language selector model.
+# This provides a conversion of language codes to
+# country codes show the correct flag icons.
+# See:
+# https://github.com/lipis/flag-icons
+# https://flagicons.lipis.dev
+country_codes:
+  ca: :es-ct
+  cs: :cz
+  da: :dk
+  de: :de
+  en: :us
+  es: :es
+  eu: :es-pv
+  fi: :fi
+  fr: :fr
+  hi: :in
+  hu: :hu
+  id: :id
+  is: :is
+  it: :it
+  ja: :jp
+  ko: :kr
+  lv: :lv
+  nl: :nl
+  'no': :no # _no_ keyword in Ruby evaluates to false :-(
+  pl: :pl
+  pt-BR: :br
+  pt-PT: :pt
+  ro: :ro
+  ru: :ru
+  sk: :sk
+  sr: :rs
+  sv: :se
+  th: :th
+  uk: :ua
+  ur: :pk
+  zh-CN: :cn
+
+# Configure the logging verbosity of the application.
+#
+# Valid values are: :debug, :info, :warn, :error, :fatal
+log_level: :warn
+
+# In containers, it is usually desired to log to stdout
+# instead of using log files (e.g. log/production.log).
+#
+log_to_stdout: false

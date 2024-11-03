@@ -1,4 +1,19 @@
 - name: Update and upgrade apt packages
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Update packages with apt
+    when: ansible_pkg_mgr == 'apt'
+    ansible.builtin.apt:
+      update_cache: true
+
+  - name: Upgrade packages with apt
+    when: ansible_pkg_mgr == 'apt'
+    ansible.builtin.apt:
+      upgrade: dist
+
+- name: Update and upgrade apt packages
   hosts: docker
   become: true
 
@@ -59,4 +74,8 @@
         groups: docker
         append: true
 
-    - name: Reboot 
+    - name: Reboot
+      ansible.builtin.reboot:
+        connect_timeout: 5
+        msg: "Rebooting to apply all updates"
+        in_minutes: 5
