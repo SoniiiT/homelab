@@ -113,3 +113,11 @@ resource "dns_a_record_set" "prometheus" {
     addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "influxdb" {
+    zone = "home.soniiit.net."
+    name = "influxdb"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+
