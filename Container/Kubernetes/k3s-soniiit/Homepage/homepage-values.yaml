@@ -12,9 +12,6 @@ config:
       - Confluence:
         - icon: https://soniiit.atlassian.net/wiki/s/1238699948/6452/c4fd8688f220479d537f6a0bca23e41d59d1be40/1/_/favicon-update.ico
           href: https://soniiit.atlassian.net/wiki/home
-      - AFFiNE:
-        - icon: https://affine.pro/favicon-96.png
-          href: https://app.affine.pro
       - Dockerhub:
         - icon: https://hub.docker.com/favicon.ico
           href: https://hub.docker.com/
@@ -61,18 +58,12 @@ config:
       - Docs:
         - icon: https://2.gravatar.com/userimage/251867332/7fdbed615fb74f9b2adbca311c305931?size=256
           href: https://docs.soniiit.net
-      - Fireshare:
-        - icon: https://v.fireshare.net/favicon.ico
-          href: https://fireshare.soniiit.net
       - Authentik:
         - icon: https://goauthentik.io/img/icon.png
           href: https://authentik.home.soniiit.net
       - Teleport:
         - icon: https://ugc.production.linktr.ee/wXEaEAdBSneQwAwBfO3n_zitU1eq5y26VYyyH?io=true&size=avatar-v3_0
           href: https://teleport.home.soniiit.net
-      - Kasm Workspaces:
-        - icon: https://kasmweb.com/assets/fav/favicon-32x32.png
-          href: https://kasm.home.soniiit.net
   services:
     - Networking:
       - FritzBox Main:
@@ -88,30 +79,6 @@ config:
           icon: avmfritzbox.png
           description: Fritz!Box Tony
           siteMonitor: http://192.168.178.2
-      - Traefik-MGM:
-          href: https://traefik-mgm.home.soniiit.net/dashboard/
-          icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
-          description: Traefik-MGM on Docker-SRV-MGM
-          siteMonitor: http://192.168.178.20:9090
-          widget:
-            type: traefik
-            url: https://traefik-mgm.home.soniiit.net
-      - Traefik-01:
-          href: https://traefik-01.home.soniiit.net/dashboard/
-          icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
-          description: Traefik-01 on Docker-SRV-MGM
-          siteMonitor: http://192.168.178.21:9090
-          widget:
-            type: traefik
-            url: https://traefik-01.home.soniiit.net
-      - Traefik-02:
-          href: https://traefik-02.home.soniiit.net/dashboard/
-          icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
-          description: Traefik-02 on Docker-SRV-02
-          siteMonitor: http://192.168.178.22:9090
-          widget:
-            type: traefik
-            url: https://traefik-02.home.soniiit.net
     
     - Infrastructure and Data:
       - Proxmox:
@@ -142,35 +109,15 @@ config:
               enablePools: false
     
     - Management:
-      - Portainer-MGM:
-          href: https://portainer.home.soniiit.net/#!/2/docker/dashboard
+      - Portainer:
+          href: https://portainer-docker.home.soniiit.net/
           icon: portainer.png
-          description: Portainer on Docker-SRV-MGM
+          description: Portainer on Docker-SRV-01
           siteMonitor: https://portainer.home.soniiit.net
           widget:
             type: portainer
             url: https:portainer.home.soniiit.net
-            env: 2
-            key: 
-      - Portainer-01:
-          href: https://portainer.home.soniiit.net/#!/4/docker/dashboard
-          icon: portainer.png
-          description: Portainer on Docker-SRV-MGM
-          siteMonitor: https://portainer.home.soniiit.net
-          widget:
-            type: portainer
-            url: https://portainer.home.soniiit.net
-            env: 4
-            key: 
-      - Portainer-02:
-          href: https://portainer.home.soniiit.net/#!/5/docker/dashboard
-          icon: portainer.png
-          description: Portainer on Docker-SRV-MGM
-          siteMonitor: https://portainer.home.soniiit.net
-          widget:
-            type: portainer
-            url: https://portainer.home.soniiit.net
-            env: 5
+            env: 1
             key: 
     
     - Monitoring:
@@ -186,30 +133,27 @@ config:
     
     - Kubernetes:
       - Ceph Dashboard:
-          href: https://192.168.178.23:8443
+          href: https://ceph.home.soniiit.net
           icon: https://cdn.icon-icons.com/icons2/2699/PNG/512/ceph_logo_icon_170406.png
           description: Ceph Dashboard on K3S-SONIIIT
-          siteMonitor: https://192.168.178.23:8443/
+          siteMonitor: https://ceph.home.soniiit.net
       - Portainer:
-          href: https://portainer.dev.soniiit.net
+          href: https://portainer.home.soniiit.net
           icon: portainer.png
-          siteMonitor: https://portainer.dev.soniiit.net
+          siteMonitor: https://portainer.home.soniiit.net
           widget:
             type: portainer
-            url: https://portainer.dev.soniiit.net
+            url: https://portainer.home.soniiit.net
             env: 1
             key: 
-      - Rancher:
-          href: https://rancher.dev.soniiit.net
-          icon: https://www.rancher.com/assets/img/favicon.png
-          siteMonitor: https://rancher.dev.soniiit.net
       - Traefik:
-          href: https://traefik.dev.soniiit.net/dashboard/
+          href: https://traefik.home.soniiit.net/dashboard/
           icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
-          siteMonitor: https://traefik.dev.soniiit.net
+          description: Traefik on K3s-SoniiiT
+          siteMonitor: https://traefik.home.soniiit.net
           widget:
             type: traefik
-            url: http://traefik.dev.soniiit.net
+            url: https://traefik.home.soniiit.net
     
     - Services:
       - Gameserver:
