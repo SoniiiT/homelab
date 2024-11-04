@@ -12,7 +12,7 @@ spec:
     port: 9999
   - name: gui
     port: 8086
---------
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
