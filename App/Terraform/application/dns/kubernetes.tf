@@ -86,12 +86,12 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
-# resource "dns_a_record_set" "homepage" {
-#     zone = "home.soniiit.net."
-#     name = "homepage"
-#     addresses = [ "192.168.178.71" ]
-#     ttl = 3600
-# }
+resource "dns_a_record_set" "homepage" {
+    zone = "home.soniiit.net."
+    name = "homepage"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
 
 resource "dns_a_record_set" "teleport" {
     zone = "home.soniiit.net."

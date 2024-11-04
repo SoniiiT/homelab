@@ -1,19 +1,16 @@
-# For configuration options and examples, please see:
-# https://gethomepage.dev/latest/configs/service-widgets
-
-- resources:
-    cpu: false
-    memory: false
-
-- datetime:
-    text_size: xl
-    format:
-      timeStyle: short
-      hourCycle: h23
-
-- search:
-    provider: google
-    target: _blank
-
-- logo:
-    icon: https://2.gravatar.com/userimage/251867332/d1c6638aadab2c616ffd2581061f0711?size=600
+    - resources:
+        cpu: false
+        memory: false
+    
+    - datetime:
+        text_size: xl
+        format:
+          timeStyle: short
+          hourCycle: h23
+    
+    - search:
+        provider: google
+        target: _blank
+    
+    - logo:
+        icon: https://2.gravatar.com/userimage/251867332/d1c6638aadab2c616ffd2581061f0711?size=600

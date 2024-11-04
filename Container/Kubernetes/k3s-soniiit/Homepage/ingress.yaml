@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`homepage-kube.home.soniiit.net`)
+    - match: Host(`homepage.home.soniiit.net`)
       kind: Rule
       services:
         - name: homepage
@@ -28,5 +28,5 @@ spec:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "homepage-kube.home.soniiit.net"
+    - "homepage.home.soniiit.net"
 
