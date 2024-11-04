@@ -27,3 +27,4 @@ spec:
             - --token
             - secret-token
             - --force
+            - --skip-verify
