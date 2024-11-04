@@ -1,13 +1,5 @@
 config:
   bookmarks:
-    - IOT-Devices:
-      - Epson Drucker (WZ):
-        - icon: https://cdn-icons-png.flaticon.com/512/882/882706.png
-          href: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
-      - Brother Drucker (Iris):
-        - icon: https://logos-world.net/wp-content/uploads/2023/01/Brother-Logo.png
-          href: https://drucker-iris.home.soniiit.net/home/status.html
-
     - Cloud Services:
       - Confluence:
         - icon: https://soniiit.atlassian.net/wiki/s/1238699948/6452/c4fd8688f220479d537f6a0bca23e41d59d1be40/1/_/favicon-update.ico
@@ -62,7 +54,7 @@ config:
         - icon: https://goauthentik.io/img/icon.png
           href: https://authentik.home.soniiit.net
       - Teleport:
-        - icon: https://ugc.production.linktr.ee/wXEaEAdBSneQwAwBfO3n_zitU1eq5y26VYyyH?io=true&size=avatar-v3_0
+        - icon: https://goteleport.com/favicon.ico
           href: https://teleport.home.soniiit.net
   services:
     - Networking:
@@ -97,16 +89,6 @@ config:
           icon: https://cdn.icon-icons.com/icons2/2108/PNG/512/nextcloud_icon_130873.png
           description: Nextcloud on Docker-SRV-02
           siteMonitor: https://nextcloud.soniiit.net
-      - TrueNAS:
-          href: https://truenas.home.soniiit.net
-          icon: truenas.png
-          description: NAS-TNAS-01 on PVE-SRV-01
-          siteMonitor: https://truenas.home.soniiit.net
-          widget:
-              type: truenas
-              url: https://truenas.home.soniiit.net
-              key: 
-              enablePools: false
     
     - Management:
       - Portainer:
@@ -130,22 +112,41 @@ config:
             type: uptimekuma
             url: https://uptime.home.soniiit.net
             slug: homepage
+      - Grafana:
+          href: https://grafana.home.soniiit.net
+          icon: grafana.png
+          description: Grafana on K3s-SoniiiT
+          siteMonitor: https://grafana.home.soniiit.net
+          widget:
+            type: grafana
+            url: https://grafana.home.soniiit.net
+            username:
+            password:
+      - Prometheus:
+          href: https://prometheus.home.soniiit.net
+          icon: prometheus.png
+          description: Prometheus on K3s-SoniiiT
+          siteMonitor: https://prometheus.home.soniiit.net
+          widget:
+            type: prometheus
+            url: https://prometheus.home.soniiit.net
+      - InfluxDB:
+          href: https://influxdb.home.soniiit.net
+          icon: influxdb.png
+          description: InfluxDB on K3s-SoniiiT
+          siteMonitor: https://influxdb.home.soniiit.net
     
     - Kubernetes:
       - Ceph Dashboard:
           href: https://ceph.home.soniiit.net
           icon: https://cdn.icon-icons.com/icons2/2699/PNG/512/ceph_logo_icon_170406.png
-          description: Ceph Dashboard on K3S-SONIIIT
+          description: Ceph Dashboard on K3s-SoniiiT
           siteMonitor: https://ceph.home.soniiit.net
       - Portainer:
           href: https://portainer.home.soniiit.net
           icon: portainer.png
+          description: Portainer on K3s-SoniiiT
           siteMonitor: https://portainer.home.soniiit.net
-          widget:
-            type: portainer
-            url: https://portainer.home.soniiit.net
-            env: 1
-            key: 
       - Traefik:
           href: https://traefik.home.soniiit.net/dashboard/
           icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
@@ -154,6 +155,13 @@ config:
           widget:
             type: traefik
             url: https://traefik.home.soniiit.net
+            username:
+            password:
+      - ArgoCD:
+          href: https://argocd.home.soniiit.net
+          icon: argocd.png
+          description: ArgoCD on K3s-SoniiiT
+          siteMonitor: https://argocd.home.soniiit.net
     
     - Services:
       - Gameserver:
@@ -175,8 +183,15 @@ config:
           widget:
             type: homeassistant
             url: https://homeassistant.soniiit.net
-            key: 
-            custom:
+            key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhNTRhODhmMmU5OWY0MzlkYmE0ODY5YmIwMzQ5YmVjOCIsImlhdCI6MTczMDcyOTE3MywiZXhwIjoyMDQ2MDg5MTczfQ._FkkNW_0LvWiPj7D7qPT9oUCoiZghEAA_N3TLTNWviw
+      - Epson Drucker (WZ):
+          href: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
+          icon: https://cdn-icons-png.flaticon.com/512/882/882706.png
+          siteMonitor: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
+      - Brother Drucker (Iris):
+          href: http://drucker-iris.home.soniiit.net/home/status.html
+          icon: https://logos-world.net/wp-content/uploads/2023/01/Brother-Logo.png
+          siteMonitor: http://drucker-iris.home.soniiit.net/home/status.html
 
   widgets:
     - resources:
