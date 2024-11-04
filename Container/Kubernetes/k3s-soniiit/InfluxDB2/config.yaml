@@ -23,7 +23,7 @@ spec:
             - --password
             - changeme
             - --username
-            - soniiit
+            - admin
             - --token
             - secret-token
             - --force

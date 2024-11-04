@@ -29,3 +29,5 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - "prometheus.home.soniiit.net"
+    - "influxdb.home.soniiit.net"
+    - "grafana.home.soniiit.net"
