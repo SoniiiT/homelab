@@ -55,7 +55,7 @@ resource "dns_a_record_set" "twingate_connector_01" {
 resource "dns_a_record_set" "gameserver" {
     zone = "home.soniiit.net."
     name = "gameserver"
-    addresses = [ "192.168.178.30" ]
+    addresses = [ "192.168.178.44" ]
     ttl = 3600
 }
 
@@ -70,6 +70,6 @@ resource "dns_a_record_set" "gme_node1" {
 resource "dns_a_record_set" "github_agent_01" {
     zone = "home.soniiit.net."
     name = "github-agent-01"
-    addresses = [ "192.168.178.34" ]
+    addresses = [ "192.168.178.43" ]
     ttl = 3600
 }

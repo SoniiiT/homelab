@@ -62,7 +62,7 @@ resource "proxmox_vm_qemu" "docker_srv_mgm" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.20/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.41/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"
@@ -220,7 +220,7 @@ resource "proxmox_vm_qemu" "docker_srv_02" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.22/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.42/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.3"

@@ -62,7 +62,7 @@ resource "proxmox_vm_qemu" "gme_srv_panel" {
     os_type = "cloud-init"
 
     # (Optional) IP Address and Gateway
-    ipconfig0 = "ip=192.168.178.30/24,gw=192.168.178.1,ip6=dhcp"
+    ipconfig0 = "ip=192.168.178.44/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
     nameserver = "192.168.178.1"

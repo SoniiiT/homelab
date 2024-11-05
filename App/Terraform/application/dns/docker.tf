@@ -2,7 +2,7 @@
 resource "dns_a_record_set" "docker_srv_mgr" {
     zone = "home.soniiit.net."
     name = "docker-srv-mgr"
-    addresses = [ "192.168.178.20" ]
+    addresses = [ "192.168.178.41" ]
     ttl = 3600
 }
 
@@ -16,7 +16,7 @@ resource "dns_a_record_set" "docker_srv_01" {
 resource "dns_a_record_set" "docker_srv_02" {
     zone = "home.soniiit.net."
     name = "docker-srv-02"
-    addresses = [ "192.168.178.22" ]
+    addresses = [ "192.168.178.42" ]
     ttl = 3600
 }
 
