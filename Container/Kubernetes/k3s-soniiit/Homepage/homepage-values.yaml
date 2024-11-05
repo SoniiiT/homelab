@@ -1,44 +1,254 @@
 config:
   bookmarks:
-    - Developer:
-        - Github:
-            - abbr: GH
-              href: https://github.com/
+    - Cloud Services:
+      - Confluence:
+        - icon: https://soniiit.atlassian.net/wiki/s/1238699948/6452/c4fd8688f220479d537f6a0bca23e41d59d1be40/1/_/favicon-update.ico
+          href: https://soniiit.atlassian.net/wiki/home
+      - Dockerhub:
+        - icon: https://hub.docker.com/favicon.ico
+          href: https://hub.docker.com/
+      - Artifacthub:
+        - icon: https://artifacthub.io/static/media/logo192_v2.png
+          href: https://artifacthub.io/
+      - Cloudflare:
+        - icon: cloudflare.png
+          href: https://dash.cloudflare.com
+      - CrowdSec:
+        - icon: https://avatars.githubusercontent.com/u/63284097?s=280&v=4
+          href: https://app.crowdsec.net/
+      - Linode:
+        - icon: https://cloud.linode.com/favicon.ico
+          href: https://cloud.linode.com/
+      - Twingate:
+        - icon: https://media.licdn.com/dms/image/C4D0BAQHDl7hoI11gZg/company-logo_200_200/0/1649876306356/twingate_logo?e=2147483647&v=beta&t=zurgqAiwMiU0RktNbdCHD3T1qJ4hka7aLYw2mkGEtdU
+          href: https://soniiit.twingate.com
+      - Trade Republic:
+        - icon: https://companieslogo.com/img/orig/traderepublic.D-de64dfeb.png?t=1700800010
+          href: https://app.traderepublic.com/
+      - Cloud HashiCorp:
+        - icon: https://portal.cloud.hashicorp.com/favicon.svg
+          href: https://portal.cloud.hashicorp.com/
+      - MS365 Admin:
+        - icon: https://res.cdn.office.net/admincenter/admin-content/images/favicon_fluent.ico
+          href: https://admin.microsoft.com/Adminportal/Home#/homepage
+      - Ubiquiti:
+        - icon: https://account.ui.com/static/favicon.ico
+          href: https://account.ui.com/
+
+    - Local Services:
+      - Dockge:
+        - icon: https://dockge.kuma.pet/icon.svg
+          href: https://dockge.home.soniiit.net
+      - Kestra:
+        - icon: https://kestra-io.gallerycdn.vsassets.io/extensions/kestra-io/kestra/0.0.1/1692285562923/Microsoft.VisualStudio.Services.Icons.Default
+          href: https://kestra.home.soniiit.net
+
+    - Local Cloud Services:
+      - SoniiiT:
+        - icon: https://2.gravatar.com/userimage/251867332/7fdbed615fb74f9b2adbca311c305931?size=256
+          href: https://soniiit.net
+      - Docs:
+        - icon: https://2.gravatar.com/userimage/251867332/7fdbed615fb74f9b2adbca311c305931?size=256
+          href: https://docs.soniiit.net
+      - Authentik:
+        - icon: https://goauthentik.io/img/icon.png
+          href: https://authentik.home.soniiit.net
+      - Teleport:
+        - icon: https://goteleport.com/favicon.ico
+          href: https://teleport.home.soniiit.net
   services:
-    - My First Group:
-        - My First Service:
-            href: http://localhost/
-            description: Homepage is awesome
+    - Networking:
+      - FritzBox Main:
+          href: http://192.168.178.1
+          icon: avmfritzbox.png
+          description: Fritz!Box Main
+          siteMonitor: http://192.168.178.1
+          widget:
+            type: fritzbox
+            url: http://192.168.178.1
+      - FritzBox Tony:
+          href: http://192.168.178.2
+          icon: avmfritzbox.png
+          description: Fritz!Box Tony
+          siteMonitor: http://192.168.178.2
+    
+    - Infrastructure and Data:
+      - Proxmox:
+          href: https://proxmox.home.soniiit.net:8006
+          icon: proxmox.png
+          description: PVE-SRV-01
+          siteMonitor: https://proxmox.home.soniiit.net:8006
+          widget:
+            type: proxmox
+            url: https://proxmox.home.soniiit.net:8006
+            username: 
+            password: 
+            node: pve-srv-01
+      - Nextcloud:
+          href: https://nextcloud.soniiit.net
+          icon: https://cdn.icon-icons.com/icons2/2108/PNG/512/nextcloud_icon_130873.png
+          description: Nextcloud on Docker-SRV-02
+          siteMonitor: https://nextcloud.soniiit.net
+    
+    - Management:
+      - Portainer:
+          href: https://portainer-docker.home.soniiit.net/
+          icon: portainer.png
+          description: Portainer on Docker-SRV-01
+          siteMonitor: https://portainer.home.soniiit.net
+          widget:
+            type: portainer
+            url: https:portainer.home.soniiit.net
+            env: 1
+            key: 
+    
+    - Monitoring:
+      - UptimeKuma:
+          href: https://uptime.home.soniiit.net
+          description: Uptimekuma on Docker-SRV-MGM
+          siteMonitor: https://uptime.home.soniiit.net
+          icon: uptime-kuma.png
+          widget:
+            type: uptimekuma
+            url: https://uptime.home.soniiit.net
+            slug: homepage
+      - Grafana:
+          href: https://grafana.home.soniiit.net
+          icon: grafana.png
+          description: Grafana on K3s-SoniiiT
+          siteMonitor: https://grafana.home.soniiit.net
+          widget:
+            type: grafana
+            url: https://grafana.home.soniiit.net
+            username:
+            password:
+      - Prometheus:
+          href: https://prometheus.home.soniiit.net
+          icon: prometheus.png
+          description: Prometheus on K3s-SoniiiT
+          siteMonitor: https://prometheus.home.soniiit.net
+          widget:
+            type: prometheus
+            url: https://prometheus.home.soniiit.net
+      - InfluxDB:
+          href: https://influxdb.home.soniiit.net
+          icon: influxdb.png
+          description: InfluxDB on K3s-SoniiiT
+          siteMonitor: https://influxdb.home.soniiit.net
+    
+    - Kubernetes:
+      - Ceph Dashboard:
+          href: https://ceph.home.soniiit.net
+          icon: https://cdn.icon-icons.com/icons2/2699/PNG/512/ceph_logo_icon_170406.png
+          description: Ceph Dashboard on K3s-SoniiiT
+          siteMonitor: https://ceph.home.soniiit.net
+      - Portainer:
+          href: https://portainer.home.soniiit.net
+          icon: portainer.png
+          description: Portainer on K3s-SoniiiT
+          siteMonitor: https://portainer.home.soniiit.net
+      - Traefik:
+          href: https://traefik.home.soniiit.net/dashboard/
+          icon: https://icon.icepanel.io/Technology/svg/Traefik-Proxy.svg
+          description: Traefik on K3s-SoniiiT
+          siteMonitor: https://traefik.home.soniiit.net
+          widget:
+            type: traefik
+            url: https://traefik.home.soniiit.net
+            username:
+            password:
+      - ArgoCD:
+          href: https://argocd.home.soniiit.net
+          icon: argocd.png
+          description: ArgoCD on K3s-SoniiiT
+          siteMonitor: https://argocd.home.soniiit.net
+    
+    - Services:
+      - Gameserver:
+          href: http://192.168.178.30
+          icon: https://www.git.je/Alex/Pterodactyl-Panel/raw/commit/d2c770d21823c0f71ac14f30e9edd86eb5a15d16/public/favicons/android-icon-192x192.png
+          description: Gameserver on APP-SRV-01
+          siteMonitor: http://192.168.178.30
+          widget:
+            type: pterodactyl
+            url: http://192.168.178.30
+            key: 
+    
+    - IoT and Smarthome:
+      - Home Assistant:
+          href: https://homeassistant.soniiit.net
+          icon: home-assistant.png
+          description: Homeassistant on Docker-SRV-01
+          siteMonitor: https://homeassistant.soniiit.net
+          widget:
+            type: homeassistant
+            url: https://homeassistant.soniiit.net
+            key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhNTRhODhmMmU5OWY0MzlkYmE0ODY5YmIwMzQ5YmVjOCIsImlhdCI6MTczMDcyOTE3MywiZXhwIjoyMDQ2MDg5MTczfQ._FkkNW_0LvWiPj7D7qPT9oUCoiZghEAA_N3TLTNWviw
+      - Epson Drucker (WZ):
+          href: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
+          icon: https://cdn-icons-png.flaticon.com/512/882/882706.png
+          siteMonitor: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
+      - Brother Drucker (Iris):
+          href: http://drucker-iris.home.soniiit.net/home/status.html
+          icon: https://logos-world.net/wp-content/uploads/2023/01/Brother-Logo.png
+          siteMonitor: http://drucker-iris.home.soniiit.net/home/status.html
 
-    - My Second Group:
-        - My Second Service:
-            href: http://localhost/
-            description: Homepage is the best
-
-    - My Third Group:
-        - My Third Service:
-            href: http://localhost/
-            description: Homepage is 😎
   widgets:
-    # show the kubernetes widget, with the cluster summary and individual nodes
-    - kubernetes:
-        cluster:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-          label: "cluster"
-        nodes:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
+    - resources:
+        cpu: false
+        memory: false
+    
+    - datetime:
+        text_size: xl
+        format:
+          timeStyle: short
+          hourCycle: h23
+    
     - search:
-        provider: duckduckgo
+        provider: google
         target: _blank
+    
+    - logo:
+        icon: https://2.gravatar.com/userimage/251867332/d1c6638aadab2c616ffd2581061f0711?size=600
   kubernetes:
     mode: cluster
   settings:
+    title: My Awesome Homepage
+    headerStyle: boxed
+    
+    background:
+      image: https://4kwallpapers.com/images/walls/thumbs_3t/11757.png
+      blur: md
+      brightness: 50
+      opacity: 70
+    
+    cardBlur: sm
+    
+    providers:
+      openweathermap: openweathermapapikey
+      weatherapi: weatherapiapikey
+    
+    quicklaunch:
+        searchDescriptions: true
+        hideInternetSearch: true
+        hideVisitURL: true
+    
+    layout:
+      Networking:
+        icon: mdi-network-#FFFFFF
+      Infrastructure and Data:
+        icon: mdi-server-#FFFFFF
+      Management:
+        icon: mdi-auto-fix-#FFFFFF
+      Monitoring:
+        icon: mdi-list-status-#FFFFFF
+      Services:
+        icon: mdi-cog-#FFFFFF
+      IoT and Smarthome:
+        icon: mdi-home-#FFFFFF
+      Kubernetes:
+        icon: mdi-kubernetes-#FFFFFF
+
 
 # The service account is necessary to allow discovery of other services
 serviceAccount:

@@ -86,12 +86,12 @@ resource "dns_a_record_set" "argocd" {
     ttl = 3600
 }
 
-# resource "dns_a_record_set" "homepage" {
-#     zone = "home.soniiit.net."
-#     name = "homepage"
-#     addresses = [ "192.168.178.71" ]
-#     ttl = 3600
-# }
+resource "dns_a_record_set" "homepage" {
+    zone = "home.soniiit.net."
+    name = "homepage"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
 
 resource "dns_a_record_set" "teleport" {
     zone = "home.soniiit.net."
@@ -106,3 +106,25 @@ resource "dns_a_record_set" "teleport_wildcard" {
     addresses = [ "192.168.178.71" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "prometheus" {
+    zone = "home.soniiit.net."
+    name = "prometheus"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "influxdb" {
+    zone = "home.soniiit.net."
+    name = "influxdb"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "grafana" {
+    zone = "home.soniiit.net."
+    name = "grafana"
+    addresses = [ "192.168.178.71" ]
+    ttl = 3600
+}
+

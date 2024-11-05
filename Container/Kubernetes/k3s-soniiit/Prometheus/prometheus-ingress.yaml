@@ -1,19 +1,19 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: homepage
-  namespace: homepage
+  name: prometheus
+  namespace: monitoring
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`homepage.home.soniiit.net`)
+    - match: Host(`prometheus.home.soniiit.net`)
       kind: Rule
       services:
-        - name: homepage
-          port: 3000
+        - name: prometheus-service
+          port: 8080
   tls:
     secretName: home-soniiit-net-selfsigned-tls
 ---
@@ -21,12 +21,13 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: home-soniiit-net-selfsigned
-  namespace: homepage
+  namespace: monitoring
 spec:
   secretName: home-soniiit-net-selfsigned-tls
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "homepage.home.soniiit.net"
-
+    - "prometheus.home.soniiit.net"
+    - "influxdb.home.soniiit.net"
+    - "grafana.home.soniiit.net"
