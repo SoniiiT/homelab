@@ -32,21 +32,21 @@ resource "dns_a_record_set" "k3s_soniiit_server03" {
 resource "dns_a_record_set" "k3s_soniiit_agent01" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-agent01"
-    addresses = [ "192.168.178.14" ]
+    addresses = [ "192.168.178.20" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "k3s_soniiit_agent02" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-agent02"
-    addresses = [ "192.168.178.15" ]
+    addresses = [ "192.168.178.21" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "k3s_soniiit_agent03" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-agent03"
-    addresses = [ "192.168.178.16" ]
+    addresses = [ "192.168.178.22" ]
     ttl = 3600
 }
 
@@ -54,77 +54,70 @@ resource "dns_a_record_set" "k3s_soniiit_agent03" {
 resource "dns_a_record_set" "traefik" {
     zone = "home.soniiit.net."
     name = "traefik"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "nginx" {
     zone = "home.soniiit.net."
     name = "nginx"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "ceph" {
     zone = "home.soniiit.net."
     name = "ceph"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "argocd" {
     zone = "home.soniiit.net."
     name = "argocd"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "homepage" {
     zone = "home.soniiit.net."
     name = "homepage"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "teleport" {
     zone = "home.soniiit.net."
     name = "teleport"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "teleport_wildcard" {
     zone = "home.soniiit.net."
     name = "*.teleport"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "prometheus" {
     zone = "home.soniiit.net."
     name = "prometheus"
-    addresses = [ "192.168.178.71" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "influxdb" {
-    zone = "home.soniiit.net."
-    name = "influxdb"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "grafana" {
     zone = "home.soniiit.net."
     name = "grafana"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
