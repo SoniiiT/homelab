@@ -128,13 +128,6 @@ resource "dns_a_record_set" "alertmanager" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "prometheus" {
-    zone = "home.soniiit.net."
-    name = "prometheus"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "authentik" {
     zone = "home.soniiit.net."
     name = "authentik"
