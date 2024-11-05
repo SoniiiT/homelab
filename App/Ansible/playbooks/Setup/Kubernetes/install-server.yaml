@@ -13,47 +13,6 @@
       ansible.builtin.apt:
         upgrade: dist
 
-- name: Install Docker
-  hosts: server
-  become: true
-
-  tasks:
-    - name: Add Docker GPG apt Key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-      when: inventory_hostname != "k3s-soniiit-server01"
-
-    - name: Add Docker Repository
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu noble stable
-        state: present
-      when: inventory_hostname != "k3s-soniiit-server01"
-
-    - name: Update apt and install docker-ce
-      apt:
-        pkg:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-          - docker-buildx-plugin
-          - docker-compose-plugin
-        state: latest
-        update_cache: true
-      when: inventory_hostname != "k3s-soniiit-server01"
-
-    - name: Add User to Docker Group
-      user:
-        name: "{{ ansible_user }}"
-        groups: docker
-        append: true
-      when: inventory_hostname != "k3s-soniiit-server01"
-
-    - name: Reboot machine
-      ansible.builtin.reboot:
-        msg: "Rebooting machine in 5 seconds"
-      when: inventory_hostname != "k3s-soniiit-server01"
-
 - name: Install Kubernetes Server
   hosts: server
   become: true
@@ -66,5 +25,5 @@
 
     - name: Install K3s on K3s other Server
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --disable=servicelb --disable=traefik --disable=local-storage --docker
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --disable=servicelb --disable=traefik --disable=local-storage --kube-controller-manager-arg bind-address=0.0.0.0 --kube-proxy-arg metrics-bind-address=0.0.0.0 --kube-scheduler-arg bind-address=0.0.0.0 --etcd-expose-metrics true --kubelet-arg containerd=/run/k3s/containerd/containerd.sock
       when: inventory_hostname != "k3s-soniiit-server01" and inventory_hostname in groups['server']

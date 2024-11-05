@@ -13,42 +13,6 @@
       ansible.builtin.apt:
         upgrade: dist
 
-- name: Install Docker
-  hosts: k3s_cluster
-  become: true
-
-  tasks:
-    - name: Add Docker GPG apt Key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-
-    - name: Add Docker Repository
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu noble stable
-        state: present
-
-    - name: Update apt and install docker-ce
-      apt:
-        pkg:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
-          - docker-buildx-plugin
-          - docker-compose-plugin
-        state: latest
-        update_cache: true
-
-    - name: Add User to Docker Group
-      user:
-        name: "{{ ansible_user }}"
-        groups: docker
-        append: true
-
-    - name: Reboot machine
-      ansible.builtin.reboot:
-        msg: "Rebooting machine in 5 seconds"
-
 - name: Install Kubernetes Server
   hosts: k3s_cluster
   become: true
@@ -56,7 +20,7 @@
   tasks:
     - name: Install K3s on k3s-soniiit-server01
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --disable=servicelb --disable=traefik --disable=local-storage --tls-san={{ kubernetes_vip }} --docker --cluster-init
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --disable=servicelb --disable=traefik --disable=local-storage --tls-san={{ kubernetes_vip }} --kube-controller-manager-arg bind-address=0.0.0.0 --kube-proxy-arg metrics-bind-address=0.0.0.0 --kube-scheduler-arg bind-address=0.0.0.0 --etcd-expose-metrics true --kubelet-arg containerd=/run/k3s/containerd/containerd.sock --cluster-init
       when: inventory_hostname == "k3s-soniiit-server01"
 
     - name: Create K3s Manifest Directory
