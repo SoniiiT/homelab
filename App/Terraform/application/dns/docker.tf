@@ -24,27 +24,20 @@ resource "dns_a_record_set" "docker_srv_02" {
 resource "dns_a_record_set" "portainer_docker" {
     zone = "home.soniiit.net."
     name = "portainer-docker"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "dockge" {
     zone = "home.soniiit.net."
     name = "dockge"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
 resource "dns_a_record_set" "kestra" {
     zone = "home.soniiit.net."
     name = "kestra"
-    addresses = [ "192.168.178.71" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "pwpush" {
-    zone = "home.soniiit.net."
-    name = "pwpush"
-    addresses = [ "192.168.178.71" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }

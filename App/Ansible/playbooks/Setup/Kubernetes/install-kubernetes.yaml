@@ -20,7 +20,7 @@
   tasks:
     - name: Install K3s on k3s-soniiit-server01
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --disable=servicelb --disable=traefik --disable=local-storage --tls-san={{ kubernetes_vip }} --kube-controller-manager-arg bind-address=0.0.0.0 --kube-proxy-arg metrics-bind-address=0.0.0.0 --kube-scheduler-arg bind-address=0.0.0.0 --etcd-expose-metrics true --kubelet-arg containerd=/run/k3s/containerd/containerd.sock --cluster-init
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --disable=servicelb --disable=traefik --disable=local-storage --tls-san={{ kubernetes_vip }} --cluster-init --kube-controller-manager-arg bind-address=0.0.0.0 --kube-proxy-arg metrics-bind-address=0.0.0.0 --kube-scheduler-arg bind-address=0.0.0.0 --etcd-expose-metrics true --kubelet-arg containerd=/run/k3s/containerd/containerd.sock
       when: inventory_hostname == "k3s-soniiit-server01"
 
     - name: Create K3s Manifest Directory
