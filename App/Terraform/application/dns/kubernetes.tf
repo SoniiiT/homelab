@@ -121,3 +121,23 @@ resource "dns_a_record_set" "grafana" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "alertmanager" {
+    zone = "home.soniiit.net."
+    name = "alertmanager"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "prometheus" {
+    zone = "home.soniiit.net."
+    name = "prometheus"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "authentik" {
+    zone = "home.soniiit.net."
+    name = "authentik"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
