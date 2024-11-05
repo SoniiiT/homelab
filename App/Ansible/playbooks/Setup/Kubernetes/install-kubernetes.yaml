@@ -39,7 +39,7 @@
           export VIP="{{ kubernetes_vip }}"
           export INTERFACE="{{ kubernetes_interface }}"
           KVVERSION=$(curl -sL https://api.github.com/repos/kube-vip/kube-vip/releases | jq -r ".[0].name")
-          alias kube-vip="docker run --network host --rm ghcr.io/kube-vip/kube-vip:$KVVERSION"
+          alias kube-vip="ctr image pull ghcr.io/kube-vip/kube-vip:$KVVERSION; ctr run --rm --net-host ghcr.io/kube-vip/kube-vip:$KVVERSION vip /kube-vip"
           kube-vip manifest daemonset --interface $INTERFACE --address $VIP --inCluster --taint --controlplane --services --arp --leaderElection > /var/lib/rancher/k3s/server/manifests/kube-vip.yaml
       when: inventory_hostname == "k3s-soniiit-server01"
 
@@ -57,12 +57,12 @@
 
     - name: Install K3s on K3s other Server
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --disable=servicelb --disable=traefik --disable=local-storage --docker
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ hostvars['k3s-soniiit-server01']['ansible_host'] }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --disable=servicelb --disable=traefik --disable=local-storage --kube-controller-manager-arg bind-address=0.0.0.0 --kube-proxy-arg metrics-bind-address=0.0.0.0 --kube-scheduler-arg bind-address=0.0.0.0 --etcd-expose-metrics true --kubelet-arg containerd=/run/k3s/containerd/containerd.sock
       when: inventory_hostname != "k3s-soniiit-server01" and inventory_hostname in groups['server']
 
     - name: Install K3s on Agents
       ansible.builtin.shell:
-        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ kubernetes_vip }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }} --docker
+        cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="agent" INSTALL_K3S_CHANNEL=latest sh -s - --server=https://{{ kubernetes_vip }}:6443 --token={{ hostvars['k3s-soniiit-server01']['k3s_token'].stdout }}
       when: inventory_hostname in groups['agent']
 
     - name: Copy Kubeconfig to home directory
