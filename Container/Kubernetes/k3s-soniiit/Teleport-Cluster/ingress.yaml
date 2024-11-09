@@ -117,5 +117,5 @@ spec:
         backend:
           service:
             name: teleport-cluster
-            port: 
+            port:
               number: 443

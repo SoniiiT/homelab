@@ -10,10 +10,10 @@ authentik:
 server:
     ingress:
         # Specify kubernetes ingress controller class name
-        ingressClassName: traefik
-        enabled: true
-        hosts:
-            - authentik.home.soniiit.net
+        # ingressClassName: traefik
+        enabled: false
+        # hosts:
+        #     - authentik.home.soniiit.net
 
 postgresql:
     enabled: true

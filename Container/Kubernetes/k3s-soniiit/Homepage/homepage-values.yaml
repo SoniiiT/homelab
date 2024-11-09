@@ -130,12 +130,7 @@ config:
           widget:
             type: prometheus
             url: https://prometheus.home.soniiit.net
-      - InfluxDB:
-          href: https://influxdb.home.soniiit.net
-          icon: influxdb.png
-          description: InfluxDB on K3s-SoniiiT
-          siteMonitor: https://influxdb.home.soniiit.net
-    
+
     - Kubernetes:
       - Ceph Dashboard:
           href: https://ceph.home.soniiit.net
@@ -165,13 +160,13 @@ config:
     
     - Services:
       - Gameserver:
-          href: http://192.168.178.30
+          href: http://192.168.178.44
           icon: https://www.git.je/Alex/Pterodactyl-Panel/raw/commit/d2c770d21823c0f71ac14f30e9edd86eb5a15d16/public/favicons/android-icon-192x192.png
           description: Gameserver on APP-SRV-01
-          siteMonitor: http://192.168.178.30
+          siteMonitor: http://192.168.178.44
           widget:
             type: pterodactyl
-            url: http://192.168.178.30
+            url: http://192.168.178.44
             key: 
     
     - IoT and Smarthome:
@@ -185,13 +180,13 @@ config:
             url: https://homeassistant.soniiit.net
             key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhNTRhODhmMmU5OWY0MzlkYmE0ODY5YmIwMzQ5YmVjOCIsImlhdCI6MTczMDcyOTE3MywiZXhwIjoyMDQ2MDg5MTczfQ._FkkNW_0LvWiPj7D7qPT9oUCoiZghEAA_N3TLTNWviw
       - Epson Drucker (WZ):
-          href: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
+          href: http://192.168.178.201/PRESENTATION/HTML/TOP/INDEX.HTML
           icon: https://cdn-icons-png.flaticon.com/512/882/882706.png
-          siteMonitor: http://drucker-wz.home.soniiit.net/PRESENTATION/HTML/TOP/INDEX.HTML
+          siteMonitor: http://192.168.178.201/PRESENTATION/HTML/TOP/INDEX.HTML
       - Brother Drucker (Iris):
-          href: http://drucker-iris.home.soniiit.net/home/status.html
+          href: http://192.168.178.202/home/status.html
           icon: https://logos-world.net/wp-content/uploads/2023/01/Brother-Logo.png
-          siteMonitor: http://drucker-iris.home.soniiit.net/home/status.html
+          siteMonitor: http://192.168.178.202/home/status.html
 
   widgets:
     - resources:
