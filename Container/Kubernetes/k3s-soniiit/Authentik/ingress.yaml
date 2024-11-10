@@ -9,23 +9,23 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`authentik.home.soniiit.net`)
+    - match: Host(`authentik.soniiit.net`)
       kind: Rule
       services:
         - name: authentik-server
           port: 443
   tls:
-    secretName: home-soniiit-net-selfsigned-tls
+    secretName: soniiit-net-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: home-soniiit-net-selfsigned
+  name: soniiit-net-production
   namespace: authentik
 spec:
-  secretName: home-soniiit-net-selfsigned-tls
+  secretName: soniiit-net-production-tls
   issuerRef:
-    name: selfsigned-issuer
+    name: letsencrypt-production
     kind: ClusterIssuer
   dnsNames:
-    - "authentik.home.soniiit.net"
+    - "authentik.soniiit.net"

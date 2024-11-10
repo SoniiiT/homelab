@@ -21,10 +21,17 @@ resource "dns_a_record_set" "sw_01" {
 }
 
 # Hosts
+resource "dns_a_record_set" "pve-srv-01" {
+    zone = "home.soniiit.net."
+    name = "pve-srv-01"
+    addresses = [ "192.168.178.6" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "proxmox" {
     zone = "home.soniiit.net."
     name = "proxmox"
-    addresses = [ "192.168.178.6" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
