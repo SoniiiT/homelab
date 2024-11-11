@@ -41,3 +41,10 @@ resource "dns_a_record_set" "kestra" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "gitlab" {
+    zone = "home.soniiit.net."
+    name = "gitlab"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
