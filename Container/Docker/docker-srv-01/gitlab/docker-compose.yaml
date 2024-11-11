@@ -1,1 +1,16 @@
-asd
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: unless-stopped
+    hostname: gitlab.soniiit.net
+    ports:
+      - 80:80
+      - 443:443
+      - 2424:22
+    volumes:
+      - ./config:/etc/gitlab
+      - ./logs:/var/log/gitlab
+      - /mnt/gitlab/data:/var/opt/gitlab
+    shm_size: 256m
+networks: {}
