@@ -57,3 +57,8 @@ resource "proxmox_pool" "windows" {
   poolid  = "Windows" 
   comment = "Windows pool"
 }
+
+resource "proxmox_pool" "home" {
+  poolid  = "Home" 
+  comment = "Home pool"
+}
