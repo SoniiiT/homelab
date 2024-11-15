@@ -239,7 +239,7 @@ resource "proxmox_vm_qemu" "app_srv_04" {
     target_node = "pve-srv-01"
     vmid = "0"
     name = "app-srv-04"
-    tags = "ubuntu,application,dns"
+    tags = "ubuntu,application"
     desc = "Kasm Server"
     automatic_reboot = false
 
