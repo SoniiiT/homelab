@@ -62,3 +62,8 @@ resource "proxmox_pool" "home" {
   poolid  = "Home" 
   comment = "Home pool"
 }
+
+resource "proxmox_pool" "gitlab" {
+  poolid  = "Gitlab" 
+  comment = "Gitlab pool"
+} 
