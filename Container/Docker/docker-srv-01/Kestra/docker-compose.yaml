@@ -3,7 +3,7 @@ services:
   kestra:
     image: kestra/kestra:latest
     pull_policy: always
-    container_name: kestra-01
+    container_name: kestra
     stdin_open: true
     tty: true
     ports:
@@ -11,11 +11,9 @@ services:
     user: root
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /tmp:/tmp
-      - ./data/:/app/data
+      - /mnt/docker-compose/kestra/tmp:/tmp
+      - /mnt/docker-compose/kestra/data/:/app/data
     command: server local
-    networks:
-      - traefik-nw
     restart: unless-stopped
     environment:
       - SECRET_SSH_KEY=${SECRET_SSH_KEY}
@@ -23,6 +21,5 @@ services:
       - SECRET_TF_ID_TOKEN=${SECRET_TF_ID_TOKEN}
       - SECRET_TSIG_KEY=${SECRET_TSIG_KEY}
       - SECRET_TG_API_TOKEN=${SECRET_TG_API_TOKEN}
-networks:
-  traefik-nw:
-    external: true
+      - KESTRA_TUTORIAL_FLOWS_ENABLED=false
+networks: {}
