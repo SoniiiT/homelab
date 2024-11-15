@@ -127,7 +127,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
         virtio {
             virtio0 {
                 disk {
-                    size               = 32
+                    size               = 48
                     storage            = "M2-Storage"
                 }
             }
