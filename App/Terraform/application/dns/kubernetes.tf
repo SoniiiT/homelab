@@ -134,3 +134,10 @@ resource "dns_a_record_set" "authentik" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "kasm" {
+    zone = "home.soniiit.net."
+    name = "kasm"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
