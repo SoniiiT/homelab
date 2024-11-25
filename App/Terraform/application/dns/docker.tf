@@ -38,7 +38,7 @@ resource "dns_a_record_set" "portainer_docker" {
 resource "dns_a_record_set" "traefik_docker" {
     zone = "home.soniiit.net."
     name = "traefik-docker"
-    addresses = [ "192.168.178.30" ]
+    addresses = [ "192.168.178.40" ]
     ttl = 3600
 }
 
