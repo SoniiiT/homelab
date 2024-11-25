@@ -1,21 +1,21 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dockge-docker
+  name: tacticalrmm-api
   namespace: traefik-external
 spec:
   type: ExternalName
-  externalName: 192.168.178.40
+  externalName: 192.168.178.47
   ports:
-    - port: 5001
-      targetPort: 5001
+    - port: 443
+      targetPort: 443
       protocol: TCP
-      name: http
+      name: https
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: dockge-docker
+  name: tacticalrmm-api
   namespace: traefik-external
   annotations: 
     kubernetes.io/ingress.class: traefik
@@ -24,20 +24,20 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`dockge.home.soniiit.net`)
+    - match: Host(`api.home.soniiit.net`)
       kind: Rule
       services:
-        - name: dockge-docker
+        - name: tacticalrmm-api
           namespace: traefik-external
-          port: 5001
-          scheme: http
+          port: 443
+          scheme: https
   tls:
     secretName: home-soniiit-net-selfsigned-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: home-soniiit-net-selfsigned-dockge-docker
+  name: home-soniiit-net-selfsigned-tacticalrmm-api
   namespace: traefik-external
 spec:
   secretName: home-soniiit-net-selfsigned-tls
@@ -45,4 +45,4 @@ spec:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "dockge.home.soniiit.net"
+    - "api.home.soniiit.net"

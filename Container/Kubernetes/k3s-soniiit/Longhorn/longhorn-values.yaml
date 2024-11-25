@@ -1,0 +1,6 @@
+longhornUI:
+  replicas: 3
+
+persistence:
+  defaultClassReplicaCount: 6
+  migratable: true
