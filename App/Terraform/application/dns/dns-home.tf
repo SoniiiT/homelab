@@ -81,23 +81,9 @@ resource "dns_a_record_set" "github_agent_01" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "tactical_rmm_rmm" {
-    zone = "home.soniiit.net."
-    name = "rmm"
-    addresses = [ "192.168.178.47" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "tactical_rmm_api" {
     zone = "home.soniiit.net."
     name = "api"
-    addresses = [ "192.168.178.47" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "tactical_rmm_mesh" {
-    zone = "home.soniiit.net."
-    name = "mesh"
     addresses = [ "192.168.178.47" ]
     ttl = 3600
 }
