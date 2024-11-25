@@ -80,10 +80,3 @@ resource "dns_a_record_set" "github_agent_01" {
     addresses = [ "192.168.178.43" ]
     ttl = 3600
 }
-
-resource "dns_a_record_set" "tactical_rmm_api" {
-    zone = "home.soniiit.net."
-    name = "api"
-    addresses = [ "192.168.178.47" ]
-    ttl = 3600
-}
