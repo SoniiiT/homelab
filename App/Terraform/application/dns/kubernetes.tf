@@ -142,6 +142,13 @@ resource "dns_a_record_set" "kasm" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "longhorn" {
+    zone = "home.soniiit.net."
+    name = "longhorn"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "tactical_rmm_rmm" {
     zone = "home.soniiit.net."
     name = "rmm"
