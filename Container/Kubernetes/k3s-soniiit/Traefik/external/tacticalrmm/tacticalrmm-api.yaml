@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tacticalrmm-api
-  namespace: traefik-external
+  namespace: traefik-internal
 spec:
   type: ExternalName
   externalName: 192.168.178.47
@@ -16,7 +16,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: tacticalrmm-api
-  namespace: traefik-external
+  namespace: traefik-internal
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
@@ -28,7 +28,7 @@ spec:
       kind: Rule
       services:
         - name: tacticalrmm-api
-          namespace: traefik-external
+          namespace: traefik-internal
           port: 443
           scheme: https
   tls:
@@ -38,7 +38,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: home-soniiit-net-selfsigned-tacticalrmm-api
-  namespace: traefik-external
+  namespace: traefik-internal
 spec:
   secretName: home-soniiit-net-selfsigned-tls
   issuerRef:

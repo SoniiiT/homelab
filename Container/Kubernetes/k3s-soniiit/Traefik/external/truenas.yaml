@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tacticalrmm-mesh
-  namespace: traefik-internal
+  name: truenas
+  namespace: traefik-homelab
 spec:
   type: ExternalName
-  externalName: 192.168.178.47
+  externalName: 192.168.178.60
   ports:
     - port: 443
       targetPort: 443
@@ -15,8 +15,8 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: tacticalrmm-mesh
-  namespace: traefik-internal
+  name: truenas
+  namespace: traefik-homelab
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
@@ -24,11 +24,11 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`mesh.home.soniiit.net`)
+    - match: Host(`truenas.home.soniiit.net`)
       kind: Rule
       services:
-        - name: tacticalrmm-mesh
-          namespace: traefik-internal
+        - name: truenas
+          namespace: traefik-homelab
           port: 443
           scheme: https
   tls:
@@ -37,12 +37,12 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: home-soniiit-net-selfsigned-tacticalrmm-mesh
-  namespace: traefik-internal
+  name: home-soniiit-net-selfsigned-truenas
+  namespace: traefik-homelab
 spec:
   secretName: home-soniiit-net-selfsigned-tls
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "mesh.home.soniiit.net"
+    - "truenas.home.soniiit.net"

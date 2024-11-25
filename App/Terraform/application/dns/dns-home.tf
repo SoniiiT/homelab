@@ -101,3 +101,11 @@ resource "dns_a_record_set" "tactical_rmm_api_standalone" {
     addresses = [ "192.168.178.47" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "truenas" {
+    zone = "home.soniiit.net."
+    name = "truenas"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+

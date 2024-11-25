@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kestra-docker
-  namespace: traefik-external
+  namespace: traefik-homelab
 spec:
   type: ExternalName
   externalName: 192.168.178.40
@@ -16,7 +16,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: kestra-docker
-  namespace: traefik-external
+  namespace: traefik-homelab
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
@@ -28,7 +28,7 @@ spec:
       kind: Rule
       services:
         - name: kestra-docker
-          namespace: traefik-external
+          namespace: traefik-homelab
           port: 1337
           scheme: http
   tls:
@@ -38,7 +38,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: home-soniiit-net-selfsigned-kestra-docker
-  namespace: traefik-external
+  namespace: traefik-homelab
 spec:
   secretName: home-soniiit-net-selfsigned-tls
   issuerRef:

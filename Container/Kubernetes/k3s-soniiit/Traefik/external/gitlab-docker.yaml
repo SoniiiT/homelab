@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gitlab-docker
-  namespace: traefik-external
+  namespace: traefik-external-gitlab
 spec:
   type: ExternalName
   externalName: 192.168.178.40
@@ -16,7 +16,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: gitlab-docker
-  namespace: traefik-external
+  namespace: traefik-external-gitlab
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
@@ -28,7 +28,7 @@ spec:
       kind: Rule
       services:
         - name: gitlab-docker
-          namespace: traefik-external
+          namespace: traefik-external-gitlab
           port: 80
           scheme: http
   tls:
@@ -38,7 +38,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: soniiit-net-production-gitlab-docker
-  namespace: traefik-external
+  namespace: traefik-external-gitlab
 spec:
   secretName: soniiit-net-production-tls
   issuerRef:
