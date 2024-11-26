@@ -44,7 +44,14 @@ grafana:
   defaultDashboardsTimezone: Europe/Berlin
   serviceMonitor:
     enabled: true
+  adminUser: admin
   adminPassword: admin
+  persistence:
+    enabled: true
+    storageClassName: "longhorn"
+    accessModes:
+      - ReadWriteOnce
+    size: 20Gi
 
 kubeApiServer:
   enabled: true
@@ -175,6 +182,14 @@ prometheus:
     walCompression: true
     scrapeInterval: 30s
     evaluationInterval: 30s
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: "longhorn"
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 50Gi
 
 thanosRuler:
   enabled: false

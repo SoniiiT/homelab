@@ -169,3 +169,10 @@ resource "dns_a_record_set" "tactical_rmm_api" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "graylog" {
+    zone = "home.soniiit.net."
+    name = "graylog"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}

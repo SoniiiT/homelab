@@ -3,22 +3,39 @@
   become: true
 
   tasks:
-    - name: iscsi_tcp Modul laden
-      community.general.modprobe:
-        name: iscsi_tcp
-        state: present
+    - name: Modprobe iscsi_tcp laden
+      ansible.builtin.shell:
+        cmd: modprobe iscsi_tcp
 
-    - name: iscsid Service starten
-      ansible.builtin.systemd:
-        name: iscsid
-        state: started
-        enabled: yes
+    - name: iscsi_tcp zum automatischen Laden hinzufügen
+      ansible.builtin.lineinfile:
+        path: /etc/modules
+        line: iscsi_tcp
+        create: yes
+
+    - name: Enable ISCSI Service
+      ansible.builtin.shell:
+        cmd: systemctl enable iscsid
+
+    - name: Start ISCSI Service
+      ansible.builtin.shell:
+        cmd: systemctl start iscsid
 
     - name: nfs-common installieren
       ansible.builtin.apt:
         name: nfs-common
         state: present
         update_cache: yes
+
+    - name: Modprobe dm_crypt laden
+      ansible.builtin.shell:
+        cmd: modprobe dm_crypt
+
+    - name: dm_crypt zum automatischen Laden hinzufügen
+      ansible.builtin.lineinfile:
+        path: /etc/modules
+        line: dm_crypt
+        create: yes
 
     - name: multipathd Service und Socket deaktivieren
       ansible.builtin.systemd:

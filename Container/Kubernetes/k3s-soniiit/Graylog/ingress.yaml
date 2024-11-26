@@ -28,5 +28,4 @@ spec:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "www.graylog.home.soniiit.net"
     - "graylog.home.soniiit.net"
