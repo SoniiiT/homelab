@@ -230,6 +230,7 @@ graylog:
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-startup-probes
   ##
   startupProbe:
+    enabled: false
     periodSeconds: 60
     failureThreshold: 3
     successThreshold: 1
@@ -239,6 +240,7 @@ graylog:
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request
   ##
   livenessProbe:
+    enabled: false
     initialDelaySeconds: 0
     periodSeconds: 30
     failureThreshold: 3
@@ -249,6 +251,7 @@ graylog:
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request
   ##
   readinessProbe:
+    enabled: false
     initialDelaySeconds: 0
     periodSeconds: 10
     failureThreshold: 3
@@ -355,7 +358,7 @@ graylog:
   ## Graylog root password
   ## Defaults to a random 16-character alphanumeric string if not set
   ##
-  # rootPassword: ""
+  rootPassword: "admin"
 
   ## Graylog root email
   ##
