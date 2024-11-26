@@ -57,7 +57,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = 1024
                     storage            = "HDD-Storage"
                 }
             }
@@ -139,7 +139,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server02" {
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = 1024
                     storage            = "HDD-Storage"
                 }
             }
@@ -221,7 +221,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server03" {
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = 1024
                     storage            = "HDD-Storage"
                 }
             }
@@ -303,7 +303,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = 1024
                     storage            = "HDD-Storage"
                 }
             }
@@ -385,7 +385,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent02" {
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = 1024
                     storage            = "HDD-Storage"
                 }
             }
@@ -467,7 +467,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent03" {
             }
             virtio1 {
                 disk {
-                    size               = 128
+                    size               = 1024
                     storage            = "HDD-Storage"
                 }
             }

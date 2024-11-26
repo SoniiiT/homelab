@@ -12,7 +12,7 @@ spec:
     - match: Host(`graylog.home.soniiit.net`)
       kind: Rule
       services:
-        - name: graylog-web
+        - name: my-graylog-web
           port: 9000
   tls:
     secretName: home-soniiit-net-selfsigned-tls
