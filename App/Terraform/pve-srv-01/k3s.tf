@@ -272,7 +272,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
     agent = 1
 
     # VM CPU Settings
-    cores = 1
+    cores = 4
     sockets = 1
     cpu = "host"
 
@@ -354,7 +354,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent02" {
     agent = 1
 
     # VM CPU Settings
-    cores = 1
+    cores = 4
     sockets = 1
     cpu = "host"
 
@@ -436,7 +436,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent03" {
     agent = 1
 
     # VM CPU Settings
-    cores = 1
+    cores = 4
     sockets = 1
     cpu = "host"
 

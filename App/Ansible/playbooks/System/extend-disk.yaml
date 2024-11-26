@@ -1,0 +1,32 @@
+- name: Festplatte erweitern
+  hosts: k3s_cluster
+  become: true
+  vars:
+    device_path: /dev/vdb
+    partition_number: 1
+
+  tasks:
+    - name: Expect installieren
+      apt:
+        name: expect
+        state: present
+
+    - name: Partition erweitern mit expect
+      shell: |
+        expect << EOF
+        spawn parted -a optimal {{ device_path }} resizepart {{ partition_number }} 100%
+        expect "Yes/No" { send "yes\r" }
+        expect eof
+        EOF
+      register: parted_output
+      ignore_errors: true
+
+    - name: Dateisystem erweitern
+      filesystem:
+        fstype: ext4
+        dev: "{{ device_path }}{{ partition_number }}"
+        resizefs: true
+
+    - name: Dateisystem neu einlesen
+      command: "resize2fs {{ device_path }}{{ partition_number }}"
+      become: true

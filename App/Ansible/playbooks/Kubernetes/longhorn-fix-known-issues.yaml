@@ -26,7 +26,6 @@
         name: nfs-common
         state: present
         update_cache: yes
-
     - name: Modprobe dm_crypt laden
       ansible.builtin.shell:
         cmd: modprobe dm_crypt
