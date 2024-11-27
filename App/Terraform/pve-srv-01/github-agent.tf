@@ -26,7 +26,7 @@ resource "proxmox_vm_qemu" "github_agent_01" {
     agent = 1
 
     # VM CPU Settings
-    cores = 2
+    cores = 1
     sockets = 1
     cpu = "kvm64"
 

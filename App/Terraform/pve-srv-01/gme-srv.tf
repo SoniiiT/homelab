@@ -103,11 +103,11 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
 
     # VM CPU Settings
     cores = 4
-    sockets = 2
+    sockets = 1
     cpu = "host"
 
     # VM Memory Settings
-    memory = 32768
+    memory = 12288
 
     # VM Network Settings
     network {
