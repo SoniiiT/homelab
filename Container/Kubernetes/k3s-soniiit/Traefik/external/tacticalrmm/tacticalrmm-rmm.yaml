@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: tacticalrmm-rmm
-  namespace: traefik-internal
+  namespace: traefik-external-tacticalrmm
 spec:
   type: ExternalName
   externalName: 192.168.178.47
@@ -16,7 +16,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: tacticalrmm-rmm
-  namespace: traefik-internal
+  namespace: traefik-external-tacticalrmm
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
@@ -24,25 +24,25 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`rmm.home.soniiit.net`)
+    - match: Host(`rmm.soniiit.net`)
       kind: Rule
       services:
         - name: tacticalrmm-rmm
-          namespace: traefik-internal
+          namespace: traefik-external-tacticalrmm
           port: 443
           scheme: https
   tls:
-    secretName: home-soniiit-net-selfsigned-tls
+    secretName: soniiit-net-production-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: home-soniiit-net-selfsigned-tacticalrmm-rmm
-  namespace: traefik-internal
+  name: soniiit-net-production-tacticalrmm
+  namespace: traefik-external-tacticalrmm
 spec:
-  secretName: home-soniiit-net-selfsigned-tls
+  secretName: soniiit-net-production-tls
   issuerRef:
-    name: selfsigned-issuer
+    name: letsencrypt-production
     kind: ClusterIssuer
   dnsNames:
-    - "rmm.home.soniiit.net"
+    - "rmm.soniiit.net"
