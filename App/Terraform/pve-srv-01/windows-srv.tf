@@ -26,7 +26,7 @@ resource "proxmox_vm_qemu" "dc_srv_01" {
     agent = 1
 
     # VM CPU Settings
-    cores = 1
+    cores = 2
     sockets = 1
     cpu = "kvm64"
 
@@ -92,7 +92,7 @@ resource "proxmox_vm_qemu" "dc_srv_02" {
     agent = 1
 
     # VM CPU Settings
-    cores = 1
+    cores = 2
     sockets = 1
     cpu = "kvm64"
 
