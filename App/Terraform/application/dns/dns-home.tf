@@ -81,27 +81,6 @@ resource "dns_a_record_set" "github_agent_01" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "tactical_rmm_rmm_standalone" {
-    zone = "home.soniiit.net."
-    name = "rmm-standalone"
-    addresses = [ "192.168.178.47" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "tactical_rmm_mesh_standalone" {
-    zone = "home.soniiit.net."
-    name = "mesh-standalone"
-    addresses = [ "192.168.178.47" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "tactical_rmm_api_standalone" {
-    zone = "home.soniiit.net."
-    name = "api-standalone"
-    addresses = [ "192.168.178.47" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "truenas" {
     zone = "home.soniiit.net."
     name = "truenas"
@@ -109,3 +88,9 @@ resource "dns_a_record_set" "truenas" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "wazuh" {
+    zone = "home.soniiit.net."
+    name = "wazuh"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
