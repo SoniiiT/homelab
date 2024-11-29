@@ -31,7 +31,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 6144
 
     # VM Network Settings
     network {
@@ -113,7 +113,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server02" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 6144
 
     # VM Network Settings
     network {
@@ -195,7 +195,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server03" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 4096
+    memory = 6144
 
     # VM Network Settings
     network {
