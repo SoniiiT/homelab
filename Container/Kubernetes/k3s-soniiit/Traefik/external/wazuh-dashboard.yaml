@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wazuh-dashboard
+  namespace: wazuh
+spec:
+  type: ExternalName
+  externalName: 192.168.178.30  # IP des Wazuh LoadBalancer Service
+  ports:
+    - port: 5601  # Wazuh Dashboard Port
+      targetPort: 5601
+      protocol: TCP
+      name: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wazuh-dashboard
+  namespace: wazuh
+  annotations: 
+    kubernetes.io/ingress.class: traefik
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`wazuh.home.soniiit.net`)
+      kind: Rule
+      services:
+        - name: wazuh-dashboard
+          namespace: wazuh
+          port: 5601
+          scheme: http
+  tls:
+    secretName: soniiit-net-production-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: soniiit-net-production-wazuh
+  namespace: wazuh
+spec:
+  secretName: soniiit-net-production-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  dnsNames:
+    - "wazuh.home.soniiit.net" 
