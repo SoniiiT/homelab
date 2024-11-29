@@ -162,7 +162,7 @@ resource "proxmox_vm_qemu" "app_srv_03" {
     target_node = "pve-srv-01"
     vmid = "0"
     name = "app-srv-03"
-    tags = "ubuntu,application,dns"
+    tags = "ubuntu,application,docker,dns"
     desc = "Bind9 DNS Server"
     automatic_reboot = false
 
@@ -318,7 +318,7 @@ resource "proxmox_vm_qemu" "app_srv_06" {
     target_node = "pve-srv-01"
     vmid = "0"
     name = "app-srv-06"
-    tags = "ubuntu,application"
+    tags = "ubuntu,application,docker"
     desc = "Remotely Server"
     automatic_reboot = false
 
