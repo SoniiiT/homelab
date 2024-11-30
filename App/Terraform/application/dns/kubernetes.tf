@@ -170,3 +170,10 @@ resource "dns_a_record_set" "uptimekuma" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "rabbitmq" {
+    zone = "home.soniiit.net."
+    name = "rabbitmq"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
