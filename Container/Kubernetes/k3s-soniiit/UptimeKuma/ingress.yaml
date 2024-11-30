@@ -1,19 +1,19 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: zabbix
-  namespace: zabbix
+  name: uptimekuma
+  namespace: uptimekuma
   annotations: 
     kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`zabbix.home.soniiit.net`)
+    - match: Host(`uptimekuma.home.soniiit.net`)
       kind: Rule
       services:
-        - name: zabbix-zabbix-web
-          port: 80
+        - name: my-uptime-kuma
+          port: 3001
   tls:
     secretName: home-soniiit-net-selfsigned-tls
 ---
@@ -21,12 +21,12 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: home-soniiit-net-selfsigned
-  namespace: zabbix
+  namespace: uptimekuma
 spec:
   secretName: home-soniiit-net-selfsigned-tls
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "zabbix.home.soniiit.net"
+    - "uptimekuma.home.soniiit.net"
 

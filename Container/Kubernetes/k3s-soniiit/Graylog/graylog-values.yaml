@@ -164,7 +164,7 @@ graylog:
     ##
     proxy:
       enabled: false
-      host: https://graylog.home.soniiit.net
+      host: http://your.proxy.host:8080
 
     locations: []
     # - name: graylog-plugin-slack-notification-4.1.1.jar
@@ -230,7 +230,6 @@ graylog:
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-startup-probes
   ##
   startupProbe:
-    enabled: false
     periodSeconds: 60
     failureThreshold: 3
     successThreshold: 1
@@ -240,7 +239,6 @@ graylog:
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request
   ##
   livenessProbe:
-    enabled: false
     initialDelaySeconds: 0
     periodSeconds: 30
     failureThreshold: 3
@@ -251,7 +249,6 @@ graylog:
   ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-http-request
   ##
   readinessProbe:
-    enabled: false
     initialDelaySeconds: 0
     periodSeconds: 10
     failureThreshold: 3
@@ -263,21 +260,82 @@ graylog:
   ## Note: Array must be sorted by port order
   ##
   input:
-    tcp:
-      service:
-        name: graylog-additional-input-loadbalancer
-        type: LoadBalancer
-        loadBalancerIP:
-      ports:
-        - name: gelf
-          port: 12222
-    udp:
-      service:
-        name: graylog-additional-input-loadbalancer
-        type: ClusterIP
-      ports:
-        - name: syslog
-          port: 12222
+    {}
+    # tcp:
+    #   service:
+    #     name: your-tcp-service-name
+    #     type: LoadBalancer
+    #     loadBalancerIP:
+    #   ports:
+    #     - name: gelf
+    #       port: 12222
+    # udp:
+    #   service:
+    #     name: your-udp-service-name
+    #     type: ClusterIP
+    #   ports:
+    #     - name: syslog
+    #       port: 12222
+
+  tls:
+    ## If true, Graylog server will run with TLS enabled
+    ##
+    enabled: false
+    ## TLS certificate key file
+    ##
+    keyFile: /etc/graylog/server/server.key
+    ## TLS certificate file
+    ##
+    certFile: /etc/graylog/server/server.cert
+
+  ## External URL to access Graylog at e.g. https://graylog.mycompany.com
+  ##
+  externalUri: ""
+
+  ingress:
+    ## If true, Graylog server Ingress will be created
+    ##
+    enabled: false
+    ## Graylog server Ingress annotations
+    ##
+    annotations: {}
+
+    ## Graylog server Ingress labels
+    labels: {}
+    # labels:
+    #  traffic-type: public
+
+    ## Specify the Ingress class name
+    ingressClassName: ""
+
+    ## Graylog server Ingress hostnames with optional path
+    ## Must be provided if Ingress is enabled
+    ## Note: Graylog does not support two URL. You can specify only single URL
+    ##
+    hosts: []
+    #  - graylog.yourdomain.com
+
+    ## Extra paths to prepend to every host configuration. This is useful when working with annotation based services.
+    extraPaths: []
+    # - path: /*
+    #   backend:
+    #     serviceName: ssl-redirect
+    #     servicePort: use-annotation
+
+    ## Graylog server Ingress TLS configuration
+    ## Secrets must be manually created in the namespace
+    ##
+    tls: []
+    #   - secretName: graylog-server-tls
+    #     hosts:
+    #       - graylog.yourdomain.com
+
+    ## For Kubernetes 1.18 or later. Use Prefix or Exact path types.
+    ## See https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types
+    pathType: Prefix
+
+    ## An URL path
+    path: /
 
   istio:
     ## If true, Graylog server Istio Ingress Gateway will be created
@@ -358,15 +416,15 @@ graylog:
   ## Graylog root password
   ## Defaults to a random 16-character alphanumeric string if not set
   ##
-  rootPassword: "admin"
+  # rootPassword: ""
 
   ## Graylog root email
   ##
-  rootEmail: "soniiit@soniiit.net"
+  rootEmail: ""
 
   ## Graylog root timezone
   ##
-  rootTimezone: "Europe/Berlin"
+  rootTimezone: "UTC"
 
   ## Grayog existing root secret
   ##
@@ -542,18 +600,18 @@ opensearch:
     requests:
       cpu: "100m"
       memory: "100Mi"
-    limits:
-      cpu: "1000m"
-      memory: "512Mi"
-  volumeClaimTemplate:
-    resources:
-      requests:
-        storage: 30Gi # default 30Gi
+  #   limits:
+  #     cpu: "1000m"
+  #     memory: "512Mi"
+  # volumeClaimTemplate:
+  #   resources:
+  #     requests:
+  #       storage: 30Gi # default 30Gi
 
 # Specify Mongodb settings. Ignore this section if you install MongoDB manually.
 mongodb:
   architecture: "replicaset"
   useStatefulSet: true
-  replicaCount: 2
+  replicaCount: 1
   auth:
     enabled: false

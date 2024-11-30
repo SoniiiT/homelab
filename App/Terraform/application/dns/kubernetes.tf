@@ -162,3 +162,11 @@ resource "dns_a_record_set" "zabbix" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "uptimekuma" {
+    zone = "home.soniiit.net."
+    name = "uptimekuma"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
