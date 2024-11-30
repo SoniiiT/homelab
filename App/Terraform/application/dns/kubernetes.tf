@@ -155,3 +155,10 @@ resource "dns_a_record_set" "graylog" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "zabbix" {
+    zone = "home.soniiit.net."
+    name = "zabbix"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
