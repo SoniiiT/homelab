@@ -183,3 +183,10 @@ resource "dns_a_record_set" "bitwarden" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "nextcloud" {
+    zone = "home.soniiit.net."
+    name = "nextcloud"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
