@@ -28,7 +28,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "kvm64"
+    cpu = "host"
 
     # VM Memory Settings
     memory = 6144
@@ -110,7 +110,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server02" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "kvm64"
+    cpu = "host"
 
     # VM Memory Settings
     memory = 6144
@@ -192,7 +192,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server03" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "kvm64"
+    cpu = "host"
 
     # VM Memory Settings
     memory = 6144
@@ -274,7 +274,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "kvm64"
+    cpu = "host"
 
     # VM Memory Settings
     memory = 16384
@@ -356,7 +356,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent02" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "kvm64"
+    cpu = "host"
 
     # VM Memory Settings
     memory = 16384
@@ -438,7 +438,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent03" {
     # VM CPU Settings
     cores = 1
     sockets = 1
-    cpu = "kvm64"
+    cpu = "host"
 
     # VM Memory Settings
     memory = 16384
