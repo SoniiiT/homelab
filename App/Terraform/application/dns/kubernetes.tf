@@ -177,3 +177,9 @@ resource "dns_a_record_set" "rabbitmq" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "rabbitmq_amqp" {
+    zone = "home.soniiit.net."
+    name = "rabbitmq-amqp"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
