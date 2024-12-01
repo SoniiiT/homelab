@@ -176,3 +176,10 @@ resource "dns_a_record_set" "rabbitmq" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "bitwarden" {
+    zone = "home.soniiit.net."
+    name = "bitwarden"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
