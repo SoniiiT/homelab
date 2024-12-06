@@ -21,13 +21,6 @@ resource "dns_a_record_set" "k3s_soniiit_server02" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "k3s_soniiit_server03" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-server03"
-    addresses = [ "192.168.178.13" ]
-    ttl = 3600
-}
-
 # Agents
 resource "dns_a_record_set" "k3s_soniiit_agent01" {
     zone = "home.soniiit.net."
@@ -40,13 +33,6 @@ resource "dns_a_record_set" "k3s_soniiit_agent02" {
     zone = "home.soniiit.net."
     name = "k3s-soniiit-agent02"
     addresses = [ "192.168.178.21" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "k3s_soniiit_agent03" {
-    zone = "home.soniiit.net."
-    name = "k3s-soniiit-agent03"
-    addresses = [ "192.168.178.22" ]
     ttl = 3600
 }
 
@@ -65,13 +51,6 @@ resource "dns_a_record_set" "nginx" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "ceph" {
-    zone = "home.soniiit.net."
-    name = "ceph"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "portainer" {
     zone = "home.soniiit.net."
     name = "portainer"
@@ -79,30 +58,9 @@ resource "dns_a_record_set" "portainer" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "argocd" {
-    zone = "home.soniiit.net."
-    name = "argocd"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "homepage" {
     zone = "home.soniiit.net."
     name = "homepage"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "teleport" {
-    zone = "home.soniiit.net."
-    name = "teleport"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "teleport_wildcard" {
-    zone = "home.soniiit.net."
-    name = "*.teleport"
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
@@ -124,20 +82,6 @@ resource "dns_a_record_set" "grafana" {
 resource "dns_a_record_set" "alertmanager" {
     zone = "home.soniiit.net."
     name = "alertmanager"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "authentik" {
-    zone = "home.soniiit.net."
-    name = "authentik"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "kasm" {
-    zone = "home.soniiit.net."
-    name = "kasm"
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
@@ -180,13 +124,6 @@ resource "dns_a_record_set" "rabbitmq" {
 resource "dns_a_record_set" "bitwarden" {
     zone = "home.soniiit.net."
     name = "bitwarden"
-    addresses = [ "192.168.178.30" ]
-    ttl = 3600
-}
-
-resource "dns_a_record_set" "nextcloud" {
-    zone = "home.soniiit.net."
-    name = "nextcloud"
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }

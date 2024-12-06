@@ -21,13 +21,6 @@ resource "dns_a_record_set" "sw_01" {
 }
 
 # Hosts
-resource "dns_a_record_set" "pve-srv-01" {
-    zone = "home.soniiit.net."
-    name = "pve-srv-01"
-    addresses = [ "192.168.178.6" ]
-    ttl = 3600
-}
-
 resource "dns_a_record_set" "proxmox" {
     zone = "home.soniiit.net."
     name = "proxmox"
@@ -36,6 +29,13 @@ resource "dns_a_record_set" "proxmox" {
 }
 
 # Application Hosts
+resource "dns_a_record_set" "app_srv_01" {
+    zone = "home.soniiit.net."
+    name = "app-srv-01"
+    addresses = [ "192.168.178.9" ]
+    ttl = 3600
+}
+
 resource "dns_a_record_set" "app_srv_03" {
     zone = "home.soniiit.net."
     name = "app-srv-03"
@@ -43,10 +43,17 @@ resource "dns_a_record_set" "app_srv_03" {
     ttl = 3600
 }
 
-resource "dns_a_record_set" "lancache" {
+resource "dns_a_record_set" "app_srv_05" {
     zone = "home.soniiit.net."
-    name = "lancache"
-    addresses = [ "192.168.178.4" ]
+    name = "app-srv-05"
+    addresses = [ "192.168.178.47" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "app_srv_07" {
+    zone = "home.soniiit.net."
+    name = "app-srv-07"
+    addresses = [ "192.168.178.49" ]
     ttl = 3600
 }
 
