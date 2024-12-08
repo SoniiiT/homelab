@@ -108,3 +108,10 @@ resource "dns_a_record_set" "lancache" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "lancache_api" {
+    zone = "home.soniiit.net."
+    name = "lancache-api"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
