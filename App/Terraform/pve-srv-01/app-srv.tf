@@ -147,7 +147,7 @@ resource "proxmox_vm_qemu" "app_srv_02" {
     ipconfig0 = "ip=192.168.178.4/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
-    nameserver = "192.168.178.3"
+    nameserver = "1.1.1.1"
 
     # (Optional) Default User
     ciuser = "soniiit"
