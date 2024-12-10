@@ -127,3 +127,10 @@ resource "dns_a_record_set" "bitwarden" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "crowdsec" {
+    zone = "home.soniiit.net."
+    name = "crowdsec"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
