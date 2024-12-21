@@ -130,18 +130,18 @@ resource "proxmox_vm_qemu" "dc_srv_02" {
     skip_ipv6 = true
 }
 
-resource "proxmox_vm_qemu" "win_srv_01" {
+resource "proxmox_vm_qemu" "veeam_srv" {
 
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "0"
-    name = "win-srv-01"
-    tags = "windows"
+    name = "veeam-srv"
+    tags = "windows,backup"
     desc = "Veeam Backup & Replication Server"
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "Windows"
+    pool = "Veeam"
 
     # VM Advanced General Settings
     onboot = true

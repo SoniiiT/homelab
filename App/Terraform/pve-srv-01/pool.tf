@@ -67,3 +67,8 @@ resource "proxmox_pool" "gitlab" {
   poolid  = "Gitlab" 
   comment = "Gitlab pool"
 } 
+
+resource "proxmox_pool" "veeam" {
+  poolid  = "Veeam" 
+  comment = "Veeam pool"
+} 
