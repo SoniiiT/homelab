@@ -33,9 +33,9 @@ resource "proxmox_pool" "gitagents" {
   comment = "GitAgents pool"
 }
 
-resource "proxmox_pool" "kubernetes" {
-  poolid  = "Kubernetes" 
-  comment = "Kubernetes pool"
+resource "proxmox_pool" "k3s_soniiit_prod_1" {
+  poolid  = "K3s-SoniiiT-Prod-1" 
+  comment = "K3s-SoniiiT-Prod-1 pool"
 }
 
 resource "proxmox_pool" "nas" {
