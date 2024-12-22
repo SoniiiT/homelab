@@ -28,9 +28,9 @@ resource "proxmox_pool" "gameserver" {
   comment = "Gameserver pool"
 }
 
-resource "proxmox_pool" "github" {
-  poolid  = "Github" 
-  comment = "Github pool"
+resource "proxmox_pool" "gitagents" {
+  poolid  = "GitAgents" 
+  comment = "GitAgents pool"
 }
 
 resource "proxmox_pool" "kubernetes" {
@@ -62,11 +62,6 @@ resource "proxmox_pool" "home" {
   poolid  = "Home" 
   comment = "Home pool"
 }
-
-resource "proxmox_pool" "gitlab" {
-  poolid  = "Gitlab" 
-  comment = "Gitlab pool"
-} 
 
 resource "proxmox_pool" "veeam" {
   poolid  = "Veeam" 

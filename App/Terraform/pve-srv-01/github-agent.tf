@@ -9,7 +9,7 @@ resource "proxmox_vm_qemu" "github_agent_01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "Github"
+    pool = "GitAgents"
 
     # VM Advanced General Settings
     onboot = true
