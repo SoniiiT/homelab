@@ -80,7 +80,7 @@ resource "proxmox_vm_qemu" "app_srv_02" {
     target_node = "pve-srv-01"
     vmid = "0"
     name = "app-srv-02"
-    tags = "ubuntu,application"
+    tags = "ubuntu,docker,application"
     desc = "Lancache Server"
     automatic_reboot = false
 

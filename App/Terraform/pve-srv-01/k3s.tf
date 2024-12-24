@@ -3,7 +3,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_server01" {
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "300"
-    name = "k3s-soniiit-server01"
+    name = "k3s-soniiit-prod1-server01"
     tags = "ubuntu,kubernetes"
     desc = "Server 01 for K3s Kubernetes Cluster"
     automatic_reboot = false
@@ -85,7 +85,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent01" {
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "303"
-    name = "k3s-soniiit-agent01"
+    name = "k3s-soniiit-prod1-agent01"
     tags = "ubuntu,kubernetes"
     desc = "Agent 01 for K3s Kubernetes Cluster"
     automatic_reboot = false
@@ -167,7 +167,7 @@ resource "proxmox_vm_qemu" "k3s_soniiit_agent02" {
     # VM General Settings
     target_node = "pve-srv-01"
     vmid = "304"
-    name = "k3s-soniiit-agent02"
+    name = "k3s-soniiit-prod1-agent02"
     tags = "ubuntu,kubernetes"
     desc = "Agent 02 for K3s Kubernetes Cluster"
     automatic_reboot = false
