@@ -26,7 +26,7 @@ resource "proxmox_vm_qemu" "docker_srv_01" {
     agent = 1
 
     # VM CPU Settings
-    cores = 1
+    cores = 4
     sockets = 1
     cpu = "kvm64"
 

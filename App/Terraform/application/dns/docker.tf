@@ -41,3 +41,17 @@ resource "dns_a_record_set" "duplicati" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "finance" {
+    zone = "home.soniiit.net."
+    name = "finance"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
+
+resource "dns_a_record_set" "change_detection" {
+    zone = "home.soniiit.net."
+    name = "change-detection"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
