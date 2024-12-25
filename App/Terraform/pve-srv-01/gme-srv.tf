@@ -65,7 +65,7 @@ resource "proxmox_vm_qemu" "gme_srv_panel" {
     ipconfig0 = "ip=192.168.178.44/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
-    nameserver = "192.168.178.1"
+    nameserver = "192.168.178.3"
 
     # (Optional) Default User
     ciuser = "soniiit"
@@ -141,7 +141,7 @@ resource "proxmox_vm_qemu" "gme_srv_01" {
     ipconfig0 = "ip=192.168.178.80/24,gw=192.168.178.1,ip6=dhcp"
 
     # (Optional) DNS Servers
-    nameserver = "192.168.178.1"
+    nameserver = "192.168.178.3"
 
     # (Optional) Default User
     ciuser = "soniiit"
