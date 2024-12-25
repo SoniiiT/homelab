@@ -80,6 +80,13 @@ resource "dns_a_record_set" "gme_node1" {
     ttl = 3600
 }
 
+resource "dns_a_record_set" "gme_node2" {
+    zone = "home.soniiit.net."
+    name = "gme-node2"
+    addresses = [ "192.168.178.81" ]
+    ttl = 3600
+}
+
 # Github Agent Hosts
 resource "dns_a_record_set" "github_agent_01" {
     zone = "home.soniiit.net."
