@@ -69,7 +69,7 @@ resource "dns_a_record_set" "twingate_connector_01" {
 resource "dns_a_record_set" "gameserver" {
     zone = "home.soniiit.net."
     name = "gameserver"
-    addresses = [ "192.168.178.44" ]
+    addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
 
