@@ -129,3 +129,10 @@ resource "dns_a_record_set" "veeam" {
     addresses = [ "192.168.178.30" ]
     ttl = 3600
 }
+
+resource "dns_a_record_set" "cockpit" {
+    zone = "home.soniiit.net."
+    name = "cockpit"
+    addresses = [ "192.168.178.30" ]
+    ttl = 3600
+}
