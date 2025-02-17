@@ -9,7 +9,7 @@ resource "proxmox_vm_qemu" "gitlab_runner_01" {
     automatic_reboot = false
 
     # The destination resource pool for the new VM
-    pool = "Gitlab"
+    pool = "GitAgents"
 
     # VM Advanced General Settings
     onboot = true
