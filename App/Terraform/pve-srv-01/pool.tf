@@ -62,8 +62,3 @@ resource "proxmox_pool" "home" {
   poolid  = "Home" 
   comment = "Home pool"
 }
-
-resource "proxmox_pool" "veeam" {
-  poolid  = "Veeam" 
-  comment = "Veeam pool"
-} 
