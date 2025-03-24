@@ -423,7 +423,7 @@ resource "proxmox_vm_qemu" "app_srv_07" {
     cpu = "kvm64"
 
     # VM Memory Settings
-    memory = 8192
+    memory = 16384
 
     # VM Network Settings
     network {
